@@ -3,5 +3,6 @@
 return [
     'users' => [
         'admin',
+        'client',
     ],
 ];
