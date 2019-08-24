@@ -1,7 +1,7 @@
 <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
-     style="background-size: cover; background-position: center; background-image: url(../argon/agricultura-animal-area-4222118.jpg);">
+     style="background-size: cover; background-position: center; background-image: url({{asset('/argon/animals-blond-hair-cattle-1881334.jpg')}});">
     <!-- Mask -->
-    <span class="mask bg-gradient-primary opacity-4"></span>
+    <span class="mask bg-gradient-danger opacity-6"></span>
     <!-- Header container -->
     <div class="container-fluid d-flex align-items-center">
         <div class="row">

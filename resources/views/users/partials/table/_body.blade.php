@@ -13,7 +13,11 @@
     <td>
         @if(!empty($user->getRoleNames()))
             @foreach($user->getRoleNames() as $v)
-                <label class="badge badge-success">{{ $v }}</label>
+                @if($v == 'client')
+                    <label class="badge badge-primary">{{ $v }}</label>
+                @else
+                    <label class="badge badge-success">{{ $v }}</label>
+                @endif
             @endforeach
         @endif
     </td>

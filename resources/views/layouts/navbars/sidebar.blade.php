@@ -131,7 +131,7 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('admin.user.index') }}">
                                     <i class="fa fa-user-tie"></i> {{ __('User Management') }}
                                 </a>
                             </li>

@@ -13,7 +13,7 @@
                                 <h3 class="mb-0">@lang('labels.User Management')</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('user.index') }}"
+                                <a href="{{ route('admin.user.index') }}"
                                    class="btn btn btn-primary">
                                     <i class="fa fa-arrow-left mr-2"></i>
                                     @lang('labels.Back')
@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('user.store') }}" autocomplete="off"
+                        <form method="post" action="{{ route('admin.user.store') }}" autocomplete="off"
                               enctype="multipart/form-data">
                             @csrf
                             <h6 class="heading-small text-muted mb-4">
