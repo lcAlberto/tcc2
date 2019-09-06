@@ -13,7 +13,7 @@
                                 <h3 class="mb-0">@lang('labels.User Management')</h3>
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('user.index') }}" class="btn btn-primary">
+                                <a href="{{ route('admin.user.index') }}" class="btn btn-primary">
                                     <i class="fa fa-arrow-left mr-2"></i>@lang('labels.Back')</a>
                             </div>
                         </div>

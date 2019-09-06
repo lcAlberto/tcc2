@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
-use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Hash;
-use App\services\UploadServices;
-
+use App\Services\AuxiliaryClass;
 
 class ProfileController extends Controller
 {
@@ -24,22 +22,21 @@ class ProfileController extends Controller
     /**
      * Update the profile
      *
-     * @param  \App\Http\Requests\ProfileRequest  $request
+     * @param  \App\Http\Requests\ProfileRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(ProfileRequest $request, UploadServices $profile)
+    public function update(ProfileRequest $request, AuxiliaryClass $auxiliaryClass)
     {
-        $createProfile = $profile->createProfile($request);
-//        $user = $repository->updateUser($createProfile, $id, $request);
+        $createProfile = $auxiliaryClass->updateProfileimage($request);
         $createProfile = auth()->user()->update($request->all());
 
-        return back()->withStatus(__('Perfil atualizado com sucesso!'));
+        return back()->withStatus(__('Profile successfully updated.'));
     }
 
     /**
      * Change the password
      *
-     * @param  \App\Http\Requests\PasswordRequest  $request
+     * @param  \App\Http\Requests\PasswordRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
     public function password(PasswordRequest $request)

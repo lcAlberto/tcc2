@@ -28,24 +28,24 @@
                 <small class="form-text"> Nome do animal, apelido</small>
             </div>
             <div class="form-group">
-                <label for="DTNasc"> Data de Nascimento </label>
+                <label for="birth"> Data de Nascimento </label>
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
-                <input name="dt_nascimento"
+                <input name="birth"
                        type="date"
-                       id="dt_nascimento"
-                       class="form-control {{ $errors->has('dt_nascimento') ? ' is-invalid' : '' }}"
+                       id="birth"
+                       class="form-control {{ $errors->has('birth') ? ' is-invalid' : '' }}"
                        placeholder="Data de nascimento do animal"
-                       value="{{old('dt_nascimento') ?? $animals->dt_nascimento ?? '' }}"/>
+                       value="{{old('birth') ?? $animals->birth ?? '' }}"/>
                 <small class="form-text"> Dia, mês e ano que o animal nasceu</small>
             </div>
             <div class="form-group">
-                <label for="sexo">
+                <label for="gender">
                     Sexo
                 </label>
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
-                <select class="form-control" id="sexo" name="sexo" required>
-                    <option value="{{old('sexo') ?? $animals->sexo ?? '' }}">
-                        {{old('sexo') ?? $animals->sexo ?? '' }}
+                <select class="form-control" id="gender" name="gender" required>
+                    <option value="{{old('gender') ?? $animals->gender ?? '' }}">
+                        {{old('gender') ?? $animals->gender ?? '' }}
                     </option>
                     @if($animals->sexo == "Macho")
                         <option value="Fêmea" name="Fêmea">Fêmea</option>

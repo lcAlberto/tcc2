@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('User Profile')])
 
 @section('content')
-    @include('users.partials.header', [
+    @include('profile.partials.header', [
         'title' => __('Oi') . ' '. auth()->user()->name. '!',
         'description' => __('Esta é a sua página de perfil. Você pode ver o progresso que você fez em seu trabalho e gerenciar seus projetos ou tarefas atribuídas'),
         'class' => 'col-lg-7'
@@ -69,9 +69,9 @@
                                             name="profile"
                                             id="input-profile"
                                             class="form-control form-control-alternative{{ $errors->has('profile') ? ' is-invalid' : '' }}"
-                                            placeholder="@lang('labels.profile')"
-                                            value="{{old('profile') ?? $users->profile ?? '' }}"
-                                            required>
+                                            placeholder="{{old('profile', auth()->user()->profile)}}"
+                                            value="{{old('profile', auth()->user()->profile)}}"
+                                            >
 
                                     @if ($errors->has('profile'))
                                         <span class="invalid-feedback" role="alert">

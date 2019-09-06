@@ -37,20 +37,27 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="col-12">
                         @include('layouts.flash-message')
                     </div>
-
-                    <div class="table-responsive">
-                        <table class="table align-items-center table-flush">
-                            @include('users.partials.table._head')
-                            <tbody>
-                            @foreach ($users as $user)
-                                @include('users.partials.table._body')
-                            @endforeach
-                            </tbody>
-                        </table>
+                    <!-- Farms table -->
+                    @include('farm.index')
+                    <div class="card">
+                        <div class="card-header">
+                            Usuários
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table align-items-center table-flush">
+                                @include('users.partials.table._head')
+                                <tbody>
+                                @foreach ($users as $user)
+                                    @if($user->id_farms == auth()->user()->id)
+                                        @include('users.partials.table._body')
+                                    @endif
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                     <div class="card-footer py-4">
                         <nav class="d-flex justify-content-end" aria-label="...">

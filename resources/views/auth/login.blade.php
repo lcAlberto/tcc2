@@ -9,15 +9,15 @@
                     <div class="card-body px-lg-5 py-lg-5">
                         <div class="text-center text-muted mb-4">
                             {{--<small>--}}
-                                {{--<a href="{{ route('register') }}">--}}
-                                    {{--@lang('labels.Create Accont')--}}
-                                {{--</a>--}}
-                                {{--{{ __('OR Sign in with these credentials:') }}--}}
+                            {{--<a href="{{ route('register') }}">--}}
+                            {{--@lang('labels.Create Accont')--}}
+                            {{--</a>--}}
+                            {{--{{ __('OR Sign in with these credentials:') }}--}}
                             {{--</small>--}}
                             {{--<br>--}}
                             {{--<small>--}}
-                                {{--{{ __('Username') }} <strong>admin@argon.com</strong>--}}
-                                {{--{{ __('Password') }} <strong>secret</strong>--}}
+                            {{--{{ __('Username') }} <strong>admin@argon.com</strong>--}}
+                            {{--{{ __('Password') }} <strong>secret</strong>--}}
                             {{--</small>--}}
                         </div>
                         <form role="form" method="POST" action="{{ route('login') }}">
@@ -61,9 +61,24 @@
                                 </label>
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-block btn-primary my-4">@lang('labels.Login')</button>
+                                <button type="submit"
+                                        class="btn btn-block btn-primary my-4">@lang('labels.Login')</button>
                             </div>
                         </form>
+                    </div>
+                    <div class="col-10 text-black-50">
+                        <div class="text-left">
+                            @if (Route::has('password.request'))
+                                <a href="{{ route('password.request') }}" class="btn btn-light">
+                                    <small>@lang('labels.Forgot Password')?</small>
+                                </a>
+                            @endif
+                        </div>
+                        <div class="text-right">
+                            <a href="{{ route('register') }}" class="btn btn-light">
+                                <small>@lang('labels.Create Accont')</small>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="row mt-3">

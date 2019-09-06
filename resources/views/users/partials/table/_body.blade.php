@@ -1,5 +1,5 @@
-<tr>
-    <td><img src="<?php echo asset('profiles/' . $user->name) ?>"
+<tr class="text-center">
+    <td><img src="<?php echo asset('storage/profiles/' . $user->name) ?>"
              alt="image"
              width="80"
              height="80"
@@ -8,6 +8,9 @@
     <td>{{ $user->name }}</td>
     <td>
         <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
+    </td>
+    <td>
+        {{$user->id_farms}}
     </td>
     <td>{{ $user->created_at->format('d/m/Y as H:i') }}</td>
     <td>

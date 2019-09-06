@@ -11,66 +11,91 @@ namespace App\Services;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class AuxiliaryClass
 {
-    public function createProfile($request)
+    public function createProfileImage($request)
     {
         if ($request->profile != null) {
             $profile = $request->file('profile');
-            request()->profile->move(public_path('profiles'), $request->name);
+            request()->profile->move('storage/profiles', $request->name);
             $data = $request->all();
             $data['profile'] = $request->name;
             return $data;
         } else
-            //da um jeito de aceitar uma imagem padrao
-            return $php_errormsg;
+            $data = $request->all();
+            return self::profileAuth($data);
     }
 
-    public function updateProfile($request)
+    public static function profileAuth($data)
     {
-        if ($request->profile != null) {
-            $profile = $request->file('profile');
-            request()->profile->move(public_path('profiles'), $request->name);
-            $data = $request->all();
-            $data['profile'] = $request->name;
-            return $data;
-        } else
-            //mudar aki; fazer com que se não houver $request->profile == null
-            //a foto do usuario seja mantida a original
-            return $php_errormsg;
+        $profileName = $data['name'];
+        $profile = copy('default.jpg', 'storage/profiles/' . $profileName);
+        $data['profile'] = $data['name'];
+
+        return $data;
+
     }
 
     public function createUser($data, Request $request)
     {
         $data = $request->all();
         $data['password'] = Hash::make($data['password']);
+        $data['id_farms'] = auth()->user()->id;
 
         $user = User::create($data);
 
         $user->assignRole($request->input('roles'));
-
-        if (!$user->hasRole(\App\Enums\UserRolesEnum::CLIENT)) {
+        if (!$user->hasRole(\App\Enums\UserRolesEnum::CLIENT))
             $user->assignRole(\App\Enums\UserRolesEnum::CLIENT);
-        }
 
         return $data;
     }
 
-    public function updateUser($data, $id, $request)
+    public function createProfile($data, Request $request)
     {
-        $model = $this->model->find($id);
-        $email = $data['email'];
-        if ($email != null) {
-            $data['email'] = $request->email;
-            $data['password'] = Hash::make($data['password']);
-            return $data;
-        } else {
-            $data['email'] = $model->email;
-            $data['password'] = Hash::make($data['password']);
-            return $data;
-        }
+        $data = $request->all();
+        $data['password'] = Hash::make($data['password']);
+
+        $user = User::create($data);
+
+        return $data;
     }
 
+    public function updateUser($data, $request, $id)
+    {
+        if (empty($data['password']))
+            $data = array_except($data, array('email'));
+        if (!empty($input['email']))
+            $data['password'] = Hash::make($data['password']);
+        else
+            $data = array_except($data, array('password'));
 
+        $data['id_farms'] = auth()->user()->id;
+
+        $user = User::find($id);
+        $user->update($data);
+
+        DB::table('model_has_roles')->where('model_id', $id)->delete();
+        $user->assignRole($request->input('roles'));
+
+        return $data;
+    }
+
+    public function updateProfileimage($request)
+    {
+        if ($request->profile != null) {
+            $profile = $request->file('profile');
+            request()->profile->move('storage/profiles', $request->name);
+            $data = $request->all();
+            $data['profile'] = $request->name;
+
+            return $data;
+        } else {
+            $data = $request->all();
+            return self::profileAuth($data);
+        }
+    }
 }

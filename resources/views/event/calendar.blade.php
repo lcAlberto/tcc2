@@ -9,17 +9,17 @@
         </a>
     </div>
     <div class="card-body text-center">
-                        <span>
-                            <a href="#">
-                                <i class="text-success fa fa-arrow-left mr-3"></i>
-                            </a>
-                            <span>Sábado, 20 de </span>
-                            <span class="month-color m-2">Abril</span>
-                            <span> 2019 </span>
-                            <a href="#">
-                                <i class="text-success fa fa-arrow-right ml-3"></i>
-                            </a>
-                        </span>
+        <span>
+            <a href="#">
+                <i class="text-success fa fa-arrow-left mr-3"></i>
+            </a>
+            <span>Sábado, 20 de </span>
+            <span class="month-color m-2">Abril</span>
+            <span> 2019 </span>
+            <a href="#">
+                <i class="text-success fa fa-arrow-right ml-3"></i>
+            </a>
+        </span>
         <table class="table table-responsive table-hover table-borderless">
             <thead>
             <tr>

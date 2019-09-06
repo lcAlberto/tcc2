@@ -11,6 +11,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 
+use App\Services\AuxiliaryClass;
+
 class RegisterController extends Controller
 {
     /*
@@ -31,7 +33,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin/farm/create';
 
     /**
      * Create a new controller instance.
@@ -52,9 +54,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'min:5', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'profile' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
     }
 
@@ -62,14 +65,20 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array $data
-     * @return \App\User
+     * @return \App\Models\User
      */
     protected function create(array $data)
     {
+        if (!isset($data['profile'])) {
+            $imgName = AuxiliaryClass::profileAuth($data);
+            $data['profile'] = 'profile';
+        }
+
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'profile' => $data['profile'],
         ]);
 
         if (!$user->hasRole(\App\Enums\UserRolesEnum::ADMIN)) {

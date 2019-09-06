@@ -23,7 +23,8 @@ class UsersTableSeeder extends Seeder
             'name' => 'Adminstrador',
             'email' => 'admin@email.com',
             'password' => \Hash::make('12345678'),
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
+            'id_farms' => '1'
         ]);
 
         $user->save();
@@ -43,7 +44,8 @@ class UsersTableSeeder extends Seeder
             'name' => 'Cliente',
             'email' => 'client@email.com',
             'password' => \Hash::make('12345678'),
-            'email_verified_at' => now()
+            'email_verified_at' => now(),
+            'id_farms' => '1'
         ]);
 
         $user->save();

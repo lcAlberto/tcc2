@@ -1,42 +1,100 @@
-@extends('layouts.app', ['class' => 'bg-default'])
+<!DOCTYPE html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-@section('content')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Argon Dashboard') }}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
+    <!-- Favicon -->
+    <link href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+    <link href="{{ asset('argon') }}/img/brand/favicon.png" rel="icon" type="image/png">
+    <!-- Fonts -->
+    <!-- Icons -->
+    <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+    <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <!-- Argon CSS -->
+    <link type="text/css" href="{{ asset('argon') }}/css/argon.css?v=1.0.0" rel="stylesheet">
+</head>
+<body class="bg-gradient-default">
+<div class="main-content">
     @include('layouts.headers.guest')
-    <div class="container mt--8 pb-5">
-        <!-- Table -->
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-md-8">
-                <div class="card bg-secondary shadow border-0">
-                    <div class="card-body px-lg-5 py-lg-5">
-                        <div class="text-center mb-4">
-                            <h3>Cadastre sua Fazenda</h3>
-                            <p>Antes de você se cadastrar, você deve cadastrar sua propriedade.<br>
-                                A partir daí, você pode adicionar um funcionário para te auxiliar no gerenciamento dos
-                                animais.</p>
 
+    {{--    @include('layouts.navbars.navbar')--}}
+    <div class="container mt--150 pb-0">
+        <!-- Table -->
+        <div class="row"><!--justify-content-center-->
+
+            <div class="col-lg-5 col-md-8">
+                <div class="text-left mb-4">
+                    <div class="card bg-secondary shadow border-0">
+                        <div class="card-body px-lg-5 py-lg-5">
+                            <h1 class="text-justify">Cadastre sua Fazenda</h1>
+                            <h2>Só mais um momento</h2>
+                            <p>
+                                Cadastre sua fazenda com os dados solicitados.
+                            </p>
+                            <p>
+                                A partir daí, você pode adicionar um
+                                funcionário para te auxiliar no gerenciamento dos animais e
+                                poderá ter acesso total ao sistema
+                            </p>
+                            <h2> É o olho do dono que engorda o bicho né?</h2>
+                            <p>
+                                Ter o controle de seus animais, a atenção e o cuidado é
+                                o que te faz criador.
+                                Então no <strong>Procriare</strong> você tem seu rebanho na sua mão
+                                e você ele vai te auxiliar pra tomar a melhor decisão para seu rebanho.
+                            </p>
                         </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-8">
+                <div class="card bg-secondary shadow border-0">
+                    <div class="card-body px-lg-5 py-lg-5 text-darker">
+                        <h2>Fazenda</h2>
                         <form role="form" method="POST" action="{{route('admin.farm.store')}}">
                             @csrf
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="name">
+                                    <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
+                                    Qual é o nome da Fazenda?
+                                </label>
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-user -3"></i></span>
                                     </div>
                                     <input class="text-dark form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                           placeholder="@lang('labels.Name')" type="text" name="name"
-                                           value="{{ old('name') }}" required autofocus>
+                                           placeholder="@lang('labels.Name') da Fazenda" type="text"
+                                           name="name" id="name" required autofocus>
                                 </div>
-                                {{--<small>Ex: Alto da Serra</small>--}}
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
                                         <strong>{{ $errors->first('name') }}</strong>
                                     </span>
                                 @endif
                             </div>
+
+                            <label class="form-control-label">
+                                <h3>Onde ela fica?</h3>Preencha os campos de endereço
+                                Insira o CEP e os campos de Cidade e Estado são preencidos automaticamente
+                            </label>
                             <div class="text-dark form-group{{ $errors->has('cep') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="cep">
+                                    <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
+                                    Qual é o CEP?
+                                </label>
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-mail-bulk -83"></i></span>
+                                        <span class="input-group-text">
+                                            <i class="fa fa-mail-bulk -83"></i>
+                                        </span>
                                     </div>
                                     <input class="text-dark form-control{{ $errors->has('cep') ? ' is-invalid' : '' }}"
                                            placeholder="CEP" type="number" name="cep" id="cep"
@@ -50,6 +108,10 @@
                             </div>
 
                             <div class="text-dark form-group{{ $errors->has('city') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="cidade">
+                                    <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
+                                    Cidade
+                                </label><br>
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-street-view -83"></i></span>
@@ -66,6 +128,10 @@
                             </div>
 
                             <div class="text-dark form-group{{ $errors->has('state') ? ' has-danger' : '' }}">
+                                <label class="form-control-label" for="uf">
+                                    <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
+                                    Estado
+                                </label><br>
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
                                         {{--<label for="uf"> Estado </label>--}}
@@ -113,7 +179,8 @@
                             <div class="row my-4">
                                 <div class="col-12">
                                     <div class="custom-control custom-control-alternative custom-checkbox">
-                                        <input class="custom-control-input" id="customCheckRegister" type="checkbox"
+                                        <input class="custom-control-input" id="customCheckRegister"
+                                               type="checkbox"
                                                checked>
                                         <label class="custom-control-label" for="customCheckRegister">
                                             <span class="text-mute">@lang('labels.I agree with the')<a
@@ -133,4 +200,18 @@
             </div>
         </div>
     </div>
-@endsection
+</div>
+<div class="text-dark">
+    @include('layouts.footers.auth')
+</div>
+
+<script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
+<script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="{{ asset('/js/cep.js') }}"></script>
+
+@stack('js')
+
+<!-- Argon JS -->
+<script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+</body>
+</html>

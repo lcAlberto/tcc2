@@ -12,15 +12,9 @@
 
     <!-- Favicon -->
     <link href="/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
-    {{--<link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"--}}
-    {{--rel="stylesheet">--}}
-    {{--<link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css"--}}
-    {{--rel="stylesheet">--}}
-    {{--<link href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" rel="stylesheet">--}}
 
     <link href="{{ asset('argon') }}/img/brand/favicon.png" rel="icon" type="image/png">
     <!-- Fonts -->
-{{--<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">--}}
 <!-- Icons -->
     <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
     <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
@@ -36,7 +30,6 @@
 @endauth
 
 <div class="main-content">
-    {{--<div style="background-image: url({{asset('argon/agricultura-animal-area-4222118.jpg')}}); background-size: 100%; background-position: center">--}}
     @include('layouts.navbars.navbar')
     @yield('content')
     {{--</div>--}}
@@ -48,7 +41,7 @@
 
 <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
 <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ asset('/js/cep.js') }}" type="javascript"></script>
+<script src="{{ asset('/js/cep.js') }}"></script>
 
 @stack('js')
 

@@ -11,7 +11,7 @@
                         <div class="text-center mb-4">
                             <small>@lang('labels.Or sign up with credentials')</small>
                         </div>
-                        <form role="form" method="POST" action="{{ route('register') }}">
+                        <form role="form" method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
                             @csrf
 
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
@@ -20,13 +20,7 @@
                                         <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                                     </div>
                                     <input class="text-dark form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                           placeholder="Your Name" type="text" name="name"
-                                           value="@if(isset($farms))
-                                           @foreach($farms as $farm)
-                                           {{$farm->name}}
-                                           @endforeach
-                                           @endif"
-                                           required autofocus>
+                                           placeholder="Your Name" type="text" name="name" required autofocus>
                                 </div>
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -48,16 +42,6 @@
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-
-                            <div class="form-group">
-                                <div class="input-group input-group-alternative">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
-                                    </div>
-                                    <input class="form-control" placeholder="Profile" type="file" name="profile"
-                                           required>
-                                </div>
                             </div>
 
                             <div class="text-dark form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
@@ -85,6 +69,22 @@
                                            type="password" name="password_confirmation" required>
                                 </div>
                             </div>
+
+                            <div class="text-dark form-group{{ $errors->has('profile') ? ' has-danger' : '' }}">
+                                <div class="input-group input-group-alternative">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                                    </div>
+                                    <input class="text-dark form-control{{ $errors->has('profile') ? ' is-invalid' : '' }}"
+                                           type="file" name="profile">
+                                </div>
+                                @if ($errors->has('profile'))
+                                    <span class="invalid-feedback" style="display: block;" role="alert">
+                                        <strong>{{ $errors->first('profile') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+
                             <div class="row my-4">
                                 <div class="col-12">
                                     <div class="custom-control custom-control-alternative custom-checkbox">
