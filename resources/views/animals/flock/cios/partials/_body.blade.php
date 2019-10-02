@@ -12,22 +12,32 @@
         Natural
     @endif
 </td>
-<td>{{$cio->father}}</td>
+<td>{{$cio->pai}}</td>
 <td>{{$cio->dt_parto_previsto}}</td>
-@if($cio->status == "pendente")
-    <td class="bg-yellow text-center">
-        <h2><i class="fa fa-clock"></i></h2>
-    </td>
-@endif
-@if($cio->status == "sucesso")
-    <td class="bg-sucess text-center">
-        <h2><i class="fa fa-check-circle"></i></h2>
-    </td>
-@endif
-@if($cio->status == "falha")
-    <td class="bg-danger text-center">
-        <h2><i class="fa fa-exclamation-triangle"></i></h2>
-    </td>
-@endif
+<td class="text-center">
+    @if($cio->status == "pendente")
+        <h2><i class="text-warning fa fa-clock"></i><br></h2>
+        Pendente
+    @endif
+    @if($cio->status == "sucesso")
+        <h2><i class="text-success fa fa-check-circle"></i><br></h2>
+        Sucesso
+    @endif
+    @if($cio->status == "falha")
+        <h2><i class="text-danger fa fa-exclamation-triangle"></i><br></h2>
+        Falha
+    @endif
+</td>
 <td>{{$cio->dt_parto}}</td>
-<td class="btn-group-lg">@include('animals.flock.cios.partials._actionButton')</td>
+<td>
+    <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle"
+                type="button" id="dropdownMenuButton"
+                data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+            <i class="fa fa-list"></i>
+        </button>
+        @include('animals.flock.cios.partials._actionButton')
+    </div>
+</td>
+

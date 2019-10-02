@@ -9,13 +9,11 @@
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 <select name="id_animals" id="id" class="form-control">
                     <option value="">Selecione</option>
-                    @foreach ($animals as $item)
-                        @if (($item->sexo == 'Fêmea') && (($item->classificacao == 'seca') || ($item->classificacao == 'lactante')))
-                            <option value="{{ $item->id }}" selected>
-                                [ {{ $item->id }} ] - {{ $item->nome }}
-                            </option>
-                        @endif
-                    @endforeach
+{{--                    @if (($item->sexo == 'Fêmea') && (($item->classificacao == 'seca') || ($item->classificacao == 'lactante')))--}}
+                        <option value="{{ $item->id }}" selected>
+                            [ {{ $item->id }} ] - {{ $item->nome }}
+                        </option>
+{{--                    @endif--}}
                 </select>
                 <small>
                     Qual animal apresentou cio?
@@ -81,17 +79,15 @@
                     Nome do touro
                     <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 </label>
-                <select name="father" class="form-control mb-3" id="touro">
+                <select name="pai" class="form-control mb-3" id="touro">
                     <option value="Desconhecido" selected>
                         Selecione
                     </option>
-                    @foreach($animals as $animal)
-                        @if ($animal->sexo == 'Macho')
-                            <option value="{{$animal->id}}">
-                                [ {{ $animal->id }} ] - {{ $animal->nome }}
-                            </option>
-                        @endif
-                    @endforeach
+                    @if ($item->sexo == 'Macho')
+                        <option value="{{$item->id}}">
+                            [ {{ $item->id }} ] - {{ $item->nome }}
+                        </option>
+                    @endif
                 </select>
                 <button class="btn btn-white text-primary" type="button" id="add-input">
                     <i class="fa fa-plus"></i>
@@ -102,21 +98,24 @@
 
         <div class="form-group mb-3" style="display: none;" id="new-bull">
             <fieldset class="p-2 bg-translucent-white border border-top border-light border-dashed">
-                <label class="form-control-label" for="father">
+                <label class="form-control-label" for="pai">
                     Digite o ID do Touro (O Número que fica na palheta do sêmen)
                     <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
+                    <div>
+                        <img src="{{asset('/argon/palhetas-semen.jpg')}}" width="350">
+                    </div>
                 </label>
-                <input type="number" class="form-control" id="father" name="father" placeholder="exemplo: 212115">
+                <input type="number" class="form-control" id="pai" name="pai" placeholder="exemplo: 212115">
                 <small>exemplo: 212115</small>
                 <br>
-                <label class="form-control-label" for="father">
-                    Digite o nome do Touro<br>
+                <label class="form-control-label" for="pai">
+                    Digite o nome do Touro
                     <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 </label>
-                <input type="text" class="form-control" id="father" name="father" placeholder="Opcional">
+                <input type="text" class="form-control" id="pai" name="pai" placeholder="Opcional">
                 <button
-                        class="btn btn-white text-primary mt-3"
-                        style="display: none;" type="button" id="add-select">
+                    class="btn btn-white text-primary mt-3"
+                    style="display: none;" type="button" id="add-select">
                     <i class="fa fa-plus"></i>
                     Adicionar um Touro da propriedade
                 </button>

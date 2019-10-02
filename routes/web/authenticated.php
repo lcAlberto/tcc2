@@ -1,5 +1,6 @@
 <?php
 
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
@@ -10,10 +11,21 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/search', 'UserController@search')->name('user.search');
 });
 
+Route::group(['prefix' => 'cio'], function () {
+    Route::get('/', 'CioController@index')->name('cio.index');
+    Route::get('/create/{id}', 'CioController@create')->name('cio.create');
+    Route::post('/store', 'CioController@store')->name('cio.store');
+    Route::get('/edit', 'CioController@edit')->name('cio.edit');
+    Route::put('/update/{id}', 'CioController@update')->name('cio.update');
+    Route::get('/show/{id}', 'CioController@show')->name('cio.show');
+    Route::get('/destroy/{id}', 'CioController@destroy')->name('cio.destroy');
+});
+
+
+Route::resource('/flock', 'FlockController');
+Route::post('/flock/search', 'FlockController@search')->name('flock.search');
+
 //Route::resource('/cio', 'CioController');
-
-//Route::resource('/flock', 'FlockController');
-
 Route::namespace('Admin')
     ->name('admin.')
     ->prefix('admin')

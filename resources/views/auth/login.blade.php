@@ -66,20 +66,6 @@
                             </div>
                         </form>
                     </div>
-                    <div class="col-10 text-black-50">
-                        <div class="text-left">
-                            @if (Route::has('password.request'))
-                                <a href="{{ route('password.request') }}" class="btn btn-light">
-                                    <small>@lang('labels.Forgot Password')?</small>
-                                </a>
-                            @endif
-                        </div>
-                        <div class="text-right">
-                            <a href="{{ route('register') }}" class="btn btn-light">
-                                <small>@lang('labels.Create Accont')</small>
-                            </a>
-                        </div>
-                    </div>
                 </div>
                 <div class="row mt-3">
                     <div class="col-6">

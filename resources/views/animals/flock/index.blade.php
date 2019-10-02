@@ -51,11 +51,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php foreach ($animals as $key => $item) : ?>
-                            <tr>
-                                @include('animals.flock.partials._body')
-                            </tr>
-                            <?php endforeach; ?>
+                            @foreach ($animals as $animal)
+                                <tr>
+                                    @include('animals.flock.partials._body')
+                                </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         <div class="card-footer py-4">

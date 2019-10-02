@@ -6,24 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Animal extends Model
 {
-    protected $filable = [
-        'nome',
-        'birth',
-        'gender',
-        'classification',
-        'breed',
-        'son',
-        'mother',
-        'father',
-        'status',
-        'profile',
-        'age'
+    protected $fillable = [
+        'nome', //name
+        'dt_nascimento',//birth
+        'sexo',//gender
+        'classificacao',//classificação
+        'raca',//breed
+        'filho',// son
+        'mae',//mae
+        'pai',//pai
+        'status',//status
+        'profile',//imagem de perfil
+        'idade',//idade
+        'created_by', //criado_por
     ];
 
-    /*
-    public function users()
+    public function cio()
     {
-        return $this->hasMany('App\Models\User');
+        return $this->hasMany('App\Models\Cio');
     }
-    */
 }

@@ -16,16 +16,17 @@ class CreateAnimalsTable extends Migration
         Schema::create('animals', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nome')->nullable();
-            $table->string('birth');
-            $table->string('gender');
-            $table->string('classification');
-            $table->string('breed')->nullable();
-            $table->string('son')->nullable();
-            $table->string('mother')->nullable();
-            $table->string('father')->nullable();
-            $table->string('status')->nullable();
-            $table->string('profile')->nullable();
-            $table->string('age')->nullable();
+            $table->string('dt_nascimento');//birth
+            $table->string('sexo');//gender
+            $table->string('classificacao');//classification
+            $table->string('raca')->nullable();//breed
+            $table->string('filho')->nullable();//son
+            $table->string('mae')->nullable();//mother
+            $table->string('pai')->nullable();//father
+            $table->string('status')->nullable();//status
+            $table->string('profile')->nullable();//profile
+            $table->string('idade')->nullable();//age
+            $table->string('created_by');//created_by
             $table->timestamps();
         });
     }

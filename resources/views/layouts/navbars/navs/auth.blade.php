@@ -8,7 +8,7 @@
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('flock.index') }}" class="nav-link">
                     <i class="fa fa-crosshairs mr-2"></i>
                     @lang('labels.Total Flock')
                     <span class="badge badge-primary ml-1"> 34 </span>

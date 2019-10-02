@@ -27,17 +27,9 @@
                                 </div>
                             @endif
                             <div class="row">
-                                <div class="col-sm">
-                                    <img src="<?php echo asset('animals/' . $cio->profile) ?>"
-                                         alt="image"
-                                         width="500"
-                                         height="auto">
-                                    <div class="form-group">
-                                    </div>
-                                </div>
-                                <div class="col-sm">
+                                <div class="col-lg-8 col-sm">
                                     <ul class="list-group">
-                                        <li class="list-group-item active">
+                                        <li class="list-group-item bg-gradient-indigo text-white">
                                             Cio Nº: <strong> <?php echo $cio->id ?> </strong>
                                             <a href="{{ route('flock.edit', $cio->id) }}"
                                                class="text-white float-right">
@@ -46,7 +38,8 @@
                                         </li>
                                         <li class="list-group-item">
                                             Animal:
-                                            <strong> {{ $cio->id_animals }} </strong>
+                                            <strong> {{ $cio->id_animals }},</strong>
+                                            <strong> {{ $animal->nome }} </strong>
                                         </li>
                                         <li class="list-group-item">
                                             Data do Cio:
@@ -62,14 +55,10 @@
                                         </li>
                                         <li class="list-group-item">
                                             Pai:
-                                            <strong> {{ $cio->father }} </strong>
+                                            <strong> {{ $cio->pai }} </strong>
                                         </li>
                                         <li class="list-group-item">
-                                            Mãe:
-                                            <strong> {{ $cio->mother }} </strong>
-                                        </li>
-                                        <li class="list-group-item">
-                                            Sexo:
+                                            Data do Parto Previsto:
                                             <strong> {{ $cio->dt_parto_previsto }} </strong>
                                         </li>
                                         <li class="list-group-item">
@@ -78,16 +67,30 @@
                                         </li>
                                         <li class="list-group-item">
                                             Data do Parto:
-                                                @if($cio->dt_parto == " - ")
-                                                    <label class="text-warning">Aguardando...</label>
-                                                @endif
-                                                {{--{{ $cio->dt_parto }}--}}
+                                            <label class="text-warning">{{$cio->dt_parto}}...</label>
                                         </li>
                                         <li class="list-group-item">
                                             Criado em:
                                             <strong> <?php echo $cio->created_at ?> </strong>
                                         </li>
+                                        <li class="list-group-item">
+                                            Criado pelo usuário ID:
+                                            <strong> <?php echo $cio->created_by ?> </strong>
+                                        </li>
                                     </ul>
+                                </div>
+                                <div class="col-sm">
+                                    <div class="card">
+                                        <div class="card-header text-white bg-gradient-indigo">
+                                            {{$animal->nome}}
+                                        </div>
+                                        <div class="card-body">
+                                            <img src="<?php echo asset('animals/' . $animal->profile) ?>"
+                                                 alt="image"
+                                                 width="250"
+                                                 height="auto">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

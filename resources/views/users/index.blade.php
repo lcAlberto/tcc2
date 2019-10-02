@@ -27,7 +27,7 @@
                             </div>
                             <div class="col-2 float-right">
                                 @if($title == 'search')
-                                    <a href="{{route('flock.index')}}" class="btn btn-danger">
+                                    <a href="{{route('admin.user.index')}}" class="btn btn-danger">
                                         <i class="fa fa-arrow-left"></i>@lang('labels.Back')</a>
                                 @endif
                                 @if($title == 'Users')

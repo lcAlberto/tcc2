@@ -26,10 +26,10 @@ class AuxiliaryClass
             return $data;
         } else
             $data = $request->all();
-            return self::profileAuth($data);
+            return self::profileDefault($data);
     }
 
-    public static function profileAuth($data)
+    public static function profileDefault($data)
     {
         $profileName = $data['name'];
         $profile = copy('default.jpg', 'storage/profiles/' . $profileName);
@@ -95,7 +95,7 @@ class AuxiliaryClass
             return $data;
         } else {
             $data = $request->all();
-            return self::profileAuth($data);
+            return self::profileDefault($data);
         }
     }
 }

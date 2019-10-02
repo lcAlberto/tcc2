@@ -95,7 +95,7 @@
                     <div class="collapse show" id="navbar-flock">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="#">
+                                <a class="nav-link" href="{{ route('flock.index') }}">
                                     <i class="fa fa-list-ul"></i>@lang('labels.Total')
                                 </a>
                             </li>

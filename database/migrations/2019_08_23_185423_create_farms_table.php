@@ -15,17 +15,15 @@ class CreateFarmsTable extends Migration
     {
         Schema::create('farms', function (Blueprint $table) {
             $table->bigIncrements('id');
-
             $table->integer('id_users')->unsigned();
-            $table->foreign('id_users')
-                ->references('id')
-                ->on('users')
-                ->onDelete('set null');
-
             $table->string('name');
             $table->string('cep');
             $table->string('city');
             $table->string('state');
+            $table->foreign('id_users')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }

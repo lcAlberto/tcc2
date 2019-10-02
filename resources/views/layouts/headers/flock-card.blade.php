@@ -1,4 +1,9 @@
 <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
+{{--     @if(isset($title))--}}
+{{--         @if($title == 'Show Cio Details')--}}
+{{--     style="background-image: url(../argon/animals-beef-cattle-blur-735974.jpg); background-position: center; background-size: 100%">--}}
+{{--         @endif--}}
+{{--         @endif--}}
      style="background-image: url(../argon/animals-beef-cattle-blur-735974.jpg); background-position: center; background-size: 100%">
     <span class="mask bg-gradient-warning opacity-4"></span>
     <div class="container">

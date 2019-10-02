@@ -3,6 +3,7 @@
     <div class="col-lg-5 col-12 text-black">
         <div class="ml-2 form-group">
             <div class="form-group mb-3 {{ $errors->has('id') ? ' has-danger' : 'Este ID já existe!' }}">
+                {{--                ID--}}
                 <label class="form-control-label" for="id"> ID </label>
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 <input name="id"
@@ -15,6 +16,7 @@
                 <small class="form-text"> Número do Brinco do animal. Não pode ficar em branco!</small>
             </div>
             <div class="form-group mb-3{{ $errors->has('nome') ? ' has-danger' : 'Nome Inválido!' }}">
+                <!-- Nome -->
                 <label class="form-control-label" for="nome"> Nome </label>
                 <input name="nome"
                        type="text"
@@ -25,6 +27,7 @@
                 <small class="form-text"> Nome do animal, apelido</small>
             </div>
             <div class="form-group mb-3">
+                <!-- Data de Nascimento -->
                 <label class="form-control-label" for="DTNasc">
                     Data de Nascimento
                     <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
@@ -38,6 +41,7 @@
                 <small class="form-text"> Dia, mês e ano que o animal nasceu</small>
             </div>
             <div class="form-group mb-3">
+                <!-- Data de Nascimento -->
                 <label class="form-control-label" for="sexo"> Sexo </label>
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 <select class="form-control" id="sexo" name="sexo" required>
@@ -47,6 +51,7 @@
                 </select>
             </div>
             <div class="form-group mb-3">
+                <!-- Raça -->
                 <label class="form-control-label" for="raca">
                     Raça
                 </label>
@@ -133,7 +138,7 @@
                     name="father" id="father"
                     class="form-control {{ $errors->has('ID') ? ' is-invalid' : 'Este campo é Obrigatório!' }}">
                 <option value="" selected> Selecione</option>
-                <option value="Desconhecido" name="Desconhecido"> Touro Desconhecido</option>
+                <option value="Desconhecido" name="Desconhecido">Touro Desconhecido</option>
                 @foreach ($animals as $item)
                     @if (($item->sexo == "Macho") && ($item->classificacao == 'touro'))
                         <option value="{{ $item->id }}">[ {{ $item->id }} ] {{ $item->nome }} </option>

@@ -39,19 +39,16 @@
                 <small class="form-text"> Dia, mês e ano que o animal nasceu</small>
             </div>
             <div class="form-group">
-                <label for="gender">
+                <label for="sexo">
                     Sexo
                 </label>
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
-                <select class="form-control" id="gender" name="gender" required>
-                    <option value="{{old('gender') ?? $animals->gender ?? '' }}">
-                        {{old('gender') ?? $animals->gender ?? '' }}
+                <select class="form-control" id="sexo" name="sexo" required>
+                    <option value="{{old('sexo') ?? $animals->sexo ?? '' }}">
+                        {{old('sexo') ?? $animals->sexo ?? '' }}
                     </option>
-                    @if($animals->sexo == "Macho")
                         <option value="Fêmea" name="Fêmea">Fêmea</option>
-                    @else
                         <option value="Macho" name="Macho">Macho</option>
-                    @endif
                 </select>
             </div>
             <div class="form-group">
@@ -59,7 +56,7 @@
                     Raça
                 </label>
                 <select class="form-control" id="raca" name="raca"
-                        data-value="{{old('raca') ?? $item->raca ?? '' }}">
+                        data-value="{{old('raca') ?? $animals->raca ?? '' }}">
                     <option value=" - ">Selecione</option>
                     <option value="Jersey">Jersey</option>
                     <option value="Nelore">Nelore</option>

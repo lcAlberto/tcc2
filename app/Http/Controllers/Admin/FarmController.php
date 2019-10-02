@@ -12,11 +12,12 @@ class FarmController extends Controller
 {
     public function index(User $user, Farm $farm)
     {
-        $title = "Fazenda";
-        $users = $user->all();
-        $farms = $farm->all();
-        $roles = Role::pluck('name', 'name')->all();
-        return view('farm.index', compact('users', 'farms', 'roles', 'title'));
+//        $title = "Fazenda";
+//        $users = $user->all();
+//        $farms = $farm->all();
+//        $roles = Role::pluck('name', 'name')->all();
+//        return view('farm.index', compact('users', 'farms', 'roles', 'title'));
+        return redirect()->route('admin.user.index');
     }
 
     public function create()
@@ -30,13 +31,8 @@ class FarmController extends Controller
     {
         $data = $request->all();
         $data['id_users'] = auth()->user()->id;
-        $farm->create($data);
-        $farms = $user->find(auth()->user()->id);
-//        $dataFarms = $farms;
-//        $dataFarms['id_farms'] = auth()->user()->id;
-//        dd($dataFarms);
-        $farm->update($farms);
 
+        $farm->create($data);
 
         $user->assignRole($request->input('roles'));
 
