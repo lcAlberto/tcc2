@@ -19,14 +19,20 @@ class CreateAnimalsTable extends Migration
             $table->string('dt_nascimento');//birth
             $table->string('sexo');//gender
             $table->string('classificacao');//classification
-            $table->string('raca')->nullable();//breed
+            $table->string('raca')->nullable()->default('Não Definida');//breed
             $table->string('filho')->nullable();//son
             $table->string('mae')->nullable();//mother
             $table->string('pai')->nullable();//father
-            $table->string('status')->nullable();//status
+            $table->string('status')->default('Ativo');//ativo //vendido //morto
             $table->string('profile')->nullable();//profile
             $table->string('idade')->nullable();//age
             $table->string('created_by');//created_by
+            $table->integer('id_farms')->unsigned();
+            $table->foreign('id_farms')
+                ->references('id')
+                ->on('farms')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

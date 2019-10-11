@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\FlockRequest;
 use App\Models\Animal;
 use App\Services\AuxAnimal;
+use App\Services\AnimalStatus;
 use Spatie\Permission\Models\Role;
 
 class FlockController extends Controller
@@ -16,6 +17,7 @@ class FlockController extends Controller
     {
         $title = 'Flock';
         $animals = Animal::paginate($this->paginate);
+
         return view('animals.flock.index', ['animals' => $animals], compact('title'));
     }
 
@@ -23,14 +25,18 @@ class FlockController extends Controller
     {
         $title = 'Create new Animal';
         $animals = $animal->all();
+
         return view('animals.flock.create', compact('animals', 'title'));
     }
 
-    public function store(Request $request, AuxAnimal $auxAnimal, Animal $animal)
+    public function store(FlockRequest $request, AuxAnimal $auxAnimal, Animal $animal)
     {
+//                dd($request->messages());
         $data = $auxAnimal->createAnimalProfile($request);
         $data = $auxAnimal->idadeAnimal($request, $data);
         $data = $auxAnimal->created_by($data);
+        $data = $auxAnimal->farm_by($data);
+//        dd($data);
 
         $animals = $animal->create($data);
 
@@ -49,24 +55,14 @@ class FlockController extends Controller
         return view('animals.flock.edit', compact('animals', 'title'));
     }
 
-    public function update(Request $request, AuxAnimal $auxAnimal, $id)
+    public function update(Request $request, Animal $animal, AuxAnimal $auxAnimal, $id)
     {
         $data = $auxAnimal->updateAnimalProfile($id, $request);
         $data = $auxAnimal->created_by($data);
 
-        Animal::update($data);
-    }
+        $animal->update($data);
 
-    public function destroy(Request $request, $id)
-    {
-        Animal::destroy($id);
-
-        $mensagem = $request->mensagem;
-        $request->session()->flash('alert-warning', 'Animal Deletado !',
-            'alert-danger', 'Oops! não foi possível deletar!');
-
-        return redirect()->route('admin.user.index')
-            ->with('success', 'Animal removido!');
+        return redirect()->route('flock.index');
     }
 
     public function show($id)

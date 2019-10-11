@@ -32,6 +32,7 @@ class AuxiliaryClass
     public static function profileDefault($data)
     {
         $profileName = $data['name'];
+        // dd(phpinfo());
         $profile = copy('default.jpg', 'storage/profiles/' . $profileName);
         $data['profile'] = $data['name'];
 

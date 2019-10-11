@@ -70,7 +70,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         if (!isset($data['profile'])) {
-            $imgName = AuxiliaryClass::profileAuth($data);
+            $imgName = AuxiliaryClass::profileDefault($data);
             $data['profile'] = 'profile';
         }
 

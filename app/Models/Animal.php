@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Animal extends Model
 {
+    protected $table = 'animals';
     protected $fillable = [
         'nome', //name
         'dt_nascimento',//birth
@@ -19,10 +20,16 @@ class Animal extends Model
         'profile',//imagem de perfil
         'idade',//idade
         'created_by', //criado_por
+        'id_farms', //autenticação pelo id da fazenda
     ];
 
     public function cio()
     {
         return $this->hasMany('App\Models\Cio');
+    }
+
+    public function post()
+    {
+        return $this->belongsTo('App\Models\Farm');
     }
 }

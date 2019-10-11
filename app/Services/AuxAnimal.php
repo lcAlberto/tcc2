@@ -2,16 +2,15 @@
 
 namespace App\Services;
 
+use App\Http\Requests\FlockRequest;
+use App\Models\Farm;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
-use App\Http\Requests\UserRequest;
-use App\Repositories\UserRepository;
-use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\FlockController;
-use phpDocumentor\Reflection\Types\Self_;
+use DateTime;
+use function GuzzleHttp\Promise\all;
 
 Class AuxAnimal
 {
+
     public function createAnimalProfile(Request $request)
     {
         if ($request->profile != null) {
@@ -38,23 +37,46 @@ Class AuxAnimal
         }
     }
 
-    public function idadeAnimal(Request $request, $data)
+    public function validationDt_nasc(Request $request, $data)
     {
+        $atual = new DateTime();
+        $hoje = $atual->format('Y/m/d');
         $dt_nascimento = $request->dt_nascimento;
-        $idade = floor((time() - strtotime($dt_nascimento)) / 31556926);
-        $age = (string)$idade;
-        $data['idade'] = $age;
-        $this->created_by($data);
+        if ($dt_nascimento > $hoje) {
+            return $this->idadeAnimal();
+        }
+        else if ($dt_nascimento < $hoje)
+            return redirect()->route('flock.index')->with($php_errormsg = "Future_Dt_nascimento");
+    }
+
+    public function idadeAnimal(Request $request, $data)
+    {$atual = new DateTime();
+        $hoje = $atual->format('Y/m/d');
+        $dt_nascimento = $request->dt_nascimento;
+        if ($dt_nascimento > $hoje) {
+            $dt_nascimento = $request->dt_nascimento;
+            $idade = floor((time() - strtotime($dt_nascimento)) / 31556926);
+            $age = (string)$idade;
+
+            $data['idade'] = $age;
+            $this->created_by($data);
+        }
 
         return $data;
     }
 
-    public function created_by($data)
+    public static function created_by($data)
     {
-        $created_by = auth()->user()->id;
+        $created_by = auth()->user()->id . '-' . auth()->user()->name;
         $created_by = (string)$created_by;
         $data['created_by'] = $created_by;
 
         return $data;
+    }
+
+    public function farm_by($data)
+    {
+//        $farm  = Farm::find(auth()->user()->id);
+        dd(auth()->user()->farm);
     }
 }

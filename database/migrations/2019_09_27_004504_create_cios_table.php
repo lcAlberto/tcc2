@@ -29,7 +29,8 @@ class CreateCiosTable extends Migration
             $table->foreign('id_animals')
                 ->references('id')
                 ->on('animals')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }

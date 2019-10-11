@@ -19,7 +19,7 @@
                     <i class="fa fa-calendar mr-2"></i>@lang('labels.Events')</a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="{{ route('cio.index') }}" class="nav-link">
                     <i class="fa fa-venus-mars mr-2"></i>@lang('labels.Cios')</a>
             </li>
             <li class="nav-item dropdown">

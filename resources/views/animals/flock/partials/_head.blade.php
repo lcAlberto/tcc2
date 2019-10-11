@@ -4,6 +4,5 @@
 <th>Nascimento</th>
 <th>Sexo</th>
 <th>Classisficação</th>
-<th>Mae</th>
-<th>Pai</th>
+<th>Status</th>
 <th></th>

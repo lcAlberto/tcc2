@@ -26,8 +26,23 @@ class ProfileRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => ['required', 'min:3'],
-            'email' => ['required', 'email', Rule::unique((new User)->getTable())->ignore(auth()->id())],
+            'name' => 'required|min:3|max:50',
+            'email' => 'required|email', Rule::unique((new User)->getTable())->ignore(auth()->id()),
+            'profile' => 'required|image|mimes:jpeg,png,jpg,gif|max:4096|min:1',
+        ];
+    }
+
+    public function messages()
+    {
+        return[
+            'name.required' => 'Campo Nome é necessário!',
+            'name.min:3' => 'Por favor use um nome com no mínimo 3 caracteres',
+            'email.required' => 'Campo email é necessário!',
+            'email.email' => 'Por favor ensira um campo válido!',
+            'profile' => 'Por favor insira uma imagem para compor seu perfil!',
+            'profile.mimes:jpeg,png,jpg,gif' => 'Selecione um arquivo de imagem válido no formato jpeg, jpg, png ou gif!',
+            'profile.max:2048' => 'Selecione um arquivo com no máximo 2GB!',
+            'profile.min:1' => 'Este arquivo é muito pequeno!',
         ];
     }
 }

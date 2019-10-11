@@ -17,6 +17,7 @@ class Cio extends Model
         'filho',
         'status',
         'created_by',
+        'id_farms',
     ];
 
     public function animals()

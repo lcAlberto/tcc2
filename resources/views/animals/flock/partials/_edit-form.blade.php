@@ -132,37 +132,37 @@
         </div>
         <!-- filiação -->
         <div class="form-group mb-3">
-            <label class="form-control-label" for="father">
+            <label class="form-control-label" for="pai">
                 Filiação Paterna, (Pai)
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
             </label>
             <select
-                    name="father" id="father"
+                    name="pai" id="pai"
                     class="form-control {{ $errors->has('ID') ? ' is-invalid' : 'Este campo é Obrigatório!' }}">
-                <option value="{{old('father') ?? $animals->father ?? '' }}" selected>
-                    {{old('father') ?? $animals->father ?? '' }}
+                <option value="{{old('pai') ?? $animals->pai ?? '' }}" selected>
+                    {{old('pai') ?? $animals->pai ?? '' }}
                 </option>
                 <option value="Desconhecido" name="Desconhecido"> Touro Desconhecido</option>
                 @if (($animals->sexo == "Macho") && ($animals->classificacao == 'touro'))
                     <option value="{{ $animals->nome }}">[ {{ $animals->id }} ] {{ $animals->nome }} </option>
                 @endif
             </select>
-            <small class="text-danger">
-                É preciso que o Touro pai esteja cadastrado.<br>
-                Se não cadastre ele primeiro!
+            <small class="text-primary">
+                Se o pai não estiver cadastrado cadastre-o primeiro<br>
+                Se não mantenha "Desconhecido"
             </small>
         </div>
 
         <div class="form-group mb-3">
-            <label class="form-control-label" for="mother">
+            <label class="form-control-label" for="mae">
                 Filiação Materna, (Mãe)
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
             </label>
             <select
-                    name="mother" id="mother"
+                    name="mae" id="mae"
                     class="form-control {{ $errors->has('ID') ? ' is-invalid' : 'Este campo é Obrigatório!' }}">
-                <option value="{{old('mother') ?? $animals->mother ?? '' }}">
-                    {{old('mother') ?? $animals->mother ?? '' }}
+                <option value="{{old('mae') ?? $animals->mae ?? '' }}">
+                    {{old('mae') ?? $animals->mae ?? '' }}
                 </option>
                 <option value="Desconhecida" name="Desconhecida"> Mae Desconhecida</option>
                 @if (($animals->sexo == "Fêmea") && (($animals->classificacao == 'lactante')) || ($animals->classificacao == 'seca'))
@@ -171,9 +171,29 @@
                     </option>
                 @endif
             </select>
-            <small class="text-danger">
-                É preciso que a Vaca mãe esteja cadastrada.<br>
-                Se não cadastre ela primeiro!
+            <small class="text-primary">
+                Se a mãe não estiver cadastrada cadastre-a primeiro<br>
+                Se não mantenha "Desconhecida"
+            </small>
+        </div>
+
+        <div class="form-group mb-3">
+            <label class="form-control-label" for="status">
+                Status
+                <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
+            </label>
+            <select
+                name="status" id="status"
+                class="form-control {{ $errors->has('status') ? ' is-invalid' : 'Este campo é Obrigatório!' }}">
+                <option value="{{old('status') ?? $animals->status ?? '' }}">
+                    {{old('status') ?? $animals->status ?? '' }}
+                </option>
+                <option value="vendido"> Vendido </option>
+                <option value="morto"> Morto </option>
+            </select>
+            <small class="text-primary">
+                O status determina o estado atual do animal <br>
+                Se Você vendeu ele ou ele morreu, altere este campo.
             </small>
         </div>
     </div>

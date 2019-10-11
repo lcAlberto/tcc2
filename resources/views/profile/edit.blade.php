@@ -70,8 +70,7 @@
                                             id="input-profile"
                                             class="form-control form-control-alternative{{ $errors->has('profile') ? ' is-invalid' : '' }}"
                                             placeholder="{{old('profile', auth()->user()->profile)}}"
-                                            value="{{old('profile', auth()->user()->profile)}}"
-                                            >
+                                            value="{{old('profile', auth()->user()->profile)}}">
 
                                     @if ($errors->has('profile'))
                                         <span class="invalid-feedback" role="alert">

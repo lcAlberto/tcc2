@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CioRequest;
 use App\Models\Cio;
 
-//use App\Models\Cow;
-//use App\Models\Bull;
+use App\Services\AuxCio;
 use App\Services\AuxAnimal;
 use App\Models\Animal;
-use Carbon\Carbon;
 
 class CioController extends Controller
 {
@@ -32,16 +31,18 @@ class CioController extends Controller
         return view('animals.flock.cios.create', compact('item', 'title'));
     }
 
-    public function store(Request $request, AuxAnimal $animal)
+    public function store(CioRequest $request, AuxCio $auxCio)
     {
         $data = $request->all();
-        $status = 'pendente';
-        $data['status'] = $status;
-        $data = $animal->created_by($data);
-        $partoPrevisto = date('Y-m-d', strtotime('+280 days', strtotime($data['dt_cobertura'])));
-        $data['dt_parto_previsto'] = $partoPrevisto;
+
+        $data = $auxCio->managementFather($request, $data);
+        $data = $auxCio->partoPrevisto($request, $data);
+        $data = $auxCio->createCio($request, $data);
 
         $cios = Cio::create($data);
+
+
+        return redirect()->route('cio.index');
     }
 
     public function show($id)
@@ -49,10 +50,40 @@ class CioController extends Controller
         $title = 'Show Cio Details';
         $cios = Cio::find($id)->all();
         $animals = Animal::find($id)->all();
-        foreach($cios as $cio)
+        foreach ($cios as $cio)
             $cio->id;
         foreach ($animals as $animal)
             $animal->profile;
         return view('animals.flock.cios.show', compact('cio', 'title', 'animal'));
+    }
+
+    public function edit()
+    {
+        $title = 'Edit Cio';
+        $cios = Cio::all();
+        foreach ($cios as $cio)
+            $cio->id;
+        $animals = Animal::all();
+        foreach ($animals as $animal)
+            $animal->id;
+        return view('animals.flock.cios.edit', compact('cio', 'animal', 'title'));
+    }
+
+    public function update(CioRequest $request, Cio $cio, $id)
+    {
+        $cios = $cio->find($id)->all();
+        $data = $request->all();
+        $cios = $cio->update($data);
+        return redirect()->route('cio.index');
+    }
+
+    public function destroy(CioRequest $request, $id)
+    {
+        $cios = Cio::find($id)->all();
+        Cio::destroy($cios);
+
+        $mensagem = $request->mensagem;
+        $request->session()->flash('alert-warning', 'Cio Deletado !',
+            'alert-danger', 'Oops! não foi possível deletar!');
     }
 }

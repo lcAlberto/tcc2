@@ -15,15 +15,19 @@ Route::group(['prefix' => 'cio'], function () {
     Route::get('/', 'CioController@index')->name('cio.index');
     Route::get('/create/{id}', 'CioController@create')->name('cio.create');
     Route::post('/store', 'CioController@store')->name('cio.store');
-    Route::get('/edit', 'CioController@edit')->name('cio.edit');
+    Route::get('/edit/{id}', 'CioController@edit')->name('cio.edit');
     Route::put('/update/{id}', 'CioController@update')->name('cio.update');
     Route::get('/show/{id}', 'CioController@show')->name('cio.show');
     Route::get('/destroy/{id}', 'CioController@destroy')->name('cio.destroy');
 });
 
+/* FLOCK // REBANHO */
 
 Route::resource('/flock', 'FlockController');
 Route::post('/flock/search', 'FlockController@search')->name('flock.search');
+Route::get('/flock/status/{id}/{status}', 'AnimalStatus@status')->name('flock.status');
+
+/* ** */
 
 //Route::resource('/cio', 'CioController');
 Route::namespace('Admin')
