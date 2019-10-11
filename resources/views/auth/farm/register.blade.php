@@ -22,14 +22,13 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-user -3"></i></span>
                                     </div>
-                                    <input class="text-dark form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
+                                    <input class="text-dark form-control {{ $errors->has('name') ? 'text-danger is-invalid' : '' }}"
                                            placeholder="@lang('labels.Name')" type="text" name="name"
                                            value="{{ old('name') }}" required autofocus>
                                 </div>
-                                {{--<small>Ex: Alto da Serra</small>--}}
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('name') }}</strong>
+                                        <strong>{{ $errors->message('name') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -38,7 +37,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-mail-bulk -83"></i></span>
                                     </div>
-                                    <input class="text-dark form-control{{ $errors->has('cep') ? ' is-invalid' : '' }}"
+                                    <input class="text-dark form-control {{ $errors->has('cep') ? 'text-danger is-invalid' : '' }}"
                                            placeholder="CEP" type="number" name="cep" id="cep"
                                            value="{{ old('cep') }}" required>
                                 </div>
@@ -49,12 +48,12 @@
                                 @endif
                             </div>
 
-                            <div class="text-dark form-group{{ $errors->has('city') ? ' has-danger' : '' }}">
+                            <div class="text-dark form-group {{ $errors->has('city') ? 'text-danger is-invalid' : '' }}">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="fa fa-street-view -83"></i></span>
                                     </div>
-                                    <input class="text-dark form-control{{ $errors->has('city') ? ' is-invalid' : '' }}"
+                                    <input class="text-dark form-control{{ $errors->has('city') ? 'text-danger is-invalid' : '' }}"
                                            placeholder="Cidade" type="text" name="city" id="cidade"
                                            value="{{ old('city') }}" required>
                                 </div>

@@ -14,13 +14,13 @@
                         <form role="form" method="POST" enctype="multipart/form-data" action="{{ route('register') }}">
                             @csrf
 
-                            <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
+                            <div class="form-group{{ $errors->has('name') ? ' has-danger' : 'text-danger is-invalid' }}">
                                 <div class="input-group input-group-alternative mb-3">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
                                     </div>
-                                    <input class="text-dark form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                           placeholder="Your Name" type="text" name="name" required autofocus>
+                                    <input class="text-dark form-control{{ $errors->has('name') ? ' text-danger is-invalid' : '' }}"
+                                           placeholder="Seu nome" type="text" name="name" required autofocus>
                                 </div>
                                 @if ($errors->has('name'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
@@ -39,7 +39,7 @@
                                 </div>
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->messa('email') }}</strong>
                                     </span>
                                 @endif
                             </div>

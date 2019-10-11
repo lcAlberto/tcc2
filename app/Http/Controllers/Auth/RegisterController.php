@@ -48,7 +48,7 @@ class RegisterController extends Controller
     /**
      * Get a validator for an incoming registration request.
      *
-     * @param  array $data
+     * @param array $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
     protected function validator(array $data)
@@ -61,12 +61,19 @@ class RegisterController extends Controller
         ]);
     }
 
-    /**
-     * Create a new user instance after a valid registration.
-     *
-     * @param  array $data
-     * @return \App\Models\User
-     */
+    public function messages()
+    {
+        return [
+            'name.required' => 'O campo é Necessário',
+            'name.string' => 'Por favor entre com um nome válido',
+            'name.min:5' => 'Entre com um nome com no mínimo 5 caracteres',
+            'name.max:255' => 'Entre com um nome com no máximo 255 caracteres',
+            'password.required' => 'Digite a senha com no mínimo 8 caracteres',
+            'password.min:8' => 'Digite a senha com no mínimo 8 caracteres',
+        ];
+    }
+
+
     protected function create(array $data)
     {
         if (!isset($data['profile'])) {

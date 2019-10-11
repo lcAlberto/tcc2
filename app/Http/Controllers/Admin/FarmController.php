@@ -31,6 +31,7 @@ class FarmController extends Controller
     {
         $data = $request->all();
         $data['id_users'] = auth()->user()->id;
+        $farm  = Farm::find(auth()->user()->id);
 
         $farm->create($data);
 

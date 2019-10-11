@@ -77,6 +77,6 @@ Class AuxAnimal
     public function farm_by($data)
     {
 //        $farm  = Farm::find(auth()->user()->id);
-        dd(auth()->user()->farm);
+        dd(auth()->user()->farm->id);
     }
 }
