@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93eac26f-aba4-4022-a7b4-e8a4ed7e9de1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/animals/1570804781-20170723_094708.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/FarmController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/FarmController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/AuxAnimal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/AuxAnimal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/farm/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/farm/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -226,7 +220,7 @@
       <workItem from="1570560585301" duration="1670000" />
       <workItem from="1570565189462" duration="32731000" />
       <workItem from="1570725477156" duration="2812000" />
-      <workItem from="1570801866038" duration="7496000" />
+      <workItem from="1570801866038" duration="8763000" />
     </task>
     <servers />
   </component>
