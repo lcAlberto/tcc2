@@ -44,13 +44,13 @@ Class AuxAnimal
         $dt_nascimento = $request->dt_nascimento;
         if ($dt_nascimento > $hoje) {
             return $this->idadeAnimal();
-        }
-        else if ($dt_nascimento < $hoje)
+        } else if ($dt_nascimento < $hoje)
             return redirect()->route('flock.index')->with($php_errormsg = "Future_Dt_nascimento");
     }
 
     public function idadeAnimal(Request $request, $data)
-    {$atual = new DateTime();
+    {
+        $atual = new DateTime();
         $hoje = $atual->format('Y/m/d');
         $dt_nascimento = $request->dt_nascimento;
         if ($dt_nascimento > $hoje) {
@@ -76,7 +76,13 @@ Class AuxAnimal
 
     public function farm_by($data)
     {
-//        $farm  = Farm::find(auth()->user()->id);
-        dd(auth()->user()->farm->id);
+        $farms = Farm::find(auth()->user()->id_farms);
+        $farms = $farms->all();
+        foreach ($farms as $farm) {
+            $farm->id;
+        }
+        $data['id_farms'] = $farm->id;
+
+        return $data;
     }
 }

@@ -16,8 +16,10 @@ class UserController extends Controller
     {
         $title = 'Users';
         $farms = $farm->all();
+//        dd($farms);
 
         $users = User::orderBy('id', 'DESC')->paginate(5);
+//        dd($users);
 
         return view('users.index', compact('users', 'farms', 'title'))
             ->with('i', ($request->input('page', 1) - 1) * 5);

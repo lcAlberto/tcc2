@@ -12,11 +12,6 @@ class FarmController extends Controller
 {
     public function index(User $user, Farm $farm)
     {
-//        $title = "Fazenda";
-//        $users = $user->all();
-//        $farms = $farm->all();
-//        $roles = Role::pluck('name', 'name')->all();
-//        return view('farm.index', compact('users', 'farms', 'roles', 'title'));
         return redirect()->route('admin.user.index');
     }
 
@@ -30,8 +25,11 @@ class FarmController extends Controller
     public function store(Request $request, Farm $farm, User $user)
     {
         $data = $request->all();
-        $data['id_users'] = auth()->user()->id;
-        $farm  = Farm::find(auth()->user()->id);
+        $data['id_users'] = auth()->user()->id;// salva o id do usuario admin que está logado.
+//        $farms  = Farm::find(auth()->user()->id);
+////        dd(auth()->user()->id);//4 //id do ususario logado
+//        dd(auth()->user()->id_farms);//1 //id
+//        dd($data['id_users']);
 
         $farm->create($data);
 

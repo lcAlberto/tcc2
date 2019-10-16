@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Farm;
 use Illuminate\Http\Request;
 use App\Http\Requests\FlockRequest;
 use App\Models\Animal;
 use App\Services\AuxAnimal;
 use App\Services\AnimalStatus;
 use Spatie\Permission\Models\Role;
+use const http\Client\Curl\AUTH_ANY;
 
 class FlockController extends Controller
 {
@@ -17,8 +19,19 @@ class FlockController extends Controller
     {
         $title = 'Flock';
         $animals = Animal::paginate($this->paginate);
+//        $farms = Farm::;
+//        $farms = Animal::find(auth()->user()->id_farms);
+//        $farms = (string)$farms;
+        dd(auth()->user()->id_farms);
 
-        return view('animals.flock.index', ['animals' => $animals], compact('title'));
+        if ($farms == auth()->user()->id_farms) {
+            $animals = Animal::paginate($this->paginate);
+            return view('animals.flock.index', ['animals' => $animals], compact('title'));
+        }else {
+            $title = 'Você ainda não tem animais cadastrados!';
+            $description = 'Cadastre um animal e a partir daí você pode gerenciar todo seu rebanho!';
+            return view('animals.flock.create', compact('title', 'animals', 'description'));
+        }
     }
 
     public function create(Animal $animal)
@@ -36,7 +49,6 @@ class FlockController extends Controller
         $data = $auxAnimal->idadeAnimal($request, $data);
         $data = $auxAnimal->created_by($data);
         $data = $auxAnimal->farm_by($data);
-//        dd($data);
 
         $animals = $animal->create($data);
 

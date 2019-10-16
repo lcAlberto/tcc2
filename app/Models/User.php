@@ -16,9 +16,7 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password', 'profile', 'id_farms',
-    ];
+    protected $fillable = ['name', 'email', 'password', 'profile', 'id_farms'];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -38,10 +36,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function Farm()
+    public function farm()
     {
-        return $this->belongsTo('App\Models\Farm');
+        return $this->belongsTo(Farm::class);
     }
-
-
 }

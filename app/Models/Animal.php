@@ -25,11 +25,12 @@ class Animal extends Model
 
     public function cio()
     {
-        return $this->hasMany('App\Models\Cio');
+        return $this->hasMany(Cio::class);
+    }
+    public function farm()
+    {
+        return $this->hasMany('App\Models\Farm');
     }
 
-    public function post()
-    {
-        return $this->belongsTo('App\Models\Farm');
-    }
+
 }

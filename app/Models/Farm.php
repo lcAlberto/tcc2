@@ -7,10 +7,15 @@ use App\Models\User;
 
 class Farm extends Model
 {
-    protected $fillable = ['id_users', 'name', 'cep', 'city', 'state'];
+    protected $fillable = ['name', 'cep', 'city', 'state'];
 
     public function user()
     {
-        return $this->hasMany('App\Models\User');
+        return $this->hasMany(User::class);
     }
+
+//    public function animals()
+//    {
+//        return $this->belongsTo('App\Models\Farm');
+//    }
 }

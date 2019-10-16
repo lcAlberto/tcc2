@@ -8,6 +8,7 @@
 
 namespace App\Services;
 
+use App\Models\Farm;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -26,7 +27,7 @@ class AuxiliaryClass
             return $data;
         } else
             $data = $request->all();
-            return self::profileDefault($data);
+        return self::profileDefault($data);
     }
 
     public static function profileDefault($data)
@@ -44,7 +45,8 @@ class AuxiliaryClass
     {
         $data = $request->all();
         $data['password'] = Hash::make($data['password']);
-        $data['id_farms'] = auth()->user()->id;
+        $id_farm = Farm::find(auth()->user()->id_farms);
+        $data['id_farms'] = $id_farm->id;
 
         $user = User::create($data);
 
