@@ -38,6 +38,6 @@ class User extends Authenticatable
 
     public function farm()
     {
-        return $this->belongsTo(Farm::class);
+        return $this->hasMany(Farm::class);
     }
 }

@@ -2,33 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="93eac26f-aba4-4022-a7b4-e8a4ed7e9de1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/animals/1570824688-20170723_094831.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/1570824699-20170723_094831.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/1570824737-20170723_094831.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/1570824745-20170723_094831.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/1570824879-20170723_094831.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/1570824936-20170723_094831.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/1570824965-20170723_094831.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/1570824973-20170723_094831.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/1570824981-20170723_094831.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/1570825006-20170723_094831.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/1570825274-20170723_094831.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/1570825351-20170723_094831.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/1570827056-20170723_094759.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/1570839729-20170723_094902.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/FarmController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/FarmController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FlockController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FlockController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Animal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Animal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Farm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Farm.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/AuxAnimal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/AuxAnimal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/AuxiliaryClass.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/AuxiliaryClass.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2014_10_12_000000_create_users_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_23_185423_create_farms_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_23_185423_create_farms_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/partials/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/partials/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web/unauthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/unauthenticated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2010_10_12_000000_create_users_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2010_10_12_000000_create_users_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_08_29_181444_create_animals_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_08_29_181444_create_animals_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/FarmsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/FarmsTableSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/UsersTableSeeder.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -154,7 +137,7 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SearchEverywhereHistoryKey" value="authe&#9;FILE&#9;file:///home/lucka/Documentos/TADS/5/5 - Praticas de Projetos II/tcc2/routes/web/authenticated.php&#10;registerCon&#9;FILE&#9;file:///home/lucka/Documentos/TADS/5/5 - Praticas de Projetos II/tcc2/app/Http/Controllers/Auth/RegisterController.php&#10;register&#9;FILE&#9;file:///home/lucka/Documentos/TADS/5/5 - Praticas de Projetos II/tcc2/resources/views/auth/register.blade.php&#10;rolesta&#9;FILE&#9;file:///home/lucka/Documentos/TADS/5/5 - Praticas de Projetos II/tcc2/database/seeds/RolesTableSeeder.php&#10;route ser&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/tcc2 (copy)" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -249,17 +232,11 @@
       <workItem from="1570801866038" duration="19394000" />
       <workItem from="1571054813114" duration="8188000" />
       <workItem from="1571065075373" duration="1138000" />
+      <workItem from="1571420152098" duration="14141000" />
+      <workItem from="1571487951299" duration="16076000" />
+      <workItem from="1571577876914" duration="2625000" />
     </task>
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />

@@ -20,14 +20,13 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('profile')->nullable();
-            $table->rememberToken();
-
             $table->integer('id_farms')->unsigned();
             $table->foreign('id_farms')
                 ->references('id')
                 ->on('farms')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
+            $table->rememberToken();
             $table->timestamps();
         });
     }

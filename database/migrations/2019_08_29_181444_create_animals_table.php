@@ -27,12 +27,6 @@ class CreateAnimalsTable extends Migration
             $table->string('profile')->nullable();//profile
             $table->string('idade')->nullable();//age
             $table->string('created_by');//created_by
-            $table->integer('id_farms')->unsigned();
-            $table->foreign('id_farms')
-                ->references('id')
-                ->on('farms')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
             $table->timestamps();
         });
     }
