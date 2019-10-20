@@ -19,6 +19,7 @@ class CreateFarmsTable extends Migration
             $table->string('cep');
             $table->string('city');
             $table->string('state');
+
             $table->timestamps();
         });
     }
