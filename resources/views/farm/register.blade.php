@@ -29,13 +29,12 @@
     <div class="container mt--150 pb-0">
         <!-- Table -->
         <div class="row"><!--justify-content-center-->
-
             <div class="col-lg-5 col-md-8">
                 <div class="text-left mb-4">
                     <div class="card bg-secondary shadow border-0">
                         <div class="card-body px-lg-5 py-lg-5">
                             <h1 class="text-justify">Cadastre sua Fazenda</h1>
-                            <h2>Só mais um momento</h2>
+                            <h2>Mais uma etapa</h2>
                             <p>
                                 Cadastre sua fazenda com os dados solicitados.
                             </p>
@@ -97,7 +96,7 @@
                                         </span>
                                     </div>
                                     <input class="text-dark form-control{{ $errors->has('cep') ? ' is-invalid' : '' }}"
-                                           placeholder="CEP" type="number" name="cep" id="cep"
+                                           placeholder="CEP" type="text" name="cep" id="cep"
                                            value="{{ old('cep') }}" required>
                                 </div>
                                 @if ($errors->has('cep'))
@@ -175,20 +174,6 @@
                                     </span>
                                 @endif
                             </div>
-
-                            <div class="row my-4">
-                                <div class="col-12">
-                                    <div class="custom-control custom-control-alternative custom-checkbox">
-                                        <input class="custom-control-input" id="customCheckRegister"
-                                               type="checkbox"
-                                               checked>
-                                        <label class="custom-control-label" for="customCheckRegister">
-                                            <span class="text-mute">@lang('labels.I agree with the')<a
-                                                        href="#">@lang('labels.Privacy Policy')</a></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="text-right">
                                 <button type="submit" class="btn btn-lg btn-primary mt-4">
                                     Próximo <i class="mr-2 fa fa-arrow-right"></i>
@@ -208,6 +193,8 @@
 <script src="{{ asset('argon') }}/vendor/jquery/dist/jquery.min.js"></script>
 <script src="{{ asset('argon') }}/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="{{ asset('/js/cep.js') }}"></script>
+<script src="{{ asset('/js/jquery.mask.min.js' )}}"></script>
+<script src="{{ asset('/js/masks.js' )}}"></script>
 
 @stack('js')
 

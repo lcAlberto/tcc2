@@ -26,7 +26,7 @@
                               enctype="multipart/form-data">
                             @csrf
                             <h6 class="heading-small text-muted mb-4">
-                                @lang('labels.User information')
+                                Preencha os dados dos usuarios
                             </h6>
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
@@ -56,6 +56,21 @@
                                         </span>
                                     @endif
                                 </div>
+
+                                <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-phone">{{ __('Telefone') }}</label>
+                                    <input type="text" name="phone" id="input-phone"
+                                           class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}"
+                                           placeholder="{{ __('Telefone') }}" value="{{ old('phone') }}" required>
+
+                                    @if ($errors->has('phone'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('phone') }}</strong>
+                                            <strong>Insira um numero de telefone valido!</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-password">
                                         @lang('labels.Password')
@@ -72,7 +87,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label" for="input-password-confirmation">
-                                        @lang('laels.Confirm Password')
+                                        Confirme a senha
                                     </label>
                                     <input type="password" name="password_confirmation" id="input-password-confirmation"
                                            class="form-control form-control-alternative"
@@ -80,15 +95,16 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label"
-                                           for="input-profile">
-                                        @lang('labels.Profile')
+                                           for="input-thumbnail">
+                                        Imagem de
+                                        @lang('labels.profile')
                                     </label>
-                                    <input type="file" name="profile" id="input-profile"
-                                           class="form-control form-control-alternative {{ $errors->has('profile') ? ' is-invalid' : '' }}"
-                                           placeholder="@lang('labels.Profile')s" value="" required>
-                                    @if ($errors->has('profile'))
+                                    <input type="file" name="thumbnail" id="input-thumbnail"
+                                           class="form-control form-control-alternative {{ $errors->has('thumbnail') ? ' is-invalid' : '' }}"
+                                           placeholder="Imagem de perfil" value="{{old('thumbnail')}}}">
+                                    @if ($errors->has('thumbnail'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('profile') }}</strong>
+                                            <strong>{{ $errors->first('thumbnail') }}</strong>
                                         </span>
                                     @endif
                                 </div>

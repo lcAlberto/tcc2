@@ -12,7 +12,7 @@
                                 Registrar Novo Animal
                             </div>
                             <div class="col-4 text-right">
-                                <a href="{{ route('flock.index') }}"
+                                <a href="{{ route('animals.index') }}"
                                    class="btn btn btn-primary">
                                     <i class="fa fa-arrow-left mr-2"></i>@lang('labels.Back')
                                 </a>
@@ -29,7 +29,7 @@
                                   method="POST"
                                   enctype="multipart/form-data"
                                   name="user-form"
-                                  action="{{route('flock.store')}}">
+                                  action="{{route('animals.store')}}">
                                 @include('animals.flock.partials._create-form')
                                 <div class="col-5">
                                     <button class="btn btn-success btn-block" type="submit">

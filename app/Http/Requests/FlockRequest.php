@@ -22,37 +22,38 @@ class FlockRequest extends FormRequest
     {
         $atual = new DateTime();
         $hoje = $atual->format('Y-m-d');
-//        dd($hoje);
-        $validator = [
-            'id' => 'required|unique:animals|numeric',
-            'nome' => 'required|unique:animals|string',
-            'dt_nascimento' => 'required|after_or_equal:2010/01/01|before_or_equal:' . $hoje,
-            'sexo' => 'required',
-            'classificacao' => 'required',
-            'raca' => 'nullable',
-            'profile' => 'required|image|mimes:jpeg,png,jpg,gif',
-//            'roles' => 'required',
+        return [
+            'code' => 'required|unique:animals|numeric',
+            'name' => 'required|unique:animals|string|min:4|max:255',
+            'born_date' => 'required|after_or_equal:2010/01/01|before_or_equal:' . $hoje,
+            'sex' => 'required',
+            'class' => 'required',
+            'status' => 'nullable',
+            'breed' => 'nullable',
+            'thumbnail' => 'nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048', 'min:1',
         ];
-        return $validator;
     }
 
     public function messages()
     {
         return [
-            'id.required' => 'O id é necessário ser preenchido corretamente com números somente!',
-            'id.unique' => 'O id é o número de identificação do animal e deve ser único!'
-                . 'Este número já está registrado no sistema!',
-            'nome.required' => 'O nome é necessário! Se houve alum erro, pode ser que você tenha '
+            'code.required' => 'O id é necessário ser preenchido corretamente com números somente!',
+            'code.unique' => 'O id é o número de identificação do animal e deve ser único!',
+            'name.required' => 'O nome é necessário! Se houve alum erro, pode ser que você tenha '
                 . 'digitado um nome que já exista cadastrado no sistema',
-            'dt_nascimento.required' => 'A data de Nascimento é necessária!'
+            'name.min:4' => 'Use um nome com no mínimo 4 caracteres',
+            'name.max:255' => 'Use um nome com no máximo 225 caracteres',
+            'born_date.required' => 'A data de Nascimento é necessária!'
                 . 'Não use datas muito antigas como anteriores a 2001 e nem datas posteriores a de hoje',
-            'sexo.required' => 'Campo sexo é necessário!',
-            'classificacao.required' => 'Campo classificação é necessário!',
-            'raca.required' => 'Campo raca é necessário!',
-            'profile.image' => 'Selecione um arquivo de imagem válido no formato jpeg, jpg, png ou gif!',
-            'profile.mimes:jpeg,png,jpg,gif' => 'Selecione um arquivo de imagem válido no formato jpeg, jpg, png ou gif!',
-//            'profile.max:2048' => 'Selecione um arquivo com no máximo 2GB!',
-//            'profile.min:1' => 'Este arquivo é muito pequeno!',
+            'born_date.after_or_equal:2010/01/01' => 'Não use datas anteriores a 01/01/2010',
+            'sex.required' => 'Campo sexo é necessário!',
+            'class.required' => 'Campo classificação é necessário!',
+            'breed.required' => 'Campo raca é necessário!',
+            'status.required' => 'Campo raca é necessário!',
+            'thumbnail.image' => 'Selecione um arquivo de imagem válido no formato jpeg, jpg, png ou gif!',
+            'thumbnail.mimes:jpeg,png,jpg,gif' => 'Selecione um arquivo de imagem válido no formato jpeg, jpg, png ou gif!',
+            'thumbnail.max:2048' => 'Selecione um arquivo com no máximo 2GB!',
+            'thumbnail.min:1' => 'Este arquivo é muito pequeno!',
         ];
     }
 }

@@ -11,37 +11,47 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/search', 'UserController@search')->name('user.search');
 });
 
-Route::group(['prefix' => 'cio'], function () {
-    Route::get('/', 'CioController@index')->name('cio.index');
-    Route::get('/create/{id}', 'CioController@create')->name('cio.create');
-    Route::post('/store', 'CioController@store')->name('cio.store');
-    Route::get('/edit/{id}', 'CioController@edit')->name('cio.edit');
-    Route::put('/update/{id}', 'CioController@update')->name('cio.update');
-    Route::get('/show/{id}', 'CioController@show')->name('cio.show');
-    Route::get('/destroy/{id}', 'CioController@destroy')->name('cio.destroy');
+
+/* animals // REBANHO */
+
+Route::group(['prefix' => 'animals'], function () {
+    Route::get('/index', 'AnimalController@index')->name('animals.index');
+    Route::get('/create', 'AnimalController@create')->name('animals.create');
+    Route::post('/store', 'AnimalController@store')->name('animals.store');
+    Route::get('/edit/{id}', 'AnimalController@edit')->name('animals.edit');
+    Route::put('/update/{id}', 'AnimalController@update')->name('animals.update');
+    Route::get('/show/{id}', 'AnimalController@show')->name('animals.show');
+    Route::get('/destroy/{id}', 'AnimalController@destroy')->name('animals.destroy');
+    Route::post('/search', 'AnimalController@search')->name('animals.search');
+    Route::get('/reports/all', 'AnimalController@animalsReports')->name('animals.report');
 });
 
-/* FLOCK // REBANHO */
 
-Route::resource('/flock', 'FlockController');
-Route::post('/flock/search', 'FlockController@search')->name('flock.search');
-Route::get('/flock/status/{id}/{status}', 'AnimalStatus@status')->name('flock.status');
-
+Route::group(['prefix' => 'cio'], function () {
+    Route::get('/', 'AnimalHeatController@index')->name('cio.index');
+    Route::get('/create/{id}', 'AnimalHeatController@create')->name('cio.create');
+    Route::post('/store', 'AnimalHeatController@store')->name('cio.store');
+    Route::get('/edit/{id}', 'AnimalHeatController@edit')->name('cio.edit');
+    Route::put('/update/{id}', 'AnimalHeatController@update')->name('cio.update');
+    Route::get('/show/{id}', 'AnimalHeatController@show')->name('cio.show');
+    Route::post('/search', 'AnimalHeatController@search')->name('cio.search');
+});
 /* ** */
 
 //Route::resource('/cio', 'CioController');
-Route::namespace('Admin')
+Route::namespace('Admin')//rotas do admin
     ->name('admin.')
     ->prefix('admin')
     ->middleware('user-type:admin')
     ->group(function () {
         Route::resource('/user', 'UserController');
         Route::get('/destroy/{id}', 'UserController@destroy')->name('user.destroy');
+        Route::post('/search', 'UserController@search')->name('user.search');
 
         Route::resource('/farm', 'FarmController');
     });
 
-Route::namespace('Client')
+Route::namespace('Client')//rotas do cliente
     ->name('client.')
     ->prefix('client')
     ->middleware('user-type:client')
@@ -50,3 +60,10 @@ Route::namespace('Client')
 //        Route::get('/user', 'HomeController@teste');
 
     });
+
+
+Route::group(['prefix' => '/procriare'], function () {
+    Route::get('/terms-of-use', 'PagesController@terms')->name('procriare.terms');
+    Route::get('/about', 'PagesController@about')->name('procriare.about');
+    Route::get('/help', 'PagesController@help')->name('procriare.help');
+});

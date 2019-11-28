@@ -17,13 +17,14 @@ class CioRequest extends FormRequest
         $atual = new DateTime();
         $hoje = $atual->format('Y-m-d');
         $validator = [
-            'id_animals' => 'required',
-            'dt_cio' => 'required|before:' . $hoje,
-            'dt_cobertura' => 'required|after_or_equal:2010/01/01|after_or_equal:dt_cio',
-            'tipo' => 'required|string',
-            'pai' => 'nullable',
-            'pai_id' => 'nullable|integer',
-            'pai_name' => 'required|string',
+            'animal_id' => 'required',
+            'date_animal_heat' => 'required|before_or_equal:'.$hoje,
+            'date_coverage' => 'required|after_or_equal:2010/01/01|after_or_equal:date_animal_heat',
+            'childbirth_type' => 'required',
+            'status' => 'nullable',
+            'father' => 'nullable',
+            'father_id' => 'nullable|integer',
+            'father_name' => 'nullable',
         ];
 
         return $validator;
@@ -32,16 +33,15 @@ class CioRequest extends FormRequest
     public function messages()
     {
         return [
-            'id_animals:required' => 'Campo ID é necessário',
-            'dt_cio:required' => 'O campo Data do cio é necessário',
-            'dt_cio:before' => 'Não é possível registrar um cio que ainda não aconteceu!',
-            'dt_cobertura:required' => 'O campo Data da Cobertura é necessário',
-            'dt_cobertura:after_or_equal:dt_cio' => 'Não é possível que a cobertura foi antes do cio!'
-                .'É recomendavel que seja no mesmo dia',
-            'tipo:required' => 'O campo Tipo da Cobertura é necessário',
-            'pai:required' => 'O campo Pai da Cobertura é necessário',
-            'pai_id:required' => 'O campo ID do Touro é necessário',
-            'pai_name:required' => 'O campo Nome do Touro é necessário',
+            'animal_id:required' => 'Campo ID é necessário',
+            'date_animal_heat:required' => 'O campo Data do cio é necessário,' .
+                'verifique também a se a data que você colocou não é poterior a de hoje',
+            'date_coverage:after_or_equal:2010/01/01' => 'Por favor, selecione uma data posterior a 01/01/2010',
+            'date_coverage:after_or_equal:date_animal_heat' => 'Não selecione uma data posterior a hoje',
+            'childbirth_type:required' => 'Selecione o tipo da cobertura',
+            'father:required' => 'O campo Pai da Cobertura é necessário',
+            'father_id:required' => 'O campo ID do Touro é necessário',
+            'father_name:required' => 'O campo Nome do Touro é necessário',
         ];
     }
 }

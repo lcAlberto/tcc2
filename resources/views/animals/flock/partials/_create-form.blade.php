@@ -4,37 +4,37 @@
         <div class="ml-2 form-group">
             <div class="form-group mb-3">
                 <!-- ID -->
-                <label class="form-control-label" for="id"> ID </label>
+                <label class="form-control-label" for="id"> Código do Animal </label>
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
-                @if($errors->has('id'))
+                @if($errors->has('code'))
                     <div class="float-lg-right badge badge-danger mb-2">
                         Campo ID é Necessário! Insira um número válido
                     </div>
                 @endif
-                <input name="id"
+                <input name="code"
                        type="number"
                        id="id"
                        class="form-control form-control-alternative
-                       {{$errors->has('id') ? 'text-danger border-danger is-invalid' : ''}}"
+                       {{$errors->has('code') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="Número de Identificação, número do brinco"
-                       value="{{old('id') ?? $item->id ?? '' }}" required/>
+                       value="{{old('code') ?? $item->code ?? '' }}" required/>
                 <small class="form-text"> Número do Brinco do animal. Não pode ficar em branco!</small>
             </div>
             <div class="form-group mb-3">
                 <!-- Nome -->
                 <label class="form-control-label" for="nome"> Nome </label>
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
-                @if($errors->has('nome'))
+                @if($errors->has('name'))
                     <div class="float-lg-right badge badge-danger mb-2">
                         Insira um nome válido, exemplo: Mimosa
                     </div>
                 @endif
-                <input name="nome"
+                <input name="name"
                        type="text"
                        id="nome"
-                       class="form-control border {{$errors->has('nome') ? 'text-danger border-danger is-invalid' : ''}}"
+                       class="form-control border {{$errors->has('name') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="Nome ou apelido do animal"
-                       value="{{old('nome') ?? $item->nome ?? '' }}" required/>
+                       value="{{old('name') ?? $item->name ?? '' }}" required/>
                 <small class="form-text"> Nome do animal, apelido</small>
             </div>
             <div class="form-group mb-3">
@@ -42,51 +42,33 @@
                 <label class="form-control-label" for="DTNasc">
                     Data de Nascimento
                     <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
-                    @if($errors->has('dt_nascimento'))
+                    @if($errors->has('born_date'))
                         <div class="float-lg-right badge badge-danger mb-2">
                             Insira uma data entre 01/01/2010 e hoje.
                         </div>
                     @endif
                 </label>
-                <input name="dt_nascimento"
+                <input name="born_date"
                        type="date"
                        id="dt_nascimento"
-                       class="form-control border {{$errors->has('dt_nascimento') ? 'text-danger border-danger is-invalid' : ''}}"
+                       class="form-control border {{$errors->has('born_date') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="Data de nascimento do animal"
-                       value="{{old('dt_nascimento') ?? $item->dt_nascimento ?? '' }}" required/>
+                       value="{{old('born_date') ?? $item->name ?? '' }}" required/>
                 <small class="form-text"> Dia, mês e ano que o animal nasceu</small>
-            </div>
-            <div class="form-group mb-3">
-                <!-- Data de Nascimento -->
-                <label class="form-control-label" for="sexo"> Sexo </label>
-                <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
-                @if($errors->has('sexo'))
-                    <div class="float-lg-right badge badge-danger mb-2">
-                        Selecione este campo com "Macho" ou "Fêmea"
-                    </div>
-                @endif
-                <select class="form-control border {{$errors->has('sexo') ? 'text-danger border-danger is-invalid' : ''}}"
-                        data-value="{{old('sexo') ?? $item->sexo ?? 'O campo Tipo está em branco!' }}"
-                        id="sexo" name="sexo" required>
-                    <option value="" selected>Selecione</option>
-                    <option value="Fêmea" name="Fêmea">
-                        <i class="fa fa-mars"></i> Fêmea
-                    </option>
-                    <option value="Macho" name="Macho">Macho</option>
-                </select>
             </div>
             <div class="form-group mb-3">
                 <!-- Raça -->
                 <label class="form-control-label" for="raca">
                     Raça
                 </label>
-                @if($errors->has('raca'))
+                @if($errors->has('breed'))
                     <div class="float-lg-right badge badge-danger mb-2">
                         Selecione uma Raça!
                     </div>
                 @endif
-                <select class="form-control border {{$errors->has('raca') ? 'text-danger border-danger is-invalid' : ''}}"
-                        id="raca" name="raca" data-value="{{old('raca') ?? $item->raca ?? '' }}">
+                <select
+                    class="form-control border {{$errors->has('breed') ? 'text-danger border-danger is-invalid' : ''}}"
+                    id="raca" name="breed">
                     <option value=" - ">Selecione</option>
                     <option value="Jersey">Jersey</option>
                     <option value="Nelore">Nelore</option>
@@ -101,6 +83,23 @@
                     <option value="Outra">Outra</option>
                 </select>
             </div>
+            <div class="form-group mb-3">
+                <!-- Data de Nascimento -->
+                <label class="form-control-label" for="sexo"> Sexo </label>
+                <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
+                @if($errors->has('sex'))
+                    <div class="float-lg-right badge badge-danger mb-2">
+                        Selecione este campo com "Macho" ou "Fêmea"
+                    </div>
+                @endif
+                <select
+                    class="form-control border {{$errors->has('sex') ? 'text-danger border-danger is-invalid' : ''}}"
+                    id="sex" name="sex" required>
+                    <option value="" selected>Selecione</option>
+                    <option id="femeale" value="femeale"> Femea</option>
+                    <option id="male" value="male"> Macho</option>
+                </select>
+            </div>
         </div>
     </div>
     <div class="col-1"></div>
@@ -109,43 +108,40 @@
             <label class="form-control-label" for="classificacao">
                 Classificação
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
-                @if($errors->has('classificacao'))
+                @if($errors->has('class'))
                     <div class="float-lg-right badge badge-danger mb-2">
                         Campo Classificação é Necessário!
                     </div>
                 @endif
             </label>
-            <select class="form-control border {{$errors->has('classificacao') ? 'text-danger border-danger is-invalid' : ''}}"
-                    id="classificacao" name="classificacao" required
-                    data-value="{{old('classificacao') ?? $item->classificacao ?? '' }}">
-                <option value="">Selecione</option>
-                <option value="bezerro">
-                    Bezerro (Recém-nascido macho até o desmame)
-                </option>
-                <option value="bezerra">
-                    Bezerra (Recém-nascido fêmea até o desmame)
-                </option>
-                <option value="garrote">
-                    Terneiro ou Garrote (Recém-nascido macho desmamado até atingir a
-                    maturidade sexual)
-                </option>
-                <option value="terneira">
-                    Terneira (Recém-nascido fêmea desmamada até atingir a maturidade sexual)
-                </option>
-                <option value="novilha">
+            <select
+                class="form-control border {{$errors->has('class') ? 'text-danger border-danger is-invalid' : ''}}"
+                id="classificacao" name="class" required
+                data-value="{{old('class') ?? $item->class ?? '' }}">
+                <option value="" selected>Selecione</option>
+                <option id="heifer" value="heifer">
                     Novilha (Fêmea que já atingiu a maturidade sexual mas ainda não criou)
                 </option>
-                <option value="touro">
-                    Touro
+                <option id="cow-lactating" value="cow-lactating">
+                    Vaca Lactante (Fêmea sexualmente ativa e que está produzindo leite)
                 </option>
-                <option value="capao">
-                    Capão
+                <option id="cow-non-lactating" value="cow-non-lactating">
+                    Vaca Não Lactante (Fêmea sexualmente ativa mas que não está produzindo leite)
                 </option>
-                <option value="lactante">
-                    Vaca Lactante
+                <option id="cow-dry" value="cow-dry">
+                    Vaca Seca (Fêmea sexualmente ativa que não está lactando por quanto)
                 </option>
-                <option value="seca">
-                    Vaca Seca
+                <option id="she-calves" value="she-calves">
+                    Bezerra (Fêmea recém nascida até o desmame)
+                </option>
+                <option id="bull-reproductive" value="bull-reproductive">
+                    Touro (Macho sexualmente ativo)
+                </option>
+                <option id="bull-castrated" value="bull-castrated">
+                    Capão (Macho castrado)
+                </option>
+                <option id="bull-ruffian" value="bull-ruffian">
+                    Bezerro (Macho recém nascido até o desmame)
                 </option>
             </select>
             <small class="form-text">exemplo: novilha</small>
@@ -155,17 +151,17 @@
                 <label class="form-control-label" for="confirm_password">
                     Imagem do animal
                 </label>
-                @if($errors->has('profile'))
+                @if($errors->has('thumbnail'))
                     <div class="float-lg-right badge badge-danger mb-2">
                         Insira uma imagem válida!
                     </div>
                 @endif
-                <input name="profile"
+                <input name="thumbnail"
                        type="file"
                        id="profile"
-                       class="form-control border {{$errors->has('profile') ? 'text-danger border-danger is-invalid' : ''}}"
+                       class="form-control border {{$errors->has('thumbnail') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="file"
-                       value="{{old('profile') ?? $item->profile ?? '' }}"/>
+                       value="{{old('thumbnail') ?? $item->thumbnail ?? '' }}"/>
                 <small class="form-text"> Por favor, escolha uma imagem no formato jpg, jpeg, gif ou png</small>
             </div>
         </div>
@@ -174,20 +170,22 @@
             <label class="form-control-label" for="pai">
                 Filiação Paterna, (Pai)
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
-                @if($errors->has('pai'))
+                @if($errors->has('father'))
                     <div class="float-lg-right badge badge-danger mb-2">
                         Campo Pai é Necessário!
                     </div>
                 @endif
             </label>
             <select
-                name="pai" id="pai"
-                class="form-control border{{$errors->has('pai') ? 'text-danger border-danger is-invalid' : ''}}">
+                name="father" id="pai"
+                class="form-control border{{$errors->has('father') ? 'text-danger border-danger is-invalid' : ''}}">
                 <option value="" selected> Selecione</option>
-                <option value="Desconhecido" name="Desconhecido">Touro Desconhecido</option>
+                <option value="unknow">Touro Desconhecido</option>
                 @foreach ($animals as $item)
-                    @if (($item->sexo == "Macho") && ($item->classificacao == 'touro'))
-                        <option value="{{ $item->id }}">[ {{ $item->id }} ] {{ $item->nome }} </option>
+                    @if(auth()->user()->farm_id ==  $item->farm_id)
+                        @if (($item->sex == 'male') && (($item->class == 'bull-reproductive')))
+                            <option value="{{ $item->id }}">[ {{ $item->id }} ] @lang("labels.$item->name") </option>
+                        @endif
                     @endif
                 @endforeach
             </select>
@@ -201,22 +199,26 @@
             <label class="form-control-label" for="mae">
                 Filiação Materna, (Mãe)
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
-                @if($errors->has('mae'))
+                @if($errors->has('mother'))
                     <div class="float-lg-right badge badge-danger mb-2">
                         Campo Mãe é Necessário!
                     </div>
                 @endif
             </label>
             <select
-                name="mae" id="mae"
-                class="form-control border {{$errors->has('mae') ? 'text-danger border-danger is-invalid' : ''}}">
+                name="mother" id="mae"
+                class="form-control border {{$errors->has('mother') ? 'text-danger border-danger is-invalid' : ''}}">
                 <option value="" selected> Selecione</option>
-                <option value="Desconhecida" name="Desconhecida"> Mae Desconhecida</option>
+                <option value="unknow"> Mae Desconhecida</option>
                 @foreach ($animals as $item)
-                    @if (($item->sexo == "Fêmea") && (($item->classificacao == 'lactante')) || ($item->classificacao == 'seca'))
-                        <option value="{{ $item->id }}">
-                            [ {{ $item->id }} ] - {{ $item->nome }}, {{ $item->classificacao }}
-                        </option>
+                    @if(auth()->user()->farm_id ==  $item->farm_id)
+                        @if (($item->sex == 'femeale') && (($item->class == 'cow-lactating')))
+                         @if(($item->class == 'cow-non-lactating') or ($item->class = 'heifer'))
+                            <option value="{{ $item->id }}">
+                                [ {{ $item->id }} ] - {{ $item->name }}, @lang("labels.$item->class")
+                            </option>
+                        @endif
+                    @endif
                     @endif
                 @endforeach
             </select>
@@ -225,7 +227,7 @@
                 Se não mantenha "Desconhecida"
             </small>
         </div>
-
+        <!-- /filiacao -->
         <div class="form-group mb-3">
             <label class="form-control-label" for="status">
                 Status
@@ -239,9 +241,10 @@
             <select
                 name="status" id="status"
                 class="form-control {{$errors->has('status') ? 'text-danger border-danger is-invalid' : ''}}">
-                <option value="ativo"> Ativo</option>
-                <option value="vendido"> Vendido</option>
-                <option value="morto"> Morto</option>
+                <option value="">Selecione</option>
+                <option value="alive" selected>Vivo</option>
+                <option value="dead">Morto</option>
+                <option value="sold">Vendido</option>
             </select>
             <small class="text-warning">
                 O status determina o estado atual do animal <br>
@@ -250,3 +253,20 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sex").blur(function () {
+            if ($("#sex").val() === "femeale") {
+                $("#bull-reproductive").hide();
+                $("#bull-castrated").hide();
+                $("#bull-ruffian").hide();
+            } else if ($("#sex").val() === "male") {
+                $("#heifer").hide();
+                $("#cow-lactating").hide();
+                $("#cow-non-lactating").hide();
+                $("#cow-dry").hide();
+                $("#she-calves").hide();
+            }
+        });
+    });
+</script>

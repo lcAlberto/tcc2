@@ -220,7 +220,8 @@ var _ = _self.Prism = {
 
 		var code = element.textContent;
 
-		var env = {
+		var
+            env = {
 			element: element,
 			language: language,
 			grammar: grammar,

@@ -1,5 +1,5 @@
 <tr class="text-center">
-    <td><img src="<?php echo asset('storage/profiles/' . $user->name) ?>"
+    <td><img src="{{storage_path().'/users/avatar/'.$user->thumbnail}}"
              alt="image"
              width="80"
              height="80"
@@ -10,15 +10,18 @@
         <a href="mailto:{{ $user->email }}">{{ $user->email }}</a>
     </td>
     <td>
-        {{$user->id_farms}}
+        {{$user->phone}}
     </td>
-    <td>{{ $user->created_at->format('d/m/Y as H:i') }}</td>
+    <td>
+        {{$user->farm_id}}
+    </td>
+    {{--    <td>{{ $user->created_at->format('d/m/Y as H:i') }}</td>--}}
     <td>
         @if(!empty($user->getRoleNames()))
             @foreach($user->getRoleNames() as $v)
                 @if($v == 'client')
                     <label class="badge badge-primary">{{ $v }}</label>
-                @else
+                @elseif($v == 'admin')
                     <label class="badge badge-success">{{ $v }}</label>
                 @endif
             @endforeach

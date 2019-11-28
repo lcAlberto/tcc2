@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+
 use App\Models\Farm;
-use App\Models\User;
 
 class FarmsTableSeeder extends Seeder
 {
@@ -13,17 +13,17 @@ class FarmsTableSeeder extends Seeder
      */
     public function run()
     {
-        $this->createFarm();
-    }
-
-    private function createFarm()
-    {
+        $farm = Farm::firstOrNew([
+            'name' => 'Fazenda 01'
+        ]);
 
         $farm->fill([
-            'name' => 'Estância1',
-            'cep' => '85155420',
+            'id' => '01',
+            'name' => 'Fazenda 01',
+            'cep' => '85155-000',
             'city' => 'Inácio Martins',
             'state' => 'PR',
+            'auth_user' => 1
         ]);
 
         $farm->save();

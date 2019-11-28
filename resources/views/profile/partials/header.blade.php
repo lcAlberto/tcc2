@@ -1,7 +1,7 @@
 <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
      style="background-size: 100%;
              background-position: center;
-             background-image: url('{{asset('storage/profiles/'.auth()->user()->name)}}')">
+             background-image: url('{{storage_path('users/avatar/'.auth()->user()->thumbnail) }}')">
     <!-- Mask -->
     <span class="mask bg-gradient-dark opacity-6"></span>
     <!-- Header container -->

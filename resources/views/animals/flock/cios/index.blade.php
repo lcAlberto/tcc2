@@ -15,11 +15,11 @@
                                 </h3>
                             </div>
                             <div class="col-md-6 col-lg-7 mb-lg-0 mb-2">
-                                <form action="#" id="pesquisar" method="POST" role="search">
+                                <form action="{{route('cio.search')}}" id="pesquisar" method="post" role="search">
                                     {{ csrf_field() }}
                                     <div class="input-group">
                                         <input type="text" class="form-control"
-                                               name="nome" placeholder="Search users">
+                                               name="nome" placeholder="Pesquisar">
                                         <span class="input-group-btn">
                                         <button type="submit" class="btn btn-outline-light">
                                             <span class="fa fa-search"></span>
@@ -32,11 +32,6 @@
                                 @if($title == 'search')
                                     <a href="{{route('cio.index')}}" class="btn btn-block btn-danger">
                                         <i class="fa fa-arrow-left"></i> Voltar
-                                    </a>
-                                @endif
-                                @if($title == 'Cio')
-                                    <a href="{{ route('cio.create', $cios) }}" class="btn btn-block btn-primary">
-                                        <i class="fa fa-plus mr-2"></i> Novo
                                     </a>
                                 @endif
                             </div>
@@ -54,11 +49,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($cios as $cio)
-                                <tr>
-                                    @include('animals.flock.cios.partials._body')
-                                </tr>
-                            @endforeach
+{{--                            @if($animal->farm_id == $animal->farm_id)--}}
+                                @foreach($cios as $cio)
+                                    @if($cio->responsible_id == auth()->user()->farm_id)
+                                        <tr>
+                                            @include('animals.flock.cios.partials._body')
+                                        </tr>
+                                    @endif
+                                @endforeach
+{{--                            @endif--}}
                             </tbody>
                         </table>
                         <div class="card-footer py-4">
@@ -67,7 +66,7 @@
                                     {{$cios->links()}}
                                 @endif
                                 @if($title == 'search')
-                                    <a href="{{route('flock.index')}}" class="btn btn-sm btn-danger">
+                                    <a href="{{route('animals.index')}}" class="btn btn-sm btn-danger">
                                         <i class="fa fa-arrow-left"></i> Voltar
                                     </a>
                                 @endif

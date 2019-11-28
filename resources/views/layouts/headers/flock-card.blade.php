@@ -4,7 +4,7 @@
 {{--     style="background-image: url(../argon/animals-beef-cattle-blur-735974.jpg); background-position: center; background-size: 100%">--}}
 {{--         @endif--}}
 {{--         @endif--}}
-     style="background-image: url(../argon/animals-beef-cattle-blur-735974.jpg); background-position: center; background-size: 100%">
+     style="background-image: url(../../argon/6062625947_a5e7e55be3_o.jpg); background-position: center; background-size: 100%">
     <span class="mask bg-gradient-warning opacity-4"></span>
     <div class="container">
         <div class="header-body text-center mb-1">

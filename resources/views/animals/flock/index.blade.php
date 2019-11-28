@@ -13,27 +13,29 @@
                                 <h3 class="mb-0">{{ __('Rebanho atual') }}</h3>
                             </div>
                             <div class="col-md-6 col-lg-7 mb-lg-0 mb-2">
-                                <form action="{{route('flock.search')}}" id="pesquisar" method="POST" role="search">
+                                <form action="{{route('animals.search')}}" id="pesquisar" method="post" role="search">
                                     {{ csrf_field() }}
                                     <div class="input-group">
                                         <input type="text" class="form-control"
-                                               name="nome" placeholder="Search users">
+                                               name="search" id="search"
+                                               id="search" name="search"
+                                               placeholder="Pesquisar" required>
                                         <span class="input-group-btn">
                                         <button type="submit" class="btn btn-outline-light">
                                             <span class="fa fa-search"></span>
-                                         </button>
+                                        </button>
                                     </span>
                                     </div>
                                 </form>
                             </div>
                             <div class="col-md-3 col-sm-12 text-right">
                                 @if($title == 'search')
-                                    <a href="{{route('flock.index')}}" class="btn btn-block btn-danger">
+                                    <a href="{{route('animals.index')}}" class="btn btn-block btn-danger">
                                         <i class="fa fa-arrow-left"></i> Voltar
                                     </a>
                                 @endif
                                 @if($title == 'Flock')
-                                    <a href="{{ route('flock.create', $animals) }}" class="btn btn-block btn-primary">
+                                    <a href="{{ route('animals.create', $animals) }}" class="btn btn-block btn-primary">
                                         <i class="fa fa-plus mr-2"></i> Registrar novo Animal
                                     </a>
                                 @endif
@@ -43,8 +45,8 @@
                     <div class="col-12">
                         @include('layouts.flash-message')
                     </div>
-                    <div class="table-responsive">
-                        <table class="table align-items-center table-flush">
+                    <div class="table-responsive p-lg-3">
+                        <table class="table align-items-center table-flush" id="user-list-table">
                             <thead>
                             <tr>
                                 @include('animals.flock.partials._head')
@@ -52,9 +54,11 @@
                             </thead>
                             <tbody>
                             @foreach ($animals as $animal)
-                                <tr>
-                                    @include('animals.flock.partials._body')
-                                </tr>
+                                @if($animal->farm_id == $farm_item->auth_user)
+                                    <tr>
+                                        @include('animals.flock.partials._body')
+                                    </tr>
+                                @endif
                             @endforeach
                             </tbody>
                         </table>
@@ -64,7 +68,7 @@
                                     {{$animals->links()}}
                                 @endif
                                 @if($title == 'search')
-                                    <a href="{{route('flock.index')}}" class="btn btn-sm btn-danger">
+                                    <a href="{{route('animals.index')}}" class="btn btn-sm btn-danger">
                                         <i class="fa fa-arrow-left"></i> Voltar
                                     </a>
                                 @endif
@@ -73,6 +77,7 @@
                     </div>
                 </div>
             </div>
-            @include('layouts.footers.auth')
         </div>
+        @include('layouts.footers.auth')
+    </div>
 @endsection

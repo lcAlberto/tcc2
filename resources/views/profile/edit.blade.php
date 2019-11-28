@@ -43,7 +43,7 @@
 
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('name') }}</strong>
+                                            <strong>Esse campo é necessário!</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -56,25 +56,25 @@
 
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
+                                            <strong>Entre com um email válido</strong>
                                         </span>
                                     @endif
                                 </div>
-                                <div class="form-group{{ $errors->has('profile') ? ' has-danger' : '' }}">
+                                <div class="form-group{{ $errors->has('thumbnail') ? ' has-danger' : '' }}">
                                     <label class="form-control-label"
                                            for="input-profile">@lang('labels.profile')</label>
 
                                     <input
                                             type="file"
-                                            name="profile"
+                                            name="thumbnail"
                                             id="input-profile"
-                                            class="form-control form-control-alternative{{ $errors->has('profile') ? ' is-invalid' : '' }}"
-                                            placeholder="{{old('profile', auth()->user()->profile)}}"
-                                            value="{{old('profile', auth()->user()->profile)}}">
+                                            class="form-control form-control-alternative{{ $errors->has('thumbnail') ? ' is-invalid' : '' }}"
+                                            placeholder="{{old('thumbnail', auth()->user()->thumbnail)}}"
+                                            value="{{old('thumbnail', auth()->user()->thumbnail)}}">
 
-                                    @if ($errors->has('profile'))
+                                    @if ($errors->has('thumbnail'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('profile') }}</strong>
+                                            <strong class="text-danger">Por favor entre com um arquivo de imagem no formato .jpg, .jpeg ou .png </strong>
                                         </span>
                                     @endif
                                 </div>
@@ -112,6 +112,7 @@
                                     @if ($errors->has('old_password'))
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $errors->first('old_password') }}</strong>
+                                            <strong class="text-danger">Digite a senha com no mínimo 8 caracteres!</strong>
                                         </span>
                                     @endif
                                 </div>

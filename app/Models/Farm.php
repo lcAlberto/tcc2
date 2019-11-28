@@ -3,14 +3,30 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Farm extends Model
 {
-    protected $fillable = ['name', 'cep', 'city', 'state', 'id_farms'];
+    use SoftDeletes;
 
-    public function user()
+    protected $fillable = [
+        'id',
+        'name',
+        'cep',
+        'city',
+        'state',
+        'auth_user'
+    ];
+
+    protected $dates = ['deleted_at'];
+
+    public function users()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
+    }
+
+    public function animals()
+    {
+        return $this->hasMany(Animal::class);
     }
 }

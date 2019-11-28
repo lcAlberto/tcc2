@@ -21,14 +21,14 @@
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="{{ route('register') }}">
-                        <i class="fa fa-sticky-note"></i>
-                        <span class="nav-link-inner--text"> Notas da Versão </span>
+                        <i class="fa fa-id-card"></i>
+                        <span class="nav-link-inner--text"> Registrar-se </span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link nav-link-icon" href="{{ route('login') }}">
-                        <i class="fa fa-users"></i>
-                        <span class="nav-link-inner--text"> Seja um Parceiro </span>
+                        <i class="fa fa-door-open"></i>
+                        <span class="nav-link-inner--text"> Login </span>
                     </a>
                 </li>
             </ul>

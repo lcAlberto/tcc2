@@ -95,28 +95,8 @@
                     <div class="collapse show" id="navbar-flock">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('flock.index') }}">
+                                <a class="nav-link" href="{{ route('animals.index') }}">
                                     <i class="fa fa-list-ul"></i>@lang('labels.Total')
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fa fa-cog"></i> @lang('labels.Infants')
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fa fa-pause"></i>@lang('labels.Cows')  @lang('labels.Dry')
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fa fa-venus"></i> @lang('labels.Cows') @lang('labels.Heifers')
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fa fa-mars"></i> @lang('labels.Bulls')
                                 </a>
                             </li>
                         </ul>
@@ -146,6 +126,14 @@
                             @endif
                         </ul>
                     </div>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('cio.index') }}" class="nav-link">
+                        <i class="fa fa-venus-mars mr-2"></i>@lang('labels.Cios')</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{route('animals.report')}}" class="nav-link">
+                        <i class="fa fa-calendar mr-2"></i>Gerar Relatório</a>
                 </li>
             </ul>
 

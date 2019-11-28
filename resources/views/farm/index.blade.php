@@ -3,7 +3,7 @@
         Fazendas
     </div>
     <div class="table-responsive">
-        <table class="table align-items-center table-flush">
+        <table class="table align-items-center table-flush table-bordered">
             <tbody>
             <tr>
                 <td>ID</td>
@@ -12,25 +12,17 @@
                 <td>UF</td>
                 <td>Criação</td>
                 <td>Última edição</td>
-                <td>Operações</td>
             </tr>
             @foreach ($farms as $farm)
                 @include('layouts.modals.destroyFarm')
                 <tr>
-                    @if($farm->id_users ==  auth()->user()->id)
+                    @if($farm->auth_user ==  auth()->user()->id)
                         <th>{{$farm->id}}</th>
                         <th>{{$farm->name}}</th>
                         <th>{{$farm->city}}</th>
                         <th>{{$farm->state}}</th>
                         <th>{{$farm->created_at}}</th>
                         <th>{{$farm->updated_at}}</th>
-                        <th class="btn-group text-white">
-                            <a class="btn btn-warning" data-toggle="modal"
-                               data-target="#destroyFarmModal">
-                                <i class="fa fa-power-off"></i>
-                                Desvincular
-                            </a>
-                        </th>
                     @endif
                 </tr>
             @endforeach

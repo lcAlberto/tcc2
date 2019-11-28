@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileRequest;
 use App\Http\Requests\PasswordRequest;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use App\Services\AuxiliaryClass;
+use App\Repositories\UserRepository;
+use phpDocumentor\Reflection\DocBlock\Tags\Author;
 
 class ProfileController extends Controller
 {
@@ -14,18 +16,25 @@ class ProfileController extends Controller
         return view('profile.edit');
     }
 
-    public function update(ProfileRequest $request, AuxiliaryClass $auxiliaryClass)
+    public function update(ProfileRequest $request, UserRepository $repository, User $user)
     {
-        $createProfile = $auxiliaryClass->updateProfileimage($request);
-        $createProfile = auth()->user()->update($request->all());
+        $data = $request->validated();
+        $avatar = $request->file('thumbnail');
+        $user_id =  User::find(auth()->user()->id);
+        if(!isset($user_id->farm_id)){
+            $user = $repository->updateAdminProfileUser($data, $avatar);
+        }else{
+            $user = $repository->updateProfileUser($data, $avatar);
+        }
+        $data = auth()->user()->update($user);
 
-        return back()->withStatus(__('Profile successfully updated.'));
+        return back()->withStatus(__('Perfil atualizado com sucesso!'));
     }
 
     public function password(PasswordRequest $request)
     {
         auth()->user()->update(['password' => Hash::make($request->get('password'))]);
 
-        return back()->withPasswordStatus(__('Password successfully updated.'));
+        return back()->withPasswordStatus(__('Senha alterada com sucesso!'));
     }
 }

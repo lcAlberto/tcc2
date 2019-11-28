@@ -3,34 +3,51 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Animal extends Model
 {
-    protected $table = 'animals';
+    use SoftDeletes;
     protected $fillable = [
-        'nome', //name
-        'dt_nascimento',//birth
-        'sexo',//gender
-        'classificacao',//classificação
-        'raca',//breed
-        'filho',// son
-        'mae',//mae
-        'pai',//pai
-        'status',//status
-        'profile',//imagem de perfil
-        'idade',//idade
-        'created_by', //criado_por
-        'id_farms', //autenticação pelo id da fazenda
+        'code',
+        'name',
+        'born_date',
+        'sex',
+        'class',
+        'breed',
+        'status',
+        'thumbnail',
+        'mother',
+        'father',
+        'farm_id',
+        'responsible_id'
     ];
 
-    public function cio()
-    {
-        return $this->hasMany(Cio::class);
-    }
+    protected $dates = ['deleted_at'];
+
     public function farm()
     {
-        return $this->hasMany('App\Models\Farm');
+        return $this->belongsTo(Farm::class, 'farm_id', 'id');
+    }
+
+    public function heats()
+    {
+        return $this->hasMany(AnimalHeat::class);
+    }
+
+    public function responsible()
+    {
+        return $this->belongsTo(User::class, 'responsible_id', 'id');
     }
 
 
+    /*SEARCH*/
+    public function search(Array $data)
+    {
+        $animals = $this->where(function ($query) use ($data) {
+            if (isset($data['name']))
+                $query->where('name', 'like', '%' . $data['name'] . '%');
+        });
+        return $animals->get();
+    }
 }

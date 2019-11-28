@@ -8,28 +8,31 @@
         <!-- User -->
         <ul class="navbar-nav align-items-center d-none d-md-flex">
             <li class="nav-item">
-                <a href="{{ route('flock.index') }}" class="nav-link">
+                <a href="{{ route('animals.index') }}" class="nav-link">
                     <i class="fa fa-crosshairs mr-2"></i>
                     @lang('labels.Total Flock')
-                    <span class="badge badge-primary ml-1"> 34 </span>
+                    {{--                    <span class="badge badge-primary ml-1"> 34 </span>--}}
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="fa fa-calendar mr-2"></i>@lang('labels.Events')</a>
+                <a href="{{route('animals.report')}}" class="nav-link">
+                    <i class="fa fa-calendar mr-2"></i>Gerar Relatório</a>
             </li>
             <li class="nav-item">
                 <a href="{{ route('cio.index') }}" class="nav-link">
                     <i class="fa fa-venus-mars mr-2"></i>@lang('labels.Cios')</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-                            <img alt="Image placeholder" src="<?php echo asset('storage/profiles/' . auth()->user()->name) ?>">
+{{--                             <img alt="Image" src="{{asset(auth()->user()->thumbnail) }}">--}}
+                             <img alt="Image" src="{{asset('/profiles/'.auth()->user()->name) }}">
                         </span>
                         <div class="media-body ml-2 d-none d-lg-block">
-                            <span class="mb-0 text-sm  font-weight-bold"> @lang('labels.Hello')! {{ auth()->user()->name }}</span>
+                            <span
+                                class="mb-0 text-sm  font-weight-bold"> @lang('labels.Hello')! {{ auth()->user()->name }}</span>
                         </div>
                     </div>
                 </a>

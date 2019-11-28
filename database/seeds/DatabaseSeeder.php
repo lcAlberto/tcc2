@@ -1,7 +1,5 @@
 <?php
-
 use Illuminate\Database\Seeder;
-
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,7 +11,10 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(PermissionTableSeeder::class);
         $this->call(RolesTableSeeder::class);
-        $this->call(FarmsTableSeeder::class);
         $this->call(UsersTableSeeder::class);
+        $this->call(FarmsTableSeeder::class);
+        $this->call(AnimalTableSeeder::class);
+        $this->call(AnimalHeatsTableSeeder::class);
+
     }
 }

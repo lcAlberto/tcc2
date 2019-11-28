@@ -12,7 +12,7 @@
                                 <h3 class="mb-0">@lang('labels.Users')</h3>
                             </div>
                             <div class="col-lg-7 col-12">
-                                <form action="{{ route('user.search') }}" method="POST" role="search">
+                                <form action="{{ route('admin.user.search') }}" method="POST" role="search">
                                     {{ csrf_field() }}
                                     <div class="input-group">
                                         <input type="text" class="form-control"
@@ -30,7 +30,7 @@
                                     <a href="{{route('admin.user.index')}}" class="btn btn-danger">
                                         <i class="fa fa-arrow-left"></i>@lang('labels.Back')</a>
                                 @endif
-                                @if($title == 'Users')
+                                @if($title == 'User')
                                     <a href="{{ route('admin.user.create') }}" class="btn btn-primary">
                                         <i class="fa fa-plus mr-2"></i>@lang('labels.Add User')</a>
                                 @endif
@@ -47,11 +47,11 @@
                             Usuários
                         </div>
                         <div class="table-responsive">
-                            <table class="table align-items-center table-flush">
+                            <table class="table align-items-center table-flush table-bordered">
                                 @include('users.partials.table._head')
                                 <tbody>
                                 @foreach ($users as $user)
-                                    @if($user->id_farms == auth()->user()->id)
+                                    @if($user->farm_id == auth()->user()->farm_id)
                                         @include('users.partials.table._body')
                                     @endif
                                 @endforeach
@@ -65,7 +65,7 @@
                                 {{$users->links()}}
                             @endif
                             @if($title == 'search')
-                                <a href="{{route('user.index')}}" class="btn btn-sm btn-danger">
+                                <a href="{{route('admin.user.index')}}" class="btn btn-sm btn-danger">
                                     <i class="fa fa-arrow-left"></i>@lang('labels.Back')
                                 </a>
                             @endif
@@ -74,7 +74,6 @@
                 </div>
             </div>
         </div>
-
         @include('layouts.footers.auth')
     </div>
 @endsection

@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('User Management')])
 
 @section('content')
-    @include('users.partials.header', ['title' => __('Edit User')])
+    @include('users.partials.header', ['title' => __('Editar Usuário')])
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -10,7 +10,7 @@
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h3 class="mb-0">@lang('labels.User Management')</h3>
+                                <h3 class="mb-0">Gerenciamento de usuários</h3>
                             </div>
                             <div class="col-4 text-right">
                                 <a href="{{ route('admin.user.index') }}" class="btn btn-primary">
@@ -19,11 +19,11 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('admin.user.update', $user) }}" autocomplete="off"
+                        <form method="post" action="{{ route('admin.user.update', $user->id) }}" autocomplete="off"
                               enctype="multipart/form-data">
                             @csrf
-                            @method('put')
-                            <h6 class="heading-small text-muted mb-4">@lang('labels.Users Information')</h6>
+                            @method('PUT')
+                            <h6 class="heading-small text-muted mb-4">Informações</h6>
                             <div class="pl-lg-4">
                                 <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                     <label class="form-control-label" for="input-name">@lang('labels.Name')</label>
@@ -51,6 +51,21 @@
                                         </span>
                                     @endif
                                 </div>
+
+                                <div class="form-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
+                                    <label class="form-control-label" for="input-phone">{{ __('Telefone') }}</label>
+                                    <input type="text" name="phone" id="input-phone"
+                                           class="form-control form-control-alternative{{ $errors->has('phone') ? ' is-invalid' : '' }}"
+                                           placeholder="{{ __('Telefone') }}" value="{{ old('phone', $user->phone) }}" required>
+
+                                    @if ($errors->has('phone'))
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $errors->first('phone') }}</strong>
+                                            <strong>Insira um numero de telefone valido!</strong>
+                                        </span>
+                                    @endif
+                                </div>
+
                                 <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                     <label class="form-control-label"
                                            for="input-password">@lang('labels.Password')</label>
@@ -73,12 +88,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="form-control-label"
-                                           for="input-profile">@lang('labels.profile')</label>
-                                    <input type="file" name="profile" id="input-profile"
+                                           for="input-thumbnail">Imagem de perfil</label>
+                                    <input type="file" name="thumbnail" id="input-thumbnail"
                                            class="form-control form-control-alternative"
-                                           placeholder="@lang('labels.profile')" value="" required>
+                                           placeholder="@lang('labels.thumbnail')">
                                 </div>
-
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-success mt-4">
                                         <i class="fa fa-save mr-2"></i>@lang('labels.Save')

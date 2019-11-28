@@ -76,12 +76,9 @@ Class AuxAnimal
 
     public function farm_by($data)
     {
-        $farms = Farm::find(auth()->user()->id_farms);
-        $farms = $farms->all();
-        foreach ($farms as $farm) {
-            $farm->id;
-        }
-        $data['id_farms'] = $farm->id;
+        $created_by = auth()->user()->id_famrs . '-' . auth()->user()->name;
+        $created_by = (string)$created_by;
+        $data['farm_by'] = $created_by;
 
         return $data;
     }

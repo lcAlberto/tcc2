@@ -9,29 +9,16 @@
                 <div class="card shadow">
                     <div class="card">
                         <div class="card-header">
-                            <div class="col-7 float-lg-left">
-                                <h3>Status:
-                                @if($animal->status == 'ativo')
-                                    <h3 class="text-primary">Ativo</h3>
-                                @elseif($animal->status == 'vendido')
-                                    <h3 class="text-warning">Vendido</h3>
-                                @elseif($animal->status == 'morto')
-                                    <h3 class="text-danger">Morto</h3>
-                                @endif
-                                </h3>
-                            </div>
-                            <div class="col-5 float-lg-right">
-                                <a href="{{ route('flock.create') }}"
-                                   class="btn btn-primary float-right">
-                                    Cadastrar outro
-                                    <i class="fa fa-redo ml-3"></i>
-                                </a>
-                                <a href="{{ route('flock.index') }}"
-                                   class="btn btn-outline-primary float-right mr-2">
-                                    <i class="fa fa-chevron-left mr-2"></i>
-                                    Voltar
-                                </a>
-                            </div>
+                            <a href="{{ route('animals.create') }}"
+                               class="btn btn-primary float-right">
+                                Cadastrar outro
+                                <i class="fa fa-redo ml-3"></i>
+                            </a>
+                            <a href="{{ route('animals.index') }}"
+                               class="btn btn-outline-primary float-right mr-2">
+                                <i class="fa fa-chevron-left mr-2"></i>
+                                Voltar
+                            </a>
                         </div>
                         <div class="card-body">
                             @if (session('status'))
@@ -40,85 +27,104 @@
                                 </div>
                             @endif
                             <div class="row">
-                                <div class="col-lg-12">
-                                    <div class="col-lg-6 float-lg-left">
-                                        <ul class="list-group">
-                                            @if($animal->status == 'ativo')
-                                                <li class="list-group-item active">
-                                            @elseif($animal->status == 'vendido')
-                                                <li class="list-group-item bg-warning text-white">
-                                            @elseif($animal->status == 'morto')
-                                                <li class="list-group-item bg-danger text-white">
-                                                    @endif
-
-                                                    ID: <strong> {{ $animal->id }} </strong>
-                                                    @if($animal->sexo == 'Fêmea')
-                                                        <strong class="ml-3">
-                                                            <i class="fa fa-mars"></i>
-                                                            {{$animal->sexo}}
-                                                        </strong>
-                                                    @elseif($animal->sexo == 'Macho')
-                                                        <strong class="ml-3"><i class="fa fa-male"></i></strong>
-                                                    @endif
-                                                    <a href="{{ route('flock.edit', $animal->id) }}"
-                                                       class="text-white float-right">
-                                                        <i class="fa fa-edit"></i> Editar
-                                                    </a>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <img src="{{ asset('animals/' . $animal->profile) }}"
-                                                         alt="image" width="500" height="auto" class="img-thumbnail">
-                                                </li>
-                                                {{--                                        <div class="form-group">--}}
-                                                {{--                                        </div>--}}
-                                        </ul>
-                                    </div>
-                                    <div class="col-lg-6 float-lg-right">
-                                        <ul class="list-group">
-                                            <li class="list-group-item">
-                                                Nome:
-                                                <strong>{{ $animal->nome }}</strong>
-                                            </li>
-                                            <li class="list-group-item">
-                                                Idade:
-                                                <strong>{{ $animal->idade }}</strong>
-                                            </li>
-                                            <li class="list-group-item">
-                                                Data de Nascimento:
-                                                <strong>{{ $animal->dt_nascimento }}</strong>
-                                            </li>
-                                            <li class="list-group-item">
-                                                Pai:
-                                                <strong>{{ $animal->pai }}</strong>
-                                            </li>
-                                            <li class="list-group-item">
-                                                Mãe:
-                                                <strong>{{ $animal->mae }}</strong>
-                                            </li>
-                                            <li class="list-group-item">
-                                                Classificação:
-                                                <strong>{{ $animal->classificacao }}</strong>
-                                            </li>
-                                            <li class="list-group-item">
-                                                Raça:
-                                                <strong>{{ $animal->raca }}</strong>
-                                            </li>
-                                        </ul>
+                                <div class="col-sm">
+                                    <div class="card">
+                                        <div class="card-header text-white bg-gradient-indigo">
+                                            {{$animals->name}}
+                                        </div>
+                                        <div class="card-body">
+                                            @if(isset($animals->thumbnail))
+                                                <img src="{{asset('animals/' . $animals->name) }}"
+                                                     alt="image"
+                                                     width="500"
+                                                     height="auto">
+                                                @else
+                                                <img src="{{asset('cow-default.png')}}" alt="image" width="500" height="auto">
+                                            @endif
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-12">
+                                <div class="col-lg-5 col-sm">
                                     <ul class="list-group">
+                                        <li class="list-group-item bg-gradient-indigo text-white">
+                                            ID do Animal: <strong> {{$animals->id}} </strong>
+                                            <a href="{{ route('animals.edit', $animals->id) }}"
+                                               class="text-white float-right">
+                                                <i class="fa fa-edit"></i> Editar
+                                            </a>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Animal:
+                                            <strong> {{ $animals->code }} | </strong>
+                                            <strong> {{ $animals->name }} </strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Data de nascimento:
+                                            <strong>
+                                                {{ $animals->born_date = date('d/m/Y', strtotime($animals->born_date))}}
+                                            </strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Sexo:
+                                            <strong>{{ $animals->sex == 'femeale' ? 'Femea' : 'Macho' }} </strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Classe:
+                                            <strong>
+                                                @if($animals->class == 'cow-lactating')
+                                                    Lactante
+                                                @elseif($animals->class == 'cow-non-lactating')
+                                                    Não Lactante
+                                                @elseif($animals->class == 'cow-dry')
+                                                    Seca
+                                                @elseif($animals->class == 'heifer')
+                                                    Novilha
+                                                @elseif($animals->class == 'she-calves')
+                                                    Bezerra
+                                                @elseif($animals->class == 'he-calves')
+                                                    Bezerro
+                                                @elseif($animals->class == 'bull-reproductive')
+                                                    Touro
+                                                @elseif($animals->class == 'bull-castrated')
+                                                    Capão/Castrado
+                                                @elseif($animals->class == 'bull-ruffian')
+                                                    Rufião
+                                                @endif
+                                            </strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Raça:
+                                            <strong> {{ $animals->breed }} </strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Status:
+                                            @if($animals->status == 'alive')
+                                                <strong class="text-primary">Vivo</strong>
+                                            @elseif($animals->status == 'dead')
+                                                <strong class="text-warning">Morto</strong>
+                                            @elseif($animals->status == 'sold')
+                                                <strong class="text-warning">Vendido</strong>
+                                            @endif
+                                        </li>
+                                        <li class="list-group-item">
+                                            Mãe:
+                                            <strong>
+                                                {{ $animals->mother == 'unknow' ? 'Desconhecido' : $animals->mother }}
+                                            </strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Pai:
+                                            <strong>
+                                                {{ $animals->father == 'unknow' ? 'Desconhecido' : $animals->father }}
+                                            </strong>
+                                        </li>
                                         <li class="list-group-item">
                                             Criado em:
-                                            <strong>{{$animal->created_at}}</strong>
+                                            <strong> {{$animals->created_at}} </strong>
                                         </li>
                                         <li class="list-group-item">
-                                            Última modificação:
-                                            <strong>{{ $animal->updated_at }}</strong>
-                                        </li>
-                                        <li class="list-group-item">
-                                            Criado por:
-                                            <strong>{{ $animal->created_by }}</strong>
+                                            Criado pelo usuário ID:
+                                            <strong> {{ $animals->responsible_id }}</strong>
                                         </li>
                                     </ul>
                                 </div>

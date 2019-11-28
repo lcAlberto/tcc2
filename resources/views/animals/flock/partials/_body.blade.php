@@ -1,21 +1,21 @@
 <td>
-    <img src="<?php echo asset('animals/' . $animal->profile) ?>"
+    <img src="{{asset('animals/' . $animal->thumbnail) }}"
          alt="image"
          width="50"
          height="50"
          class="rounded">
 </td>
 <td> {{ $animal->id }}</td>
-<td> {{$animal->nome }} </td>
-<td> {{$animal->dt_nascimento}} </td>
-<td>@if ($animal->sexo == 'Fêmea')
-        <i class="fa fa-venus"></i>
+<td> {{$animal->name }} </td>
+<td> {{$animal->born_date = date('d/m/Y', strtotime($animal->born_date))}} </td>
+<td>@if ($animal->sex == 'femeale')
+        <i class="fa fa-venus text-red"></i>
         <span>F</span>
-    @else <i class="fa fa-mars"></i>
+    @else <i class="fa fa-mars text-blue"></i>
         <span>M</span>
     @endif
 </td>
-<td>{{ $animal->classificacao }}</td>
+<td>@lang("labels.$animal->class")</td>
 @if($animal->status == 'ativo')
     <td class="text-success text-uppercase">
         {{ $animal->status }} </td>

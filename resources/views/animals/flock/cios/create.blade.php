@@ -26,7 +26,7 @@
                         </label>
                         <div class="col-12">
                             <form class="form-horizontal"
-                                  method="POST"
+                                  method="post"
                                   enctype="multipart/form-data"
                                   name="user-form"
                                   action="{{route('cio.store')}}">

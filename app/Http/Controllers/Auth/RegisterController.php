@@ -2,16 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Models\User;
 use App\Http\Controllers\Controller;
-use http\Env\Request;
+use App\Models\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
-use Spatie\Permission\Models\Role;
-use Illuminate\Support\Facades\DB;
-
-use App\Services\AuxiliaryClass;
+use App\Repositories\UserRepository;
 
 class RegisterController extends Controller
 {
@@ -56,42 +52,25 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'min:5', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'string', 'max:14', 'min:8'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'profile' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'thumbnail' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+            'terms-check' => ['required'],
         ]);
     }
-
-    public function messages()
-    {
-        return [
-            'name.required' => 'O campo é Necessário',
-            'name.string' => 'Por favor entre com um nome válido',
-            'name.min:5' => 'Entre com um nome com no mínimo 5 caracteres',
-            'name.max:255' => 'Entre com um nome com no máximo 255 caracteres',
-            'password.required' => 'Digite a senha com no mínimo 8 caracteres',
-            'password.min:8' => 'Digite a senha com no mínimo 8 caracteres',
-        ];
-    }
-
 
     protected function create(array $data)
     {
-        if (!isset($data['profile'])) {
-            $imgName = AuxiliaryClass::profileDefault($data);
-            $data['profile'] = 'profile';
+        $repository = new UserRepository();
+
+        if ($data['terms-check'] == 'on') {
+            $user = $repository->createAdminUser($data);
+
+            if (!$user->hasRole(\App\Enums\UserRolesEnum::ADMIN)) {
+                $user->assignRole(\App\Enums\UserRolesEnum::ADMIN);
+            }
+
+            return $user;
         }
-
-        $user = User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'profile' => $data['profile'],
-        ]);
-
-        if (!$user->hasRole(\App\Enums\UserRolesEnum::ADMIN)) {
-            $user->assignRole(\App\Enums\UserRolesEnum::ADMIN);
-        }
-
-        return $user;
     }
 }
