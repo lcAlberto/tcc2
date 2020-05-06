@@ -65,7 +65,6 @@ class RegisterController extends Controller
 
         if ($data['terms-check'] == 'on') {
             $user = $repository->createAdminUser($data);
-
             if (!$user->hasRole(\App\Enums\UserRolesEnum::ADMIN)) {
                 $user->assignRole(\App\Enums\UserRolesEnum::ADMIN);
             }

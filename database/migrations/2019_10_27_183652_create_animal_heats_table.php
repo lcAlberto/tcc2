@@ -25,10 +25,10 @@ class CreateAnimalHeatsTable extends Migration
             $table->enum('childbirth_type', AnimalHeatChildbirthTypeEnum::getConstantsValues()); //tipo: insemination ou natural
             $table->enum('status', AnimalHeatStatusEnum::getConstantsValues()); //status: active, inactive ou pending
 
-            $table->integer('responsible_id')->unsigned();//registrado por (usuario)
-            $table->foreign('responsible_id')
+            $table->integer('farm_id')->unsigned();
+            $table->foreign('farm_id')
                 ->references('id')
-                ->on('users')
+                ->on('farms')
                 ->onDelete('cascade');
 
             $table->softDeletes();

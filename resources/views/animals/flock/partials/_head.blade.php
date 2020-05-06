@@ -5,4 +5,5 @@
 <th>Sexo</th>
 <th>Classisficação</th>
 <th>Status</th>
-<th></th>
+<th>Operações</th>
+

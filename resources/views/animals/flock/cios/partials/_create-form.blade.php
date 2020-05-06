@@ -1,9 +1,8 @@
 @csrf
 <div class="row">
-    <div class="col-lg-5 col-sm-12 text-black">
+    <div class="col-lg-5 col-md-5 col-sm-12 text-black">
         <div class="ml-2 form-group">
-            <!-- id_animals -->
-            <div class="form-group mb-3">
+            <div class="form-group mb-3 {{ $errors->has('id') ? ' has-danger' : '' }}">
                 <label class="form-control-label" for="id">
                     Selecione o animal que apresentou Cio
                 </label>
@@ -36,7 +35,7 @@
                     </div>
                 @endif
                 <input name="date_animal_heat"
-                       type="date"
+                       type="datetime"
                        id="dt_cio"
                        class="form-control border {{$errors->has('date_animal_heat') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="Nome ou apelido do animal" required
@@ -59,7 +58,7 @@
                     @endif
                 </label>
                 <input name="date_coverage"
-                       type="date"
+                       type="datetime"
                        id="date_coverage"
                        class="form-control border {{$errors->has('date_coverage') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="Data da Cobertura" required
@@ -70,7 +69,7 @@
             </div>
         </div>
     </div>
-    <div class="col-lg-5 col-sm-12 text-black">
+    <div class="col-lg-5 col-md-5 col-sm-12">
         <div class="ml-2 form-group">
             <!-- tipo -->
             <div
@@ -177,7 +176,7 @@
         </div>
     </div>
 </div>
-</div>
+{{--</div>--}}
 
 <!--/filiação -->
 <script>

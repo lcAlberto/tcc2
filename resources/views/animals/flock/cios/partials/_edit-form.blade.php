@@ -1,6 +1,6 @@
 @csrf
 <div class="row">
-    <div class="col-5 text-black">
+    <div class="col-lg-5 col-md-5 col-sm-12 text-black">
         <div class="ml-2 form-group">
             <div class="form-group mb-3 {{ $errors->has('id') ? ' has-danger' : '' }}">
                 <label class="form-control-label" for="id">
@@ -8,8 +8,6 @@
                 </label>
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 <select name="animal_id" id="id" class="form-control">
-                    @foreach($animals as $animal)
-                    @endforeach
                     <option value="{{ $cios->id }}" selected>
                         [ {{ $cios->id }} ] - {{ $animal->name }}
                     </option>
@@ -23,11 +21,11 @@
                     Data do Cio
                 </label>
                 <input name="date_animal_heat"
-                       type="text"
+                       type="datetime"
                        id="dt_cio"
                        class="form-control {{ $errors->has('date_animal_heat') ? ' is-invalid' : '' }}"
                        placeholder="Nome ou apelido do animal"
-                       value="{{old('date_animal_heat') ?? $cios->date_animal_heat ?? '' }}"/>
+                       value="{{old('date_animal_heat') ??  $cios->date_animal_heat = $dateTime->format('d/m/Y') ?? '' }}"/>
                 <small class="form-text">
                     Data em que o animal apresentou Cio
                 </small>
@@ -38,18 +36,19 @@
                     <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 </label>
                 <input name="date_coverage"
-                       type="text"
+                       type="datetime"
                        id="dt_cobertura"
                        class="form-control {{ $errors->has('date_coverage') ? ' is-invalid' : '' }}"
                        placeholder="Data da Cobertura"
-                       value="{{old('date_coverage') ?? $cios->date_coverage ?? '' }}" required/>
+                       value="{{old('date_coverage') ?? $cios->date_coverage = $dateTime->format('d/m/Y') ?? '' }}"
+                       required/>
                 <small class="form-text">
                     Data da Cobertura
                 </small>
             </div>
         </div>
     </div>
-    <div class="col-5 text-black">
+    <div class="col-lg-5 col-md-5 col-sm-12">
         <div class="ml-2 form-group">
             <div class="form-group mb-3">
                 <label class="form-control-label" for="childbirth_type">
@@ -57,18 +56,12 @@
                     <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 </label>
                 <select class="form-control" id="childbirth_type" name="childbirth_type" required>
-                    <option value="{{old('childbirth_type') ?? $cios->childbirth_type ?? '' }}" selected>
-                        @if($cios->childbirth_type == 'natural')
-                            Monta Natural
-                        @elseif($cios->childbirth_type == 'insemination')
-                            Inseminação Artificial
-                        @endif
+                    <option @if(old('childbirth_type') == 'natural')selected @endif id="natural" value="natural">
+                        Natural
                     </option>
-                    @if($cios->childbirth_type == 'insemination')
-                        <option value="natural">Monta Natural</option>
-                    @elseif($cios->childbirth_type == 'natural')
-                        <option value="insemination">Inseminação Artificial</option>
-                    @endif
+                    <option @if(old('childbirth_type') == 'insemination')selected @endif id="insemination"
+                            value="insemination">Inseminação Artificial
+                    </option>
                 </select>
                 <small>
                     De maneira foi a cobertura?
@@ -96,12 +89,12 @@
             <select
                 class="form-control border {{$errors->has('status') ? 'text-danger border-danger is-invalid' : ''}}"
                 id="status" name="status" required>
-                <option value="">Selecione</option>
-                <option value="pending" selected>Pendente</option>
+                <option value="" selected>Selecione</option>
+                <option value="pending">Pendente</option>
                 <option value="abortion">Aborto</option>
-                @if($cios->date_childbirth_foreseen < today())
-                    <option value="success">Sucesso</option>
-                @endif
+                {{--                @if($cios->date_childbirth_foreseen < today())--}}
+                <option value="success">Sucesso</option>
+                {{--                @endif--}}
             </select>
             <small>
                 De maneira foi a cobertura?
@@ -121,20 +114,20 @@
                     <option value="{{$cios->father}}">
                         {{ $cios->father }}
                     </option>
-                    @if(isset($animals->father))
-                        <option value="{{$animals->father}}">
-                            {{$animals->father}}
+                    @if(isset($animal->father))
+                        <option value="{{$animal->father}}">
+                            {{$animal->father}}
                         </option>
                     @endif
                 </select>
-                <button class="btn btn-white text-primary" type="button" id="add-input">
+                <button class="btn btn-white btn-block text-primary" type="button" id="add-input">
                     <i class="fa fa-plus"></i>
-                    Adicionar um Touro nao listado
+                    Touro nao listado
                 </button>
             </fieldset>
         </div>
 
-        <div class="form-group mb-3" style="display: none;" id="new-bull">
+        <div class="form-group mb-3 col-sm-12" style="display: none;" id="new-bull">
             <fieldset class="p-2 bg-translucent-white border border-top border-light border-dashed">
                 <label class="form-control-label" for="father">
                     O Nome do Touro fica na palheta do sêmen
@@ -151,7 +144,7 @@
                 <input type="text" class="form-control" id="father" name="father"
                        value="{{old('father') ?? $cios->father ?? '' }}">
                 <button
-                    class="btn btn-white text-primary mt-3"
+                    class="btn btn-white btn-block text-primary mt-3"
                     style="display: none;" type="button" id="add-select">
                     <i class="fa fa-plus"></i>
                     Adicionar um Touro da propriedade
@@ -159,19 +152,20 @@
                 <!-- -->
             </fieldset>
         </div>
-
     </div>
 </div>
 
 <!--/filiação -->
 <script>
     $("#add-input").click(function () {
+        // $("#insemination").click(function () {
         $("#new-bull").show();
         $("#current-bull").hide();
         $("#add-select").show();
         // alert('okey');
     });
     $("#add-select").click(function () {
+        // $("#natural").click(function () {
         $("#new-bull").hide();
         $("#current-bull").show();
     });

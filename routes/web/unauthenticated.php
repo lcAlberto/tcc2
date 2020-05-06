@@ -13,9 +13,4 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 //Auth::routes();
 
-Route::group(['prefix' => '/procriare'], function () {
-    Route::get('/terms-of-use', 'PagesController@terms')->name('procriare.terms');
-    Route::get('/about', 'PagesController@about')->name('procriare.about');
-    Route::get('/help', 'PagesController@help')->name('procriare.help');
-});
 

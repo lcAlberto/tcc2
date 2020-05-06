@@ -17,7 +17,7 @@ class AddAnimalIdToAnimalHeatsTable extends Migration
             $table->integer('animal_id')->unsigned()->nullable();
             $table->foreign('animal_id')
                 ->references('id')
-                ->on('animal_heats')
+                ->on('animals')
                 ->onDelete('cascade');
         });
     }

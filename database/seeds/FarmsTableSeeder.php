@@ -18,12 +18,12 @@ class FarmsTableSeeder extends Seeder
         ]);
 
         $farm->fill([
-            'id' => '01',
+            'id' => 1,
             'name' => 'Fazenda 01',
             'cep' => '85155-000',
             'city' => 'Inácio Martins',
             'state' => 'PR',
-            'auth_user' => 1
+//            'auth_user' => 1
         ]);
 
         $farm->save();

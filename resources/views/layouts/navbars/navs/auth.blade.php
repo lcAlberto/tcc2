@@ -27,8 +27,7 @@
                    aria-expanded="false">
                     <div class="media align-items-center">
                         <span class="avatar avatar-sm rounded-circle">
-{{--                             <img alt="Image" src="{{asset(auth()->user()->thumbnail) }}">--}}
-                             <img alt="Image" src="{{asset('/profiles/'.auth()->user()->name) }}">
+                             <img alt="Image" src="{{asset('/profile/'.auth()->user()->thumbnail) }}">
                         </span>
                         <div class="media-body ml-2 d-none d-lg-block">
                             <span
@@ -40,7 +39,7 @@
                     <div class=" dropdown-header noti-title">
                         <h6 class="text-overflow m-0">@lang('labels.Wellcome')!</h6>
                     </div>
-                    <a href="{{ route('profile.edit') }}" class="dropdown-item">
+                    <a href="{{ route('profile.edit', auth()->user()->id) }}" class="dropdown-item">
                         <i class="ni ni-single-02"></i>
                         <span>@lang('labels.My') @lang('labels.profile')</span>
                     </a>

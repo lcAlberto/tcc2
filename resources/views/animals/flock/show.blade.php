@@ -9,23 +9,34 @@
                 <div class="card shadow">
                     <div class="card">
                         <div class="card-header">
-                            <a href="{{ route('animals.create') }}"
-                               class="btn btn-primary float-right">
-                                Cadastrar outro
-                                <i class="fa fa-redo ml-3"></i>
-                            </a>
-                            <a href="{{ route('animals.index') }}"
-                               class="btn btn-outline-primary float-right mr-2">
-                                <i class="fa fa-chevron-left mr-2"></i>
-                                Voltar
-                            </a>
+                            <div class="col-sm-12 col-lg-12 align-items-sm-center">
+                                <div class="float-md-left float-lg-left col-sm-6">
+                                    <a type="button"
+                                       class="btn btn-danger col-sm-3 text-white" data-toggle="modal"
+                                       data-target="#deleteAnimalModal">
+                                        <i> <i class="fa fa-eraser"></i> Excluir </i>
+                                    </a>
+                                    <a class="btn btn-warning col-sm-6"
+                                       href="{{route('cio.heatByAnimal', $animals->id)}}">
+                                        <i class="fa fa-mars-double"></i>
+                                        Ver ciclos reprodutivo
+                                    </a>
+                                </div>
+                                <div class="float-md-right float-lg-right col-sm-6">
+                                    <a href="{{ route('animals.index') }}"
+                                       class="btn btn-outline-primary col-sm-3">
+                                        <i class="fa fa-chevron-left"></i>
+                                        Voltar
+                                    </a>
+                                    <a href="{{ route('animals.create') }}"
+                                       class="btn btn-primary col-sm-6">
+                                        Cadastrar outro
+                                        <i class="fa fa-redo"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body">
-                            @if (session('status'))
-                                <div class="alert alert-success" role="alert">
-                                    {{ session('status') }}
-                                </div>
-                            @endif
                             <div class="row">
                                 <div class="col-sm">
                                     <div class="card">
@@ -33,15 +44,25 @@
                                             {{$animals->name}}
                                         </div>
                                         <div class="card-body">
-                                            @if(isset($animals->thumbnail))
-                                                <img src="{{asset('animals/' . $animals->name) }}"
-                                                     alt="image"
-                                                     width="500"
-                                                     height="auto">
+                                            <div class="embed-responsive-item">
+                                                @if(isset($animals->thumbnail))
+                                                    <img src="{{asset('animals/' . $animals->name) }}"
+                                                         alt="image"
+                                                         width="350"
+                                                         height="auto" class="rounded">
                                                 @else
-                                                <img src="{{asset('cow-default.png')}}" alt="image" width="500" height="auto">
-                                            @endif
+                                                    <img src="{{asset('cow-default.png')}}" alt="image" width="500"
+                                                         height="auto">
+                                                @endif
+                                            </div>
                                         </div>
+                                        {{--                                        <div class="col-lg-8 col-sm-12 text-white">--}}
+                                        {{--                                            <a class="btn btn-warning"--}}
+                                        {{--                                               href="{{route('cio.heatByAnimal', $animals->id)}}">--}}
+                                        {{--                                                <i class="fa fa-mars-double"></i>--}}
+                                        {{--                                                Acompanhar ciclo reprodutivo--}}
+                                        {{--                                            </a>--}}
+                                        {{--                                        </div>--}}
                                     </div>
                                 </div>
                                 <div class="col-lg-5 col-sm">
@@ -124,7 +145,7 @@
                                         </li>
                                         <li class="list-group-item">
                                             Criado pelo usuário ID:
-                                            <strong> {{ $animals->responsible_id }}</strong>
+                                            <strong>{{ $animals->responsible_id }}</strong>
                                         </li>
                                     </ul>
                                 </div>
@@ -136,5 +157,5 @@
         </div>
         @include('layouts.footers.auth')
     </div>
-
+    @include('animals.flock.partials.modals.confirmation')
 @endsection

@@ -9,7 +9,7 @@
             <th>Operações</th>
         </tr>
         @foreach($cios as $cio)
-            @if($cio->responsible_id == auth()->user()->farm_id)
+            @if( $item_animal->farm_id == auth()->user()->farm_id)
                 <tr>
                     <td>{{$cio->id}}</td>
                     <td>{{$item_animal->name}}</td>

@@ -9,33 +9,33 @@
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
-                            <div class="col-md-2 col-sm-12 mb-2 mb-lg-0 text-left">
+                            <div class="col-lg-2 col-sm-12 float-left">
                                 <h3 class="mb-0">{{ __('Rebanho atual') }}</h3>
                             </div>
-                            <div class="col-md-6 col-lg-7 mb-lg-0 mb-2">
-                                <form action="{{route('animals.search')}}" id="pesquisar" method="post" role="search">
+                            <div class="col-lg-6 col-12">
+                                <form action="{{route('animals.search')}}" id="pesquisar" method="get" role="search">
                                     {{ csrf_field() }}
-                                    <div class="input-group">
+                                    <div class="form-group input-group m-0">
                                         <input type="text" class="form-control"
-                                               name="search" id="search"
                                                id="search" name="search"
                                                placeholder="Pesquisar" required>
-                                        <span class="input-group-btn">
                                         <button type="submit" class="btn btn-outline-light">
                                             <span class="fa fa-search"></span>
                                         </button>
+                                        <span class="input-group-btn">
+
                                     </span>
                                     </div>
                                 </form>
                             </div>
-                            <div class="col-md-3 col-sm-12 text-right">
+                            <div class="col-lg-3 col-sm-12 float-right">
                                 @if($title == 'search')
                                     <a href="{{route('animals.index')}}" class="btn btn-block btn-danger">
                                         <i class="fa fa-arrow-left"></i> Voltar
                                     </a>
                                 @endif
                                 @if($title == 'Flock')
-                                    <a href="{{ route('animals.create', $animals) }}" class="btn btn-block btn-primary">
+                                    <a href="{{ route('animals.create') }}" class="btn btn-block btn-primary">
                                         <i class="fa fa-plus mr-2"></i> Registrar novo Animal
                                     </a>
                                 @endif
@@ -54,11 +54,9 @@
                             </thead>
                             <tbody>
                             @foreach ($animals as $animal)
-                                @if($animal->farm_id == $farm_item->auth_user)
-                                    <tr>
-                                        @include('animals.flock.partials._body')
-                                    </tr>
-                                @endif
+                                <tr>
+                                    @include('animals.flock.partials._body')
+                                </tr>
                             @endforeach
                             </tbody>
                         </table>

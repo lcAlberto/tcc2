@@ -11,7 +11,7 @@ use phpDocumentor\Reflection\DocBlock\Tags\Author;
 
 class ProfileController extends Controller
 {
-    public function edit()
+    public function edit($id)
     {
         return view('profile.edit');
     }
@@ -22,7 +22,7 @@ class ProfileController extends Controller
         $avatar = $request->file('thumbnail');
         $user_id =  User::find(auth()->user()->id);
         if(!isset($user_id->farm_id)){
-            $user = $repository->updateAdminProfileUser($data, $avatar);
+            $user = $repository->updateAdminProfile($data, $avatar);
         }else{
             $user = $repository->updateProfileUser($data, $avatar);
         }

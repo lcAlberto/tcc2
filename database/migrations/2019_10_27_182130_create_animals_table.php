@@ -36,8 +36,8 @@ class CreateAnimalsTable extends Migration
                 ->on('farms')
                 ->onDelete('cascade');
 
-            $table->integer('responsible_id')->unsigned();
-            $table->foreign('responsible_id')
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');

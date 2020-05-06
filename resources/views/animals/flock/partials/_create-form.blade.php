@@ -26,7 +26,7 @@
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 @if($errors->has('name'))
                     <div class="float-lg-right badge badge-danger mb-2">
-                        Insira um nome válido, exemplo: Mimosa
+                        Insira um nome válido com no mínimo 5 caracteres
                     </div>
                 @endif
                 <input name="name"
@@ -49,7 +49,7 @@
                     @endif
                 </label>
                 <input name="born_date"
-                       type="date"
+                       type="datetime"
                        id="dt_nascimento"
                        class="form-control border {{$errors->has('born_date') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="Data de nascimento do animal"
@@ -184,7 +184,7 @@
                 @foreach ($animals as $item)
                     @if(auth()->user()->farm_id ==  $item->farm_id)
                         @if (($item->sex == 'male') && (($item->class == 'bull-reproductive')))
-                            <option value="{{ $item->id }}">[ {{ $item->id }} ] @lang("labels.$item->name") </option>
+                            <option value="{{ $item->id }}">[ {{ $item->id }} ] @lang($item->name) </option>
                         @endif
                     @endif
                 @endforeach
@@ -215,7 +215,7 @@
                         @if (($item->sex == 'femeale') && (($item->class == 'cow-lactating')))
                          @if(($item->class == 'cow-non-lactating') or ($item->class = 'heifer'))
                             <option value="{{ $item->id }}">
-                                [ {{ $item->id }} ] - {{ $item->name }}, @lang("labels.$item->class")
+                                [ {{ $item->id }} ] - {{ $item->name }}. @lang('labels.' . $item->class)
                             </option>
                         @endif
                     @endif

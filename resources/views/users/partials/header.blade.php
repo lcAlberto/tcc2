@@ -2,8 +2,8 @@
     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
          style="background-size: cover;
                  background-position: center;
-                 background-image: url('{{asset($user->thumbnail) }}')">
-        <span class="mask bg-gradient-success opacity-5"></span>
+                 background-image: url('{{asset('/profile/'. $user->thumbnail) }}')">
+        <span class="mask bg-gradient-success opacity-6"></span>
         @else
             <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
                  style="background-size: cover;

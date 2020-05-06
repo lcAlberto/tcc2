@@ -1,7 +1,11 @@
 <td>
-    <a href="{{route('animals.show', $cio->animal_id)}}">
-        {{$cio->animal_id}}
-    </a>
+    @if($title == 'Cio')
+        <a href="{{route('animals.show', $cio->animal_id)}}">
+            {{$cio->animal_id}}
+        </a>
+    @else
+        {{$cio->id}}
+    @endif
 </td>
 <td>
     {{$cio->date_animal_heat = date('d/m/Y', strtotime($cio->date_animal_heat))}}
@@ -36,13 +40,13 @@
 </td>
 <td>
     @if($cio->status == "pending")
-        <h2><i class="text-warning fa fa-clock"></i><br></h2>
-        Pendente
+        <h2><i class="text-indigo fa fa-hourglass-half"></i><br></h2>
+        Aguardando
     @elseif($cio->status == "abortion")
         <h2><i class="text-danger fa fa-times"></i><br></h2>
         Aborto
     @elseif($cio->status == "cleaning")
-        <h2><i class="text-indigo fa fa-times"></i><br></h2>
+        <h2><i class="text-indigo fa fa-circle"></i><br></h2>
         Cio de Limpeza
     @elseif($cio->status == "success")
         @if(isset($cio->date_childbirth))
@@ -50,15 +54,18 @@
             {{$cio->date_childbirth = date('d/m/Y', strtotime($cio->date_childbirth))}}
         @endif
     @endif
+    @if($cio->status == "success")
+        <a href="{{route('animals.create')}}" class="btn btn-sm btn-success">Cadastrar Bezerro</a>
+    @endif
 </td>
 <td>
     <div class="dropdown">
-        <button class="btn btn-outline-primary dropdown-toggle"
+        <a class="text-indigo dropdown-toggle"
                 type="button" id="dropdownMenuButton"
                 data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false">
             <i class="fa fa-list"></i>
-        </button>
+        </a>
         @include('animals.flock.cios.partials._actionButton')
     </div>
 </td>

@@ -22,12 +22,11 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'name',
         'email',
+        'email_verified_at',
         'password',
         'phone',
         'thumbnail',
-        'is_responsible_farm',
-        'farm_id',
-        'email_verified_at'
+        'farm_id'
     ];
 
     /**
@@ -50,14 +49,16 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $dates = ['deleted_at'];
 
+    /*RELACONAMENTOS*/
+
     public function farm()
     {
-        return $this->belongsTo(Farm::class, 'farm_id', 'id');
+        return $this->belongsTo(Farm::class);
     }
 
     public function animals()
     {
-        return $this->hasMany(Animal::class, 'responsible_id', 'id');
+        return $this->hasMany(Animal::class);
     }
 
     /*SEARCH*/

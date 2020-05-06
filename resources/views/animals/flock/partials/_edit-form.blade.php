@@ -49,11 +49,11 @@
                     @endif
                 </label>
                 <input name="born_date"
-                       type="date"
+                       type="datetime"
                        id="dt_nascimento"
                        class="form-control border {{$errors->has('born_date') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="Data de nascimento do animal"
-                       value="{{old('born_date', $animals->born_date) }}" required/>
+                       value="{{old('born_date', $animals->born_date = $dateTime->format('d-m-Y')) }}" required/>
                 <small class="form-text"> Dia, mês e ano que o animal nasceu</small>
             </div>
             <div class="form-group mb-3">
@@ -68,14 +68,8 @@
                 <select
                     class="form-control border {{$errors->has('sex') ? 'text-danger border-danger is-invalid' : ''}}"
                     id="sexo" name="sex" required>
-                    <option value="{{old('sex') ?? $animals->sex ?? '' }}" selected>
-                        {{$animals->sex == 'femeale' ? 'Femea' : 'Macho'}}
-                    </option>
-                    @if($animals->sex == 'femeale')
-                        <option value="male">Macho</option>
-                    @elseif($animals->sex == 'femeale')
-                        <option value="male">Macho</option>
-                    @endif
+                    <option @if(old('sex') == 'femeale')selected @endif value="femeale">Fêmea</option>
+                    <option @if(old('sex') == 'male')selected @endif value="male">Macho</option>
                 </select>
             </div>
             <div class="form-group mb-3">
@@ -108,54 +102,54 @@
                     <option value="Outra">Outra</option>
                 </select>
             </div>
+            <div class="form-group mb-3">
+                <label class="form-control-label" for="classificacao">
+                    Classificação
+                    <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
+                    @if($errors->has('class'))
+                        <div class="float-lg-right badge badge-danger mb-2">
+                            Campo Classificação é Necessário!
+                        </div>
+                    @endif
+                </label>
+                <select
+                    class="form-control border {{$errors->has('class') ? 'text-danger border-danger is-invalid' : ''}}"
+                    id="classificacao" name="class" required>
+                    <option value="">Selecione</option>
+                    <option value="{{old('class') ?? $animals->class ?? '' }}" selected>
+                        @lang("labels.$animals->class")
+                    </option>
+                    <option value="heifer">
+                        Novilha (Fêmea que já atingiu a maturidade sexual mas ainda não criou)
+                    </option>
+                    <option value="cow-lactating">
+                        Vaca Lactante (Fêmea sexualmente ativa e que está produzindo leite)
+                    </option>
+                    <option value="cow-non-lactating">
+                        Vaca Não Lactante (Fêmea sexualmente ativa mas que não está produzindo leite)
+                    </option>
+                    <option value="cow-dry">
+                        Vaca Seca (Fêmea sexualmente ativa que não está lactando por quanto)
+                    </option>
+                    <option value="she-calves">
+                        Bezerra (Fêmea recém nascida até o desmame)
+                    </option>
+                    <option value="bull-reproductive">
+                        Touro (Macho sexualmente ativo)
+                    </option>
+                    <option value="bull-castrated">
+                        Capão (Macho castrado)
+                    </option>
+                    <option value="bull-ruffian">
+                        Bezerro (Macho recém nascido até o desmame)
+                    </option>
+                </select>
+                <small class="form-text">exemplo: novilha</small>
+            </div>
         </div>
     </div>
     <div class="col-1"></div>
     <div class="col-lg-5 col-12 text-black">
-        <div class="form-group mb-3">
-            <label class="form-control-label" for="classificacao">
-                Classificação
-                <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
-                @if($errors->has('class'))
-                    <div class="float-lg-right badge badge-danger mb-2">
-                        Campo Classificação é Necessário!
-                    </div>
-                @endif
-            </label>
-            <select
-                class="form-control border {{$errors->has('class') ? 'text-danger border-danger is-invalid' : ''}}"
-                id="classificacao" name="class" required>
-                <option value="">Selecione</option>
-                <option value="{{old('class') ?? $animals->class ?? '' }}" selected>
-                    @lang("labels.$animals->class")
-                </option>
-                <option value="heifer">
-                    Novilha (Fêmea que já atingiu a maturidade sexual mas ainda não criou)
-                </option>
-                <option value="cow-lactating">
-                    Vaca Lactante (Fêmea sexualmente ativa e que está produzindo leite)
-                </option>
-                <option value="cow-non-lactating">
-                    Vaca Não Lactante (Fêmea sexualmente ativa mas que não está produzindo leite)
-                </option>
-                <option value="cow-dry">
-                    Vaca Seca (Fêmea sexualmente ativa que não está lactando por quanto)
-                </option>
-                <option value="she-calves">
-                    Bezerra (Fêmea recém nascida até o desmame)
-                </option>
-                <option value="bull-reproductive">
-                    Touro (Macho sexualmente ativo)
-                </option>
-                <option value="bull-castrated">
-                    Capão (Macho castrado)
-                </option>
-                <option value="bull-ruffian">
-                    Bezerro (Macho recém nascido até o desmame)
-                </option>
-            </select>
-            <small class="form-text">exemplo: novilha</small>
-        </div>
         <div class="form-group">
             <div class="form-group mb-3">
                 <label class="form-control-label" for="confirm_password">

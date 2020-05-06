@@ -5,10 +5,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function () {
 //    Route::resource('user', 'UserController', ['except' => ['show']]);
-    Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
-    Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
+    Route::get('profile/{id}', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
+    Route::put('profile/{id}', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
     Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
-    Route::post('/search', 'UserController@search')->name('user.search');
+//    Route::get('/search', 'UserController@search')->name('user.search');
 });
 
 
@@ -22,7 +22,7 @@ Route::group(['prefix' => 'animals'], function () {
     Route::put('/update/{id}', 'AnimalController@update')->name('animals.update');
     Route::get('/show/{id}', 'AnimalController@show')->name('animals.show');
     Route::get('/destroy/{id}', 'AnimalController@destroy')->name('animals.destroy');
-    Route::post('/search', 'AnimalController@search')->name('animals.search');
+    Route::get('/search', 'AnimalController@search')->name('animals.search');
     Route::get('/reports/all', 'AnimalController@animalsReports')->name('animals.report');
 });
 
@@ -35,6 +35,8 @@ Route::group(['prefix' => 'cio'], function () {
     Route::put('/update/{id}', 'AnimalHeatController@update')->name('cio.update');
     Route::get('/show/{id}', 'AnimalHeatController@show')->name('cio.show');
     Route::post('/search', 'AnimalHeatController@search')->name('cio.search');
+    Route::get('/animal/{id}', 'AnimalHeatController@heatByAnimal')->name('cio.heatByAnimal');
+
 });
 /* ** */
 
@@ -49,6 +51,7 @@ Route::namespace('Admin')//rotas do admin
         Route::post('/search', 'UserController@search')->name('user.search');
 
         Route::resource('/farm', 'FarmController');
+        Route::get('profile/{id}', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     });
 
 Route::namespace('Client')//rotas do cliente

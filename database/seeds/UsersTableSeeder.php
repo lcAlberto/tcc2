@@ -49,7 +49,6 @@ class UsersTableSeeder extends Seeder
             'email' => 'admin@email.com',
             'password' => \Hash::make('123456'),
             'email_verified_at' => '2019-11-23 01:01:01',
-//            'farm_id' => 1
         ]);
 
         $user->save();

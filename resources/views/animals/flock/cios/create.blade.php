@@ -8,12 +8,12 @@
                 <div class="card bg-secondary shadow">
                     <div class="card-header bg-white border-0">
                         <div class="row align-items-center">
-                            <div class="col-8">
-                                Novo Ciclo Reprodutivo
+                            <div class="col-lg-8 col-md-8 col-sm-12">
+                                <h3>Novo Ciclo Reprodutivo</h3>
                             </div>
-                            <div class="col-4 text-right">
+                            <div class="col-lg-4 col-md-4 col-sm-12 text-right">
                                 <a href="{{ route('cio.index') }}"
-                                   class="btn btn btn-primary">
+                                   class="btn btn btn-primary btn-block">
                                     <i class="fa fa-arrow-left mr-2"></i>@lang('labels.Back')
                                 </a>
                             </div>
@@ -31,7 +31,7 @@
                                   name="user-form"
                                   action="{{route('cio.store')}}">
                                 @include('animals.flock.cios.partials._create-form')
-                                <div class="col-5">
+                                <div class="col-lg-5 col-md-5 col-sm-12">
                                     <button class="btn btn-success btn-block" type="submit">
                                         <i class="fa fa-check mr-2"></i>@lang('labels.Create')
                                     </button>

@@ -14,7 +14,7 @@
     </form>
 @else
     <a class="btn  btn-success"
-       href="{{ route('profile.edit') }}">
+       href="{{ route('profile.edit', auth()->user()->id) }}">
         <i class="fa fa-pen"></i>
     </a>
 @endif

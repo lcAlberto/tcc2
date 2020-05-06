@@ -11,6 +11,7 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         $permissions = $this->getPermissions();
+//        dd($permissions);
         $permissions = PermissionsHelper::getFlattenPermissions($permissions);
         foreach ($permissions as $permission) {
             $model = Permission::firstOrNew(['name' => $permission]);

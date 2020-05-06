@@ -7,4 +7,4 @@
 <th>Parto previsto</th>
 <th>Status</th>
 <th>Parto</th>
-<th></th>
+<th>Operações</th>

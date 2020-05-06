@@ -15,7 +15,7 @@ class Farm extends Model
         'cep',
         'city',
         'state',
-        'auth_user'
+//        'auth_user'
     ];
 
     protected $dates = ['deleted_at'];
@@ -28,5 +28,10 @@ class Farm extends Model
     public function animals()
     {
         return $this->hasMany(Animal::class);
+    }
+
+    public function AnimalHeat()
+    {
+        return $this->hasMany(AnimalHeat::class);
     }
 }

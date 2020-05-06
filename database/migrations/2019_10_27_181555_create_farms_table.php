@@ -19,7 +19,7 @@ class CreateFarmsTable extends Migration
             $table->string('cep');
             $table->string('city');
             $table->string('state');
-            $table->string('auth_user');
+//            $table->string('auth_user');
             $table->softDeletes();
             $table->timestamps();
         });

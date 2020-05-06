@@ -87,15 +87,12 @@
                                         </li>
                                         <li class="list-group-item">
                                             Criado pelo usuário ID:
-                                            <strong> {{ $cio->responsible_id }}</strong>
+                                            <strong> {{ $cio->user_id }}</strong>
                                         </li>
                                     </ul>
                                 </div>
                                 <div class="col-sm">
                                     <div class="card">
-                                        <div class="card-header text-white bg-gradient-indigo">
-                                            {{$animal->nome}}
-                                        </div>
                                         <div class="card-body">
                                             <img src="{{asset('animals/' . $animal->thumbnail) }}"
                                                  alt="image"

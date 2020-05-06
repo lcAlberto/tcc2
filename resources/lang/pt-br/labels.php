@@ -37,6 +37,8 @@ return [
     'Events' => 'Eventos',
     'Cios' => 'Cios',
     'Cio' => 'Cio',
+    'reproductive-cycle', 'ciclo reprodutivo',
+    'Reproductive-Cycle', 'Ciclo Reprodutivo',
     'Create' => 'Criar',
 
     //Title
@@ -100,6 +102,40 @@ return [
     'Login' => 'Entrar',
     'Register' => 'Registrar-se',
     'profile' => 'Perfil',
+
+    //Enuns
+    'cow-lactating' => 'Vaca Lactante',
+    'cow-non-lactating' => 'Vaca Não-Lactante',
+    'cow-dry' => 'Vaca Seca',
+    'heifer' => 'Novilha',
+    'she-calves' => 'Bezerra',
+    'he-calves' => 'Bezerro',
+    'bull-reproductive' => 'Touro',
+    'bull-castrated' => 'Capão',
+    'bull-ruffian' => 'Rufião',
+    'unknow' => 'Desconhecido(a)',
+    'mother' => 'mãe',
+
+    'alive' => 'vivo',
+    'dead' => 'morto',
+    'sold' => 'vendido',
+
+    'male' => 'macho',
+    'femeale' => 'femeale',
+
+    'success' => 'sucesso',
+    'abortion' => 'aborto',
+    'pending' => 'pendente',
+    'cleaning' => 'limpeza',
+
+    'insemination' => 'inseminação',
+    'natural' => 'natural',
+
+
+
+
+
+
 
 
 ];

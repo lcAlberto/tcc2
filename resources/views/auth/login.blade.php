@@ -11,6 +11,12 @@
                         </div>
                         <form role="form" method="POST" action="{{ route('login') }}">
                             @csrf
+                            @if ($errors->has('email') || $errors->has('password'))
+                                <div class="alert alert-danger">
+                                    Não foi possivel efetuar o login.
+                                    Se você nao tem login ainda, clique em Registrar-se
+                                </div>
+                            @endif
 
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : 'email inválido!' }} mb-3">
                                 <div class="input-group input-group-alternative">
@@ -23,7 +29,7 @@
                                 </div>
                                 @if ($errors->has('email'))
                                     <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong class="is-invalid">Oops! suas credenciais estão erradas!</strong>
                                     </span>
                                 @endif
                             </div>

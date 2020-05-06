@@ -16,7 +16,7 @@ use App\Enums\AnimalClassEnum;
 Class AnimalRepository
 {
 
-    public function createAnimalProfile(FlockRequest $request)
+    public function createAnimalProfile($request)
     {
         $data = $request->all();
         if ($request->thumbnail != null) {
@@ -29,34 +29,29 @@ Class AnimalRepository
             return UserRepository::profileDefault($data);
     }
 
-    public function updateAnimalProfile($current)
+    public function updateAnimalProfile($current, $request)
     {
-        $data = $current->thumbnail;
-        if ($current->thumbnail != null) {
+        $data = $request->all();
+        if (isset($data['thumbnail'])) {
             $profileName = $current->name;
             request()->thumbnail->move(public_path('animals/'), $profileName);
             $data['thumbnail'] = $profileName;
             return $data;
-        }
-        if (isset($current->thumbnail))
+        }else if (isset($current->thumbnail))
             $data['thumbnail'] = $current->thumbnail;
         else
             UserRepository::profileDefault($data);
         return $data;
     }
 
-    public function validationDt_nasc(Request $request, $data)
+    public function validationOfBorn_date($data)
     {
-        $atual = new DateTime();
-        $hoje = $atual->format('Y/m/d');
-        $dt_nascimento = $request->dt_nascimento;
-        if ($dt_nascimento > $hoje) {
-            return $this->idadeAnimal();
-        } else if ($dt_nascimento < $hoje)
-            return redirect()->route('flock.index')->with($php_errormsg = "Future_Dt_nascimento");
+        $data['born_date'] = date('Y-m-d H:i:s', strtotime($data['born_date']));
+
+        return $data;
     }
 
-    public function ageCalculation(Request $request, $data)
+    public static function ageCalculation(Request $request, $data)
     {
         $atual = new DateTime();
         $hoje = $atual->format('Y/m/d');
@@ -71,29 +66,9 @@ Class AnimalRepository
         return $erro;
     }
 
-//    public function verifyPhase($request, $data)
-//    {
-//        $idade = $this->ageCalculation($request, $data);
-//
-//        if ($data['sex'] == AnimalSexEnum::MALE) {
-//            if ($idade <= 0.5)
-//                $data['class'] = AnimalClassEnum::HE_CALVES;
-//            elseif (($idade > 0.5) && ($idade <= 1.0))
-//                $data['class'] = AnimalClassEnum::HE_CALVF;
-//        } elseif ($data['sex'] == AnimalSexEnum::FEMEALE) {
-//            if ($idade <= 0.5)
-//                $data['class'] = AnimalClassEnum::SHE_CALVES;
-//            elseif (($idade > 0.5) && ($idade <= 1.0))
-//                $data['phase'] = AnimalClassEnum::HEIFER;
-//            else
-//                return $request->messages();
-//        }
-//        return $data;
-//    }
-
     public static function created_by($data)
     {
-        $data['responsible_id'] = auth()->user()->id;
+        $data['user_id'] = auth()->user()->id;
 
         return $data;
     }

@@ -21,7 +21,7 @@ class AnimalHeatsTableSeeder extends Seeder
             'father' => '1 - Aron',
             'childbirth_type' => 'natural',
             'status' => 'pending',
-            'responsible_id' => 1,
+            'farm_id' => 1,
             'animal_id' => 1
         ]);
 

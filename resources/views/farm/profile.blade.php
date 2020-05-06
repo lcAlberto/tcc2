@@ -56,7 +56,7 @@
                 <div class="card bg-secondary shadow border-0">
                     <div class="card-body px-lg-5 py-lg-5 text-darker">
                         <h2>Conferindo...</h2>
-                        <form method="post" action="{{ route('profile.update') }}" autocomplete="off"
+                        <form method="post" action="{{ route('profile.update', auth()->user()->id) }}" autocomplete="off"
                               enctype="multipart/form-data">
                             @csrf
                             @method('put')

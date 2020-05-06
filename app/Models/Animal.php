@@ -20,26 +20,27 @@ class Animal extends Model
         'mother',
         'father',
         'farm_id',
-        'responsible_id'
+        'user_id'
     ];
 
     protected $dates = ['deleted_at'];
 
+    /*RELACIONAMENTOS*/
+
     public function farm()
     {
-        return $this->belongsTo(Farm::class, 'farm_id', 'id');
+        return $this->belongsTo(Farm::class);
     }
 
-    public function heats()
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function AnimalHeat()
     {
         return $this->hasMany(AnimalHeat::class);
     }
-
-    public function responsible()
-    {
-        return $this->belongsTo(User::class, 'responsible_id', 'id');
-    }
-
 
     /*SEARCH*/
     public function search(Array $data)

@@ -12,15 +12,8 @@ class UserRepository
     public function createAdminUser($data, $avatar = null)
     {
         $data['password'] = Hash::make($data['password']);
-
-        if ($avatar) {
-            $data['thumbnail'] = Storage::disk('public')->put('users', $avatar);
-        } else {
-            $data['thumbnail'] = 'default.jpg';
-        }
-
+        $data['thumbnail'] = 'default.jpg';
         $user = User::create($data);
-
         return $user;
     }
 
@@ -29,8 +22,8 @@ class UserRepository
         $data['password'] = Hash::make($data['password']);
 
         if ($avatar) {
-            $data['thumbnail'] = Storage::disk('public')->put('users/avatar', $avatar);
-            $data['thumbnail'] = $avatar;
+            $data['thumbnail'] = $avatar->getClientOriginalName();
+            request()->thumbnail->move(public_path() . '/profile', $data['thumbnail']);
         } else {
             $data['thumbnail'] = 'default.jpg';
         }
@@ -48,18 +41,25 @@ class UserRepository
     public function updateProfileUser($data, $avatar = null)
     {
         if ($avatar) {
-            $data['thumbnail'] = Storage::disk('public')->put('users/avatar', $avatar);
+            $data['thumbnail'] = $avatar->getClientOriginalName();
+            request()->thumbnail->move(public_path() . '/profile', $data['thumbnail']);
         } else {
             $data['thumbnail'] = 'default.jpg';
         }
+//        }if ($avatar) {
+//            $data['thumbnail'] = Storage::disk('public')->put('users/avatar', $avatar);
+//        } else {
+//            $data['thumbnail'] = 'default.jpg';
+//        }
 
         return $data;
     }
 
-    public function updateAdminProfileUser($data, $avatar = null)
+    public function updateAdminProfile($data, $avatar)
     {
         if ($avatar) {
-            $data['thumbnail'] = Storage::disk('public')->put('users/avatar', $avatar);
+            $data['thumbnail'] = $avatar->getClientOriginalName();
+            request()->thumbnail->move(public_path() . '/profile', $data['thumbnail']);
         } else {
             $data['thumbnail'] = 'default.jpg';
         }
@@ -73,8 +73,8 @@ class UserRepository
         $data['password'] = Hash::make($data['password']);
 
         if ($avatar) {
-            Storage::disk('public')->delete(User::find($id)->thumbnail);
-            $data['thumbnail'] = Storage::disk('public')->put('users/avatar', $avatar);
+            $data['thumbnail'] = $avatar->getClientOriginalName();
+            request()->thumbnail->move(public_path() . '/profile', $data['thumbnail']);
         }
 
         $user = User::find($id)->update($data);
@@ -94,5 +94,40 @@ class UserRepository
         } else {
             return self::profileDefault($data);
         }
+    }
+
+    public static function profileDefault($data)
+    {
+        $profileName = $data['name'];
+        $profile = copy('default.jpg', public_path() . '/profile' . $profileName);
+        $data['thumbnail'] = $data['name'];
+        return $data;
+    }
+
+    /*QUERYS*/
+
+    public function queryOutput($querys)
+    {
+        $users = "";
+        if ($querys) {
+            foreach ($querys as $key => $user) {
+                if ($user->farm_id == auth()->user()->farm_id) {
+                    $users = '<tr class="text-center">' .
+                        '<td><img src="' . asset('/profile/' . $user->thumbnail) . '" alt="image" width="50" height="50" class="rounded"></td>' .
+                        '<td>' . $user->name . '</td>' .
+                        '<td> <a href="mailto:' . $user->email . '">' . $user->email . '</a>' . '</td>' .
+                        '<td>' . $user->phone . '</td>' .
+                        '<td> ROLES </td>' .
+                        '<td class="btn-group">
+                                <a class="btn btn-group btn-primary" href="' . route('user.index', $user->id) . '">
+                                    <i class="fa fa-arrow-right"></i>
+                                </a>' .
+                        ' </td > ' .
+                        '</tr > ';
+                }
+            }
+        }
+//        echo $users;
+        return $users;
     }
 }

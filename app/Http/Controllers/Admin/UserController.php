@@ -8,24 +8,28 @@ use App\Models\User;
 use App\Models\Farm;
 use App\Repositories\UserRepository;
 use App\Http\Requests\UserRequest;
+use http\Env\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 use App\Enums\UserRolesEnum;
 
 class UserController extends Controller
 {
-    public function index(Request $request, User $user, Farm $farm)
+    public function index(Request $request)
     {
         $title = 'User';
-        $users = $farm->users()->paginate(5);
-        $farms = $farm->all();
-        foreach ($farms as $farm_item) {
-            $farm_item->id;
-        }
-        $users = User::orderBy('id', 'DESC')->paginate(5);
 
-        return view('users.index', compact('users', 'farms', 'farm_item', 'title'))
+        /*Retorna a fazenda cujo usuario pertence*/
+        $farm = Farm::find(auth()->user()->id);
+
+        /* Retorna todos os usuarios da fazenda  */
+        $users = Farm::find(auth()->user()->id)->users;
+
+
+        return view('users.index', compact('farm', 'users', 'title'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -42,9 +46,10 @@ class UserController extends Controller
         $data = $userRequest->validated();
         $avatar = $userRequest->file('thumbnail');
         $users = $repository->createClientUser($data, $avatar);
+        $userRole = $user->roles->pluck('name', 'name')->all();
 
         $mensagem = 'Usuário cadastrado com sucesso!';
-        return redirect()->route('admin.user.index')->with('success', $mensagem);
+        return redirect()->route('admin.user.index')->with('success', $mensagem, $userRole);
     }
 
     public function edit($id)
@@ -62,7 +67,9 @@ class UserController extends Controller
         $avatar = $userRequest->file('thumbnail');
         $user = $repository->updateUser($data, $avatar, $id);
 
-        $mensagem = 'Usuário cadastrado com sucesso!';
+        $mensagem = $userRequest->mensagem;
+        $userRequest->session()->flash('alert-success', 'Usuário Atualizado!',
+            'alert-danger', 'Oops! não foi possível atualizar!');
         return redirect()->route('admin.user.index')->with('success', $mensagem);
     }
 
@@ -87,18 +94,17 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
-    public function search(Request $request, User $user)
+    public function search(Request $request, UserRepository $userRepository)
     {
         $title = 'search';
-        $dataForm = $request->all();
-        $users = $user->search($dataForm);
+        $farm = Farm::find(auth()->user()->id);
+        $users = DB::table('users')
+            ->where('name', 'ilike', '%' . $request->search . '%')
+            ->orWhere('email', 'ilike', '%' . $request->search . '%')
+            ->orWhere('phone', 'ilike', '%' . $request->search . '%')
+            ->orWhere('farm_id', 'ilike', '%' . $request->search . '%')
+            ->get();
 
-        $farms = Farm::all();
-        foreach ($farms as $farm_item) {
-            $farm_item->id;
-        }
-
-        return view('users.index', compact(['users'], 'title', 'farms', 'farm_item'));
-//        return view('users.index', compact(['users'], 'title'));
+        return view('users.index', compact(['users'], 'title', 'farm'));
     }
 }

@@ -18,14 +18,20 @@ class AnimalHeat extends Model
         'childbirth_type',//tipo de cobertura
         'father',//pai
         'status',//status
-        'responsible_id'//usuario q cadastrou
+        'farm_id',//usuario q cadastrou
+        'animal_id',
     ];
 
     protected $dates = ['deleted_at'];
 
     public function animal()
     {
-        return $this->belongsTo(Animal::class, 'animal_id', 'id');
+        return $this->belongsTo(Animal::class);
+    }
+
+    public function farm()
+    {
+        return $this->belongsTo(Farm::class);
     }
 
     /*SEARCH*/

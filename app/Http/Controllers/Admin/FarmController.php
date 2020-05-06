@@ -29,13 +29,27 @@ class FarmController extends Controller
     {
         $data = $request->validated();
         $data['id'] = auth()->user()->id;
-        $data['auth_user'] = auth()->user()->id;
-        $user->farm()->create($data);
+/*
+        $current = User::find(auth()->user()->id);
+
+        $currentData['name'] = $current->name;
+        $currentData['email'] = $current->email;
+        $currentData['password'] = $current->password;
+        $currentData['phone'] = $current->phone;
+        $currentData['thumbnail'] = $current->thumbnail;
+        $currentData['farm_id'] = auth()->user()->id;
+//        dd($currentData);
+        $farm->users()->update($currentData);
+
+//        $user->update($currentData);
+*/
+        $farm->create($data);
 
         $mensagem = 'Fazenda cadastrada com sucesso!';
         $msg = $request->messages();
-//        return redirect()->route('admin.user.index')->with('success', $mensagem);
+
         return view('farm.profile', compact('mensagem', 'msg'));
+//        return redirect()->route('home')->with($mensagem, $msg);
     }
 
     public function edit(Farm $farm, User $user)
@@ -51,7 +65,8 @@ class FarmController extends Controller
         $data = $request->all();
         $id_ = auth()->user()->id;
         $data['id_users'] = $id_;
-        $farm->create($data);
+        $farms = $farm->create($data);
+        $farm->users()->create($farms);
 
         $user->assignRole($request->input('roles'));
 
@@ -75,7 +90,7 @@ class FarmController extends Controller
 
     public function show()
     {
-        dd('vc n deveria estar aki');
+        return view('welcome');
     }
 }
 

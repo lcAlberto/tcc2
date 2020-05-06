@@ -9,12 +9,13 @@
                 <div class="card shadow">
                     <div class="card-header border-0">
                         <div class="row align-items-center">
-                            <div class="col-md-2 col-sm-12 mb-2 mb-lg-0 text-left">
+                            <div class="col-md-4 col-sm-12 mb-2 mb-lg-0 text-center">
                                 <h3 class="mb-0">
-                                    Ciclo Reprodutivo
+                                    Acompanhar ciclo reprodutivo
                                 </h3>
                             </div>
-                            <div class="col-md-6 col-lg-7 mb-lg-0 mb-2">
+                            <div
+                                class="col-md-6 {{$title == 'heatByAnimal' ? 'col-md-6' : 'col-md-12'}}col-lg-6 mb-lg-0 mb-2">
                                 <form action="{{route('cio.search')}}" id="pesquisar" method="post" role="search">
                                     {{ csrf_field() }}
                                     <div class="input-group">
@@ -28,13 +29,14 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="col-md-3 col-sm-12 text-right">
-                                @if($title == 'search')
+                            @if($title == 'search')
+                                <div class="col-md-3 col-sm-12 text-right">
+
                                     <a href="{{route('cio.index')}}" class="btn btn-block btn-danger">
                                         <i class="fa fa-arrow-left"></i> Voltar
                                     </a>
-                                @endif
-                            </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="col-12">
@@ -49,15 +51,11 @@
                             </tr>
                             </thead>
                             <tbody>
-{{--                            @if($animal->farm_id == $animal->farm_id)--}}
-                                @foreach($cios as $cio)
-                                    @if($cio->responsible_id == auth()->user()->farm_id)
-                                        <tr>
-                                            @include('animals.flock.cios.partials._body')
-                                        </tr>
-                                    @endif
-                                @endforeach
-{{--                            @endif--}}
+                            @if($title == 'Cio')
+                                @include('animals.flock.cios.partials.table.main-body')
+                            @elseif($title == 'heatByAnimal')
+                                @include('animals.flock.cios.partials.table.heat-by-animal')
+                            @endif
                             </tbody>
                         </table>
                         <div class="card-footer py-4">
@@ -75,6 +73,7 @@
                     </div>
                 </div>
             </div>
-            @include('layouts.footers.auth')
         </div>
+        @include('layouts.footers.auth')
+    </div>
 @endsection
