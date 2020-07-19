@@ -20,12 +20,11 @@ class FlockRequest extends FormRequest
 
     public function rules()
     {
-        $atual = new DateTime();
-        $hoje = $atual->format('Y-m-d');
         return [
             'code' => 'required|unique:animals|numeric',
             'name' => 'required|unique:animals|string|min:4|max:255',
-            'born_date' => 'required|after_or_equal:2010/01/01|before_or_equal:' . $hoje,
+            //before_or_equal:'.$hoje.'after_or_equal:01/01/2010'
+            'born_date' => 'required|before_or_equal:'.today()->format('d/m/Y').'after_or_equal:01/01/2005',
             'sex' => 'required',
             'class' => 'required',
             'status' => 'nullable',

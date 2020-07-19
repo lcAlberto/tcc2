@@ -54,15 +54,37 @@ class AnimalServices
         return $data;
     }
 
-    public function partoSucesso($request, $data)
+    /*public function partoSucesso($request, $data)
     {
         if ($data['status'] == 'success') {
             redirect()->route('animals.create');
         }
         return $data;
     }
+    */
 
-    public function create_by($request, $data)
+    public function statusVerification($data, $current)
+    {
+        if ($data['date_childbirth_foreseen'] == today()->format('Y-m-d H:m:s')
+        && $data['status'] == 'success')
+            $data['date_childbirth'] = today()->format('Y-m-d H:m:s');
+        else {
+            $data['status'] = $current->status;
+        }
+        return $data;
+    }
+
+    /*
+    public function date_childbirth_foreseenVerification($data)
+    {
+        if ($data['date_childbirth_foreseen'] == today()->format('Y-m-d H:m:s'))
+            $data['date_childbirth'] = today()->format('Y-m-d H:m:s');
+        return $data;
+    }
+    */
+
+    public
+    function create_by($data)
     {
         $data = AnimalRepository::created_by($data);
         return $data;

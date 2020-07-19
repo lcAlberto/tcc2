@@ -19,7 +19,6 @@ return [
     'Privacy Policy' => 'Termos de Uso',
     'A fresh verification link has been sent to your email address' => 'Uma nova verificaçao foi enviada ao email cadastrado',
     'Verify Your Email Address' => 'Verifique seu email',
-    'Create new Animal' => 'Registrar novo Animal',
     'fields with' => 'Os campos com',
     'are required' => 'sao obrigatorios',
 
@@ -33,9 +32,11 @@ return [
     'Delete' => 'Deletar',
     'Details' => 'Detalhes',
     'Save' => 'Salvar',
-    'Total Flock' => 'Rebanho Total',
+    'Search' => 'Pesquisar',
+    'search' => 'pesquisar',
+    'Total flock' => 'Rebanho Total',
     'Events' => 'Eventos',
-    'Cios' => 'Cios',
+    'cios' => 'cios',
     'Cio' => 'Cio',
     'reproductive-cycle', 'ciclo reprodutivo',
     'Reproductive-Cycle', 'Ciclo Reprodutivo',
@@ -51,25 +52,25 @@ return [
     'Email' => 'e-mail',
     'email' => 'email',
     'Creation Date' => 'Data de Criaçao',
-    'Birth'=>'Nascimento',
-    'Gender'=>'Sexo',
-    'Classification'=>'Classificaçao',
-    'Mother'=>'Mae',
-    'Father'=>'Pai',
+    'Birth' => 'Nascimento',
+    'Gender' => 'Sexo',
+    'Classification' => 'Classificaçao',
+    'Mother' => 'Mae',
+    'Father' => 'Pai',
     'Operations Avaliable' => 'Operaçoes Disponiveis',
     'Current Password' => 'Senha Atual',
-    'Confirm New Password'=> 'Confirmar nova Senha',
-    'Change password'=> 'Alterar Senha',
-    'Activity'=> 'Atividade',
-    'Settings'=> 'Configuraçoes',
-    'Flock'=> 'Rebanho',
-    'Cow'=> 'Vaca',
-    'Cows'=> 'Vacas',
-    'Total'=> 'Total',
-    'Infants'=> 'Novilhas',
-    'Dry'=> 'Secas',
-    'Heifers'=> 'Lactantes',
-    'Bulls'=> 'Touros',
+    'Confirm New Password' => 'Confirmar nova Senha',
+    'Change password' => 'Alterar Senha',
+    'Activity' => 'Atividade',
+    'Settings' => 'Configuraçoes',
+    'flock' => 'Rebanho',
+    'Cow' => 'Vaca',
+    'Cows' => 'Vacas',
+    'Total' => 'Total',
+    'Infants' => 'Novilhas',
+    'Dry' => 'Secas',
+    'Heifers' => 'Lactantes',
+    'Bulls' => 'Touros',
 
     'Street' => 'Rua',
     'Postal Code' => 'CEP',
@@ -103,6 +104,44 @@ return [
     'Register' => 'Registrar-se',
     'profile' => 'Perfil',
 
+
+    //Titles
+
+    //flock
+    'flock Managment' => 'Gerenciamento do Rebanho',
+    'Manage your animals here. This is your whole herd' =>
+        'Gerencie seus animais aqui. Este é todo o seu rebanho',
+
+    'Create new Animal' => 'Cadastrar um novo animal',
+    'Check all fields providing the necessary data' =>
+        'Edite este animal. Verifique todos os campos fornecendo os dados necessários',
+    'Edit this animal' => 'Editar animal',
+
+    'Details of this animal' => 'Detalhes do Animal',
+    'Follow the reproductive cycle of the herd' => 'Acompanhar ciclo reprodutivo',
+
+
+    //cios
+    'Reproductive cycle management' => 'Gerenciamento do ciclo reprodutivo',
+    'Reproductive cycle per animal' => 'Ciclo reprodutivo por animal',
+
+    'Here you manage the entire reproductive cycle of each animal' =>
+        'Aqui você gerencia todo o ciclo reprodutivo de cada animal',
+
+    'Edit this reproductive cycle' =>'Editar este ciclo reprodutivo',
+    'Register a new reproductive cycle' =>'Cadastrar novo ciclo reprodutivo',
+
+    //health
+    'Treatment by specific animal' => 'Tratamento por animal específico',
+    'Treatment of all animals' => 'Tratamento de todos os animais',
+    'New treatment record' => 'Novo registro de tratamento',
+    'Edit treatment record' => 'Editar registro de tratamento',
+    'Treatment details' => 'Detalhes do tratamento',
+
+
+
+
+
     //Enuns
     'cow-lactating' => 'Vaca Lactante',
     'cow-non-lactating' => 'Vaca Não-Lactante',
@@ -130,12 +169,6 @@ return [
 
     'insemination' => 'inseminação',
     'natural' => 'natural',
-
-
-
-
-
-
 
 
 ];

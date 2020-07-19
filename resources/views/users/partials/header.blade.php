@@ -1,14 +1,14 @@
 @if(isset($user->id))
     <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
          style="background-size: cover;
-                 background-position: center;
-                 background-image: url('{{asset('/profile/'. $user->thumbnail) }}')">
-        <span class="mask bg-gradient-success opacity-6"></span>
+             background-position: center;
+             background-image: url('{{asset($user->thumbnail) }}')">
+        <span class="mask bg-gradient-success opacity-5"></span>
         @else
             <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
                  style="background-size: cover;
-                         background-position: center;
-                         background-image: url({{asset('/argon/animals-blond-hair-cattle-1881334.jpg')}});">
+                     background-position: center;
+                     background-image: url({{asset('/argon/animals-blond-hair-cattle-1881334.jpg')}});">
                 <span class="mask bg-gradient-danger opacity-5"></span>
             @endif
             <!-- Mask -->

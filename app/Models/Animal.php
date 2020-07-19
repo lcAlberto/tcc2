@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Animal extends Model
 {
     use SoftDeletes;
+
     protected $fillable = [
         'code',
         'name',
@@ -42,13 +43,28 @@ class Animal extends Model
         return $this->hasMany(AnimalHeat::class);
     }
 
+
+//    public function scopeFarmAnimal($query)
+//    {
+//        return $query->where('farm_id', '=', auth()->user()->id);
+//    }
+
     /*SEARCH*/
-    public function search(Array $data)
+    public function search($data)
     {
         $animals = $this->where(function ($query) use ($data) {
-            if (isset($data['name']))
-                $query->where('name', 'like', '%' . $data['name'] . '%');
+            if (isset($data['search']))
+//                $query->where('farm_id', '=', auth()->user()->farm_id)
+                $query->where('code', 'ilike', '%' . $data['search'] . '%')
+                    ->orWhere('code', 'ilike', '%' . $data['search'] . '%')
+                    ->orWhere('name', 'ilike', '%' . $data['search'] . '%')
+                    ->orWhere('breed', 'ilike', '%' . $data['search'] . '%')
+                    ->orWhere('sex', 'ilike', '%' . $data['search'] . '%')
+                    ->orWhere('mother', 'ilike', '%' . $data['search'] . '%')
+                    ->orWhere('father', 'ilike', '%' . $data['search'] . '%')
+                    ->get();
         });
+
         return $animals->get();
     }
 }

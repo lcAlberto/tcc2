@@ -4,4 +4,7 @@ $("#cep").mask("00000-000");
 $("#dt_nascimento").mask("00/00/0000");//YYYY-MM-DD HH:MM:SS.
 $("#date_coverage").mask("00/00/0000");//YYYY-MM-DD HH:MM:SS.
 $("#dt_cio").mask("00/00/0000");//YYYY-MM-DD HH:MM:SS.
+$("#date_symptom").mask("00/00/0000");//YYYY-MM-DD HH:MM:SS.
+$("#start_of_treatment").mask("00/00/0000");//YYYY-MM-DD HH:MM:SS.
+$("#end_of_treatment").mask("00/00/0000");//YYYY-MM-DD HH:MM:SS.
 // $("#dt_cobertura").mask("00/00/0000");

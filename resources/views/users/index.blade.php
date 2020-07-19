@@ -11,7 +11,7 @@
                             <div class="col-lg-2 col-sm-12 float-center m-sm-2">
                                 <h3 class="mb-0">@lang('labels.Users')</h3>
                             </div>
-                            <div class="col-lg-7 col-12 m-sm-2">
+                            <div class="col-lg-6 col-12 m-sm-2">
                                 <form action="{{ route('admin.user.search') }}" method="post" role="search">
                                     {{ csrf_field() }}
                                     <div class="input-group">
@@ -25,9 +25,9 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="col-lg-2 col-sm-12 float-right">
+                            <div class="col-lg-3 col-sm-12 float-right">
                                 @if($title == 'search')
-                                    <a href="{{route('admin.user.index')}}" class="btn btn-danger btn-block">
+                                    <a href="{{ URL::previous() }}" class="btn btn-danger btn-block">
                                         <i class="fa fa-arrow-left"></i>@lang('labels.Back')</a>
                                 @endif
                                 @if($title == 'User')
@@ -63,7 +63,7 @@
                                 {{$users->links()}}
                             @endif
                             @if($title == 'search')
-                                <a href="{{route('admin.user.index')}}" class="btn btn-sm btn-danger">
+                                <a href="{{ URL::previous() }}" class="btn btn-sm btn-danger">
                                     <i class="fa fa-arrow-left"></i>@lang('labels.Back')
                                 </a>
                             @endif

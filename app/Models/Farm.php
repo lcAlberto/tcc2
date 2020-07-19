@@ -34,4 +34,9 @@ class Farm extends Model
     {
         return $this->hasMany(AnimalHeat::class);
     }
+
+    public function Health()
+    {
+        return $this->hasMany(Health::class);
+    }
 }

@@ -65,18 +65,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Form -->
-{{--            <form class="mt-4 mb-3 d-md-none">--}}
-{{--                <div class="input-group input-group-rounded input-group-merge">--}}
-{{--                    <input type="search" class="form-control form-control-rounded form-control-prepended"--}}
-{{--                           placeholder="{{ __('Search') }}" aria-label="Search">--}}
-{{--                    <div class="input-group-prepend">--}}
-{{--                        <div class="input-group-text">--}}
-{{--                            <span class="fa fa-search"></span>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </form>--}}
             <!-- Navigation -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -90,7 +78,7 @@
                     <a class="nav-link" href="#navbar-flock" data-toggle="collapse" role="button"
                        aria-expanded="true" aria-controls="navbar-examples">
                         <i class="fa fa-paste"></i>
-                        <span class="nav-link-text">@lang('labels.Flock')</span>
+                        <span class="nav-link-text">@lang('labels.flock')</span>
                     </a>
                     <div class="collapse show" id="navbar-flock">
                         <ul class="nav nav-sm flex-column">
@@ -104,7 +92,7 @@
                                     <i class="fa fa-venus-mars mr-2"></i>Ciclo Reprodutivo</a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('health.index') }}" class="nav-link">
                                     <i class="fa fa-heartbeat mr-2"></i>Saúde e Tratamentos</a>
                             </li>
                         </ul>

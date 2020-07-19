@@ -24,18 +24,19 @@ class AnimalController extends Controller
     public function index()
     {
         $animals = Farm::find(auth()->user()->farm_id)->animals;//retorna todos os animais da fazenda
-        $title = 'Flock';
+        $title = 'flock Managment';
+        $description = 'Manage your animals here. This is your whole herd';
         $animals = Animal::where('farm_id', '=', auth()->user()->farm_id)->paginate($this->paginate);
 
-        return view('animals.flock.index', compact('animals', 'title'));
+        return view('flock.index', compact('animals', 'title', 'description'));
     }
 
     public function create(Animal $animal)
     {
         $title = 'Create new Animal';
-        $animals = $animal->all();
-
-        return view('animals.flock.create', compact('animals', 'title'));
+        $description = 'Cadastre novos animais. Verifique todos os campos fornecendo os dados necessários';
+        $animals = Farm::find(auth()->user()->farm_id)->animals;
+        return view('flock.create', compact('animals', 'title', 'description'));
     }
 
     public function store(FlockRequest $request, AnimalRepository $auxAnimal, Animal $animal)
@@ -56,9 +57,10 @@ class AnimalController extends Controller
     {
         $animals = Animal::find($id);
         if (isset($animals) && ($animals->farm_id == auth()->user()->farm_id)) {
-            $title = 'Edit new Animal';
+            $title = 'Edit this animal';
+            $description = 'Check all fields providing the necessary data';
             $dateTime = new DateTime();
-            return view('animals.flock.edit', compact('animals', 'title', 'dateTime'));
+            return view('flock.edit', compact('animals', 'title', 'description', 'dateTime'));
         } else
             return redirect()->route('animals.index');
     }
@@ -81,8 +83,9 @@ class AnimalController extends Controller
     public function show(Animal $animal, AnimalHeat $animalHeat, $id)
     {
         $animals = $animal->find($id);
+        $title = 'Details of this animal';
         if (isset($animals) && ($animals->farm_id == auth()->user()->farm_id))
-            return view('animals.flock.show', compact('animals'));
+            return view('flock.show', compact('animals', 'title'));
         else
             return redirect()->route('animals.index');
     }
@@ -90,13 +93,13 @@ class AnimalController extends Controller
     public function destroy(Request $request, $id)//$animal_id
     {
         $animal = Animal::find($id);
-        if(($animal != null) && ($animal->farm_id == auth()->user()->farm_id)) {
+        if (($animal != null) && ($animal->farm_id == auth()->user()->farm_id)) {
             Animal::destroy($id);//Não deleta do banco, so da listagem
-            $request->session()->flash("'alert-warning', 'Animal Deletado !',
+            $msg = $request->session()->flash("'alert-warning', 'Animal Deletado !',
             'alert-danger', 'Oops! não foi possível deletar!'");
             return redirect()->route('animals.index')
                 ->with('success', 'User deleted successfully');
-        }else
+        } else
             return redirect()->route('animals.index');
     }
 
@@ -111,20 +114,14 @@ class AnimalController extends Controller
 //        return $report->download('flock-all.pdf');
     }
 
-    public function search(Request $request)
+    public function search(Animal $model, Request $request)
     {
         $title = 'search';
-        $animals = DB::table('animals')
-            ->where('code', 'ilike', '%' . $request->search . '%')
-            ->orWhere('name', 'ilike', '%' . $request->search . '%')
-            ->orWhere('breed', 'ilike', '%' . $request->search . '%')
-            ->orWhere('sex', 'ilike', '%' . $request->search . '%')
-            ->orWhere('mother', 'ilike', '%' . $request->search . '%')
-            ->orWhere('father', 'ilike', '%' . $request->search . '%')
-            ->get();
+        $data = $request->all();
+        $animals = $model->search($data);
 
-//        return view('animals.flock.index', compact(['users'], 'title', 'farm'));
-        return view('animals.flock.index', compact('animals', 'title'))
+        return view('flock.index', compact('animals', 'title'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
+
     }
 }

@@ -19,7 +19,11 @@
     <link href="{{ asset('argon') }}/vendor/nucleo/css/nucleo.css" rel="stylesheet">
     <link href="{{ asset('argon') }}/vendor/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
     <link href="{{ asset('/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{asset('/css/select2-bootstrap.css')}}" rel="stylesheet">
 
+    <!-- select2 -->
+{{--    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />--}}
+    <link href="{{asset('/css/select2.min.css')}}" rel="stylesheet">
     <!-- datatables -->
 {{--    <link href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css" rel="stylesheet">--}}
 {{--    <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap.min.css" rel="stylesheet">--}}
@@ -35,7 +39,7 @@
     @include('layouts.navbars.sidebar')
 @endauth
 
-<div class="main-content">
+<div class="main-content" id="app">
     @include('layouts.navbars.navbar')
     @yield('content')
 </div>
@@ -54,6 +58,7 @@
 {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>--}}
 {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>--}}
 <script src="{{ asset('/js/cep.js') }}"></script>
+<script src="{{asset('js/select2.min.js')}}" type="text/javascript"></script>
 <!-- Datatables -->
 {{--<script src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>--}}
 
@@ -62,23 +67,30 @@
 <!-- Argon JS -->
 <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
 {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>--}}
-<script type="text/javascript">
-    /*$('#user-search').on('keyup',function(){
-        $value=$(this).val();
-        $.ajax({
-            type : 'get',
-            {{--url : '{{URL::to('/admin/user/search')}}',--}}
-            url : {{-- '{{route('admin.user.search')}}', --}}
-            data:{'search':$value},
-            success:function(data){
-                // alert('aki success:function(data){');
-                $('tbody').html(data);
-            }
-        });
-    })*/
-</script>
+{{--<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>--}}
+
 <script type="text/javascript">
     $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#medicament_id").select2({
+            theme: "bootstrap"
+        });
+        $.fn.select2.defaults.set( "theme", "bootstrap" );
+
+    });
+</script>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Olá Vue!'
+        }
+    })
 </script>
 </body>
 </html>

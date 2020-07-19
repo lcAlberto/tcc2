@@ -70,6 +70,7 @@ class RegisterController extends Controller
             }
 
             return $user;
-        }
+        }else
+            return redirect()->back();
     }
 }

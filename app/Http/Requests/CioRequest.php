@@ -15,11 +15,11 @@ class CioRequest extends FormRequest
     public function rules()
     {
         $atual = new DateTime();
-        $hoje = $atual->format('Y-m-d');
+        $hoje = $atual->format('d/m/Y');
         $validator = [
             'animal_id' => 'required',
-            'date_animal_heat' => 'required|before_or_equal:'.$hoje,
-            'date_coverage' => 'required|after_or_equal:2010/01/01|after_or_equal:date_animal_heat',
+            'date_animal_heat' => 'required|before_or_equal:'.$hoje.'after_or_equal:01/01/2010',
+            'date_coverage' => 'required|before_or_equal:01/01/2010|after_or_equal:date_animal_heat',
             'childbirth_type' => 'required',
             'status' => 'nullable',
             'father' => 'nullable',
