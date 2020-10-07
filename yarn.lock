@@ -582,6 +582,44 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@livelybone/copy@^2.6.3":
+  version "2.6.5"
+  resolved "https://registry.yarnpkg.com/@livelybone/copy/-/copy-2.6.5.tgz#9bcffe5222e23734aa0a5d4a4caf58ddd7b72c35"
+
+"@livelybone/date-generator@^4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@livelybone/date-generator/-/date-generator-4.2.1.tgz#c08da13437c1d6adf8ccf2a9e6f2e08244a4fde6"
+
+"@livelybone/mouse-events@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@livelybone/mouse-events/-/mouse-events-1.0.0.tgz#0e16fcc2dc7fcf0c3e6dad9c6a81f4da5c15de7a"
+  dependencies:
+    "@livelybone/mouse-wheel" "^4.2.1"
+    is-mobile "^2.0.1"
+
+"@livelybone/mouse-wheel@^4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@livelybone/mouse-wheel/-/mouse-wheel-4.2.1.tgz#aa3cfd43ef060b3533db55a8902b429b446739af"
+
+"@livelybone/scroll-get@^5.0.2":
+  version "5.0.2"
+  resolved "https://registry.yarnpkg.com/@livelybone/scroll-get/-/scroll-get-5.0.2.tgz#6d278b5adc59c77b268162a87d449e39597ab616"
+
+"@livelybone/vue-datepicker@^4.0.2":
+  version "4.0.2"
+  resolved "https://registry.yarnpkg.com/@livelybone/vue-datepicker/-/vue-datepicker-4.0.2.tgz#be36ad472ab1a30a1ef51253a2302ad44635ecbd"
+  dependencies:
+    "@livelybone/copy" "^2.6.3"
+    "@livelybone/date-generator" "^4.2.1"
+    "@livelybone/vue-popper" "^2.4.0"
+    vue-scrollbar-live "^5.7.1"
+
+"@livelybone/vue-popper@^2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@livelybone/vue-popper/-/vue-popper-2.4.0.tgz#24093266399f394165174f2ce24ae00326111551"
+  dependencies:
+    popper.js "^1.14.4"
+
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
@@ -630,6 +668,12 @@
     prettier "1.16.3"
     source-map "~0.6.1"
     vue-template-es2015-compiler "^1.9.0"
+
+"@vue/composition-api@^0.3.4":
+  version "0.3.4"
+  resolved "https://registry.yarnpkg.com/@vue/composition-api/-/composition-api-0.3.4.tgz#43d2c3377173cfe1d02e51e3342bcf0fbde9c4b6"
+  dependencies:
+    tslib "^1.9.3"
 
 "@webassemblyjs/ast@1.8.5":
   version "1.8.5"
@@ -1551,6 +1595,10 @@ core-js-compat@^3.1.1:
     browserslist "^4.6.6"
     semver "^6.3.0"
 
+core-js@^3.6.4:
+  version "3.6.5"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.6.5.tgz#7395dc273af37fb2e50e9bd3d9fe841285231d1a"
+
 core-util-is@~1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.2.tgz#b5fd54220aa2bc5ab57aab7140c940754503c1a7"
@@ -1592,12 +1640,11 @@ create-hmac@^1.1.0, create-hmac@^1.1.2, create-hmac@^1.1.4:
     safe-buffer "^5.0.1"
     sha.js "^2.4.8"
 
-cross-env@^5.1:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-5.2.0.tgz#6ecd4c015d5773e614039ee529076669b9d126f2"
+cross-env@^5.2.1:
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-5.2.1.tgz#b2c76c1ca7add66dc874d11798466094f551b34d"
   dependencies:
     cross-spawn "^6.0.5"
-    is-windows "^1.0.0"
 
 cross-spawn@6.0.5, cross-spawn@^6.0.0, cross-spawn@^6.0.5:
   version "6.0.5"
@@ -1792,6 +1839,10 @@ cyclist@~0.2.2:
 date-now@^0.1.4:
   version "0.1.4"
   resolved "https://registry.yarnpkg.com/date-now/-/date-now-0.1.4.tgz#eaf439fd4d4848ad74e5cc7dbef200672b9e345b"
+
+de-indent@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/de-indent/-/de-indent-1.0.2.tgz#b2038e846dc33baa5796128d0804b455b8c1e21d"
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3:
   version "2.6.9"
@@ -2625,7 +2676,7 @@ hash.js@^1.0.0, hash.js@^1.0.3:
     inherits "^2.0.3"
     minimalistic-assert "^1.0.1"
 
-he@1.2.x:
+he@1.2.x, he@^1.1.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/he/-/he-1.2.0.tgz#84ae65fa7eafb165fddb61566ae14baf05664f0f"
 
@@ -3020,6 +3071,10 @@ is-glob@^4.0.0:
   dependencies:
     is-extglob "^2.1.1"
 
+is-mobile@^2.0.1:
+  version "2.2.2"
+  resolved "https://registry.yarnpkg.com/is-mobile/-/is-mobile-2.2.2.tgz#f6c9c5d50ee01254ce05e739bdd835f1ed4e9954"
+
 is-number@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/is-number/-/is-number-3.0.0.tgz#24fd6201a4782cf50561c810276afc7d12d71195"
@@ -3078,7 +3133,7 @@ is-symbol@^1.0.2:
   dependencies:
     has-symbols "^1.0.0"
 
-is-windows@^1.0.0, is-windows@^1.0.1, is-windows@^1.0.2:
+is-windows@^1.0.1, is-windows@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/is-windows/-/is-windows-1.0.2.tgz#d1850eb9791ecd18e6182ce12a30f396634bb19d"
 
@@ -3192,6 +3247,10 @@ kind-of@^5.0.0:
 kind-of@^6.0.0, kind-of@^6.0.2:
   version "6.0.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.2.tgz#01146b36a6218e64e58f3a8d66de5d7fc6f6d051"
+
+laravel-echo@^1.6.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/laravel-echo/-/laravel-echo-1.8.1.tgz#356a935098fbe5b534afe2fd61e092eafdfb72c0"
 
 laravel-mix@^4.0.7:
   version "4.1.2"
@@ -3349,9 +3408,9 @@ lodash.uniq@^4.5.0:
   version "4.5.0"
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
 
-lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.5:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
+lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.19, lodash@^4.17.5:
+  version "4.17.19"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.19.tgz#e48ddedbe30b3321783c5b4301fbd353bc1e4a4b"
 
 loglevel@^1.6.3:
   version "1.6.3"
@@ -4091,6 +4150,10 @@ popper.js@^1.12:
   version "1.15.0"
   resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.15.0.tgz#5560b99bbad7647e9faa475c6b8056621f5a4ff2"
 
+popper.js@^1.14.4:
+  version "1.16.1"
+  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
+
 portfinder@^1.0.21:
   version "1.0.22"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.22.tgz#abd10a488b5696e98ee25c60731f8ae0b76f8ddd"
@@ -4487,6 +4550,10 @@ punycode@^2.1.0:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-2.1.1.tgz#b58b010ac40c22c5657616c8d2c2c02c7bf479ec"
 
+pusher-js@^5.0.2:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/pusher-js/-/pusher-js-5.1.1.tgz#267495d3a821d511bdb20cf3c624ba0556e0b7df"
+
 q@^1.1.2:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
@@ -4832,6 +4899,10 @@ schema-utils@^1.0.0:
 select-hose@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
+
+select2-bootstrap-theme@0.1.0-beta.10:
+  version "0.1.0-beta.10"
+  resolved "https://registry.yarnpkg.com/select2-bootstrap-theme/-/select2-bootstrap-theme-0.1.0-beta.10.tgz#b9426ecfc03bf4a235e76a132377574310469ac0"
 
 selfsigned@^1.10.4:
   version "1.10.4"
@@ -5341,6 +5412,10 @@ tslib@^1.9.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
 
+tslib@^1.9.3:
+  version "1.14.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.14.0.tgz#d624983f3e2c5e0b55307c3dd6c86acd737622c6"
+
 tty-browserify@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/tty-browserify/-/tty-browserify-0.0.0.tgz#a157ba402da24e9bf957f9aa69d524eed42901a6"
@@ -5497,6 +5572,10 @@ uuid@^3.0.1, uuid@^3.3.2:
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
 
+v-page@^2.0.8:
+  version "2.0.9"
+  resolved "https://registry.yarnpkg.com/v-page/-/v-page-2.0.9.tgz#d6eb48f1c5c4573f629f75fef4d469666a2b9e9c"
+
 v8-compile-cache@2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.0.3.tgz#00f7494d2ae2b688cfe2899df6ed2c54bef91dbe"
@@ -5527,12 +5606,26 @@ vue-loader@^15.4.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-scrollbar-live@^5.7.1:
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/vue-scrollbar-live/-/vue-scrollbar-live-5.7.1.tgz#192a344f885a5762ef5acf639e72dad736c3a819"
+  dependencies:
+    "@livelybone/mouse-events" "^1.0.0"
+    "@livelybone/scroll-get" "^5.0.2"
+
 vue-style-loader@^4.1.0:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-4.1.2.tgz#dedf349806f25ceb4e64f3ad7c0a44fba735fcf8"
   dependencies:
     hash-sum "^1.0.2"
     loader-utils "^1.0.2"
+
+vue-template-compiler@^2.6.10:
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/vue-template-compiler/-/vue-template-compiler-2.6.12.tgz#947ed7196744c8a5285ebe1233fe960437fcc57e"
+  dependencies:
+    de-indent "^1.0.2"
+    he "^1.1.0"
 
 vue-template-es2015-compiler@^1.9.0:
   version "1.9.1"
@@ -5541,6 +5634,18 @@ vue-template-es2015-compiler@^1.9.0:
 vue@^2.5.17:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
+
+vue@^2.6.11:
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
+
+vueye-datepicker@^0.1.7:
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/vueye-datepicker/-/vueye-datepicker-0.1.7.tgz#396ddc0ecffa0170a7193e4156ebd5cb15ab2ffd"
+  dependencies:
+    "@vue/composition-api" "^0.3.4"
+    core-js "^3.6.4"
+    vue "^2.6.11"
 
 watchpack@^1.6.0:
   version "1.6.0"
