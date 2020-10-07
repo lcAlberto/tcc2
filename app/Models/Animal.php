@@ -43,12 +43,6 @@ class Animal extends Model
         return $this->hasMany(AnimalHeat::class);
     }
 
-
-//    public function scopeFarmAnimal($query)
-//    {
-//        return $query->where('farm_id', '=', auth()->user()->id);
-//    }
-
     /*SEARCH*/
     public function search($data)
     {

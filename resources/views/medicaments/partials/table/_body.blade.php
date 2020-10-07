@@ -5,7 +5,7 @@
 <td>{{$medicaments->grace_period_beef}}</td>
 <td>{{$medicaments->grace_period_dairy}}</td>
 <td>
-    <a href="{{ route('medicament.loadFlyer', $medicaments->id) }}" class="btn btn-outline-danger" target="_blank">
+    <a href="{{ asset('flyer/'.$medicaments->flyer) }}" class="btn btn-outline-danger" target="_blank">
         <i class="fa fa-file-pdf"></i>
     </a>
 </td>

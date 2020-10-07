@@ -14,6 +14,7 @@
                             @if ($errors->has('email') || $errors->has('password'))
                                 <div class="alert alert-danger">
                                     Não foi possivel efetuar o login.
+                                    Talvez suas credenciais estejam erradas.
                                     Se você nao tem login ainda, clique em Registrar-se
                                 </div>
                             @endif
@@ -27,11 +28,6 @@
                                            placeholder="Email" type="email" name="email"
                                            value="{{ old('email') }}" required autofocus>
                                 </div>
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" style="display: block;" role="alert">
-                                        <strong class="is-invalid">Oops! suas credenciais estão erradas!</strong>
-                                    </span>
-                                @endif
                             </div>
                             <div class="form-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                                 <div class="input-group input-group-alternative">
@@ -59,21 +55,14 @@
                                 <button type="submit"
                                         class="btn btn-block btn-primary my-4">@lang('labels.Login')</button>
                             </div>
+                            <div class="text-center">
+                                @if (Route::has('password.request'))
+                                    <a href="{{ route('password.request') }}" class="btn btn-block btn-secondary my-4">
+                                        @lang('labels.Forgot Password')
+                                    </a>
+                                @endif
+                            </div>
                         </form>
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col-6">
-                        @if (Route::has('password.request'))
-                            <a href="{{ route('password.request') }}" class="text-light">
-                                <small>@lang('labels.Forgot Password')?</small>
-                            </a>
-                        @endif
-                    </div>
-                    <div class="col-6 text-right">
-                        <a href="{{ route('register') }}" class="text-light">
-                            <small>@lang('labels.Create Accont')</small>
-                        </a>
                     </div>
                 </div>
             </div>

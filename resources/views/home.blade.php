@@ -3,14 +3,16 @@
 @section('content')
     <div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
         <div class="container-fluid">
-            <div class="card">
-                <div class="card-header">
-                    Dashboard
-                </div>
-                <div class="card-body">
-                    {{--<div class="card">--}}
-                    <div class="col-md-12 col-lg-12 float-left">
-                        @include('event.cio-list')
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        Dashboard
+                    </div>
+                    <div class="card-body">
+                        {{--<div class="card">--}}
+                        <div class="col-md-12 col-lg-12 float-left">
+                            @include('event.cio-list')
+                        </div>
                     </div>
                 </div>
             </div>

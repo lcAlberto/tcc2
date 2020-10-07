@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('layouts.headers.flock.index-card')
+    @include('layouts.headers.medicament.header')
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -80,8 +80,8 @@
                                         </li>
                                         <li class="list-group-item">
                                             Bula:
-                                            <a href="{{ route('medicament.loadFlyer', $medicament->id) }}"
-                                               class="text-danger">
+                                            <a href="{{ asset('flyer/'.$medicament->flyer) }}"
+                                               class="text-danger" target="_blank">
                                                 <i class="fa fa-file-pdf ml-2"></i> {{ $medicament->flyer }}
                                             </a>
                                         </li>

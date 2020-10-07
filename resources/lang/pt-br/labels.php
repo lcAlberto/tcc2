@@ -107,6 +107,14 @@ return [
 
     //Titles
 
+    //users
+    'Here you can manage the people who help you in caring for your herd and who will have access to the system'
+    => 'Aqui você pode gerenciar as pessoas que te ajudam no cuidado com seu rebanho e que terão acesso ao sistema',
+    'Create new user' => 'Criar novo usuário',
+    'Edit this user' => 'Edite este usuário',
+
+
+
     //flock
     'flock Managment' => 'Gerenciamento do Rebanho',
     'Manage your animals here. This is your whole herd' =>
@@ -137,6 +145,11 @@ return [
     'New treatment record' => 'Novo registro de tratamento',
     'Edit treatment record' => 'Editar registro de tratamento',
     'Treatment details' => 'Detalhes do tratamento',
+
+    //medicaments
+    'Medicaments' => 'Medicamentos',
+    'Medicaments details' => 'Detalhe do medicamento',
+    'Here you can keep your entire veterinary pharmacy' => 'Aqui você pode manter toda a sua farmácia veterinária',
 
 
 

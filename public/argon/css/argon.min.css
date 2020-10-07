@@ -7526,7 +7526,7 @@ a.bg-darker:focus, a.bg-darker:hover, button.bg-darker:focus, button.bg-darker:h
 }
 
 .card-profile-image img, .shadow {
-    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .15) !important
+    box-shadow: 0 0 2rem 0 rgba(136, 152, 170, .20) !important
 }
 
 .shadow-lg {
@@ -16525,4 +16525,17 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 .scrollbar-inner .scroll-element.scroll-x {
     bottom: 0;
     height: 3px
+}
+
+/* PROCRIARE */
+
+.border border-left-primary !important {
+    border-left: 25rem solid;
+    background-color: red;
+}
+
+.shadow custom-shadow !important{
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
 }

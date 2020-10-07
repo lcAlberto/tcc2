@@ -41,7 +41,7 @@
             </div>
             <div class="form-group mb-3">
                 <!-- Data de Nascimento -->
-                <label class="form-control-label" for="DTNasc">
+                <label class="form-control-label" for="born_date">
                     Data de Nascimento
                     <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                     @if($errors->has('born_date'))
@@ -53,7 +53,7 @@
                 </label>
                 <input name="born_date"
                        type="text"
-                       id="dt_nascimento"
+                       id="born_date"
                        class="form-control border {{$errors->has('born_date') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="Data no formato dd/mm/aaaa"
                        value="{{old('born_date') ?? $item->name ?? '' }}" required/>
@@ -201,7 +201,7 @@
         </div>
         <div class="form-group">
             <div class="form-group mb-3">
-                <label class="form-control-label" for="confirm_password">
+                <label class="form-control-label" for="thumbnail">
                     Imagem do animal
                 </label>
                 @if($errors->has('thumbnail'))
@@ -212,7 +212,7 @@
                 @endif
                 <input name="thumbnail"
                        type="file"
-                       id="profile"
+                       id="thumbnail"
                        class="form-control border {{$errors->has('thumbnail') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="file"
                        value="{{old('thumbnail') ?? $item->thumbnail ?? '' }}"/>
@@ -221,7 +221,7 @@
         </div>
         <!-- filiação -->
         <div class="form-group mb-3">
-            <label class="form-control-label" for="pai">
+            <label class="form-control-label" for="father">
                 Filiação Paterna, (Pai)
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 @if($errors->has('father'))
@@ -232,7 +232,7 @@
                 @endif
             </label>
             <select
-                name="father" id="pai"
+                name="father" id="father"
                 class="form-control border{{$errors->has('father') ? 'text-danger border-danger is-invalid' : ''}}">
                 <option value="unknow" selected> Selecione</option>
                 <option value="unknow" {{old('father') == 'unknow' ? 'selected' : ''}}>
@@ -240,8 +240,8 @@
                 </option>
                 @foreach ($animals as $item)
                     @if (($item->sex == 'male') && (($item->class == 'bull-reproductive')))
-                        <option value="{{ $item->id }}" {{old('father') == $item->id ? 'selected' : ''}}>
-                            [ {{ $item->id }} ] - @lang($item->name)
+                        <option value="{{ $item->name }}" {{old('father') == $item->id ? 'selected' : ''}}>
+                            [ {{ $item->code }} ] - @lang($item->name)
                         </option>
                     @endif
                 @endforeach
@@ -253,7 +253,7 @@
         </div>
 
         <div class="form-group mb-3">
-            <label class="form-control-label" for="mae">
+            <label class="form-control-label" for="mother">
                 Filiação Materna, (Mãe)
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 @if($errors->has('mother'))
@@ -263,15 +263,15 @@
                 @endif
             </label>
             <select
-                name="mother" id="mae"
+                name="mother" id="mother"
                 class="form-control border {{$errors->has('mother') ? 'text-danger border-danger is-invalid' : ''}}">
                 <option value="" selected> Selecione</option>
-                <option value="unknow"> Mae Desconhecida</option>
+                <option value="unknow"> Mãe Desconhecida</option>
                 @foreach ($animals as $item)
                     @if(auth()->user()->farm_id ==  $item->farm_id)
                         @if((($item->class == 'cow-non-lactating') || ($item->class = 'heifer')) && ($item->sex == 'femeale'))
-                            <option value="{{ $item->id }}" {{old('mother') == $item->id ? 'selected' : ''}}>
-                                [ {{ $item->id }} ] - {{ $item->name }} - @lang('labels.' . $item->class)
+                            <option value="{{ $item->name }}" {{old('mother') == $item->id ? 'selected' : ''}}>
+                                [ {{ $item->code }} ] - {{ $item->name }} - <h5 class="text-black-50">@lang('labels.' . $item->class)</h5>
                             </option>
                         @endif
                     @endif

@@ -62,12 +62,17 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /*SEARCH*/
-    public function search(Array $data)
+    public function search($data)
     {
-        $users = $this->where(function ($query) use ($data) {
-            if (isset($data['name']))
-                $query->where('name', 'like', '%' . $data['name'] . '%');
+        $animals = $this->where(function ($query) use ($data) {
+            if (isset($data['search']))
+//                $query->where('farm_id', '=', auth()->user()->farm_id)
+                $query->where('name', 'ilike', '%' . $data['search'] . '%')
+                    ->orWhere('email', 'ilike', '%' . $data['search'] . '%')
+                    ->orWhere('phone', 'ilike', '%' . $data['search'] . '%')
+                    ->get();
         });
-        return $users->get();
+
+        return $animals->get();
     }
 }

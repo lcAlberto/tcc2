@@ -58,19 +58,12 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        {{--                                        <div class="col-lg-8 col-sm-12 text-white">--}}
-                                        {{--                                            <a class="btn btn-warning"--}}
-                                        {{--                                               href="{{route('cio.heatByAnimal', $animals->id)}}">--}}
-                                        {{--                                                <i class="fa fa-mars-double"></i>--}}
-                                        {{--                                                Acompanhar ciclo reprodutivo--}}
-                                        {{--                                            </a>--}}
-                                        {{--                                        </div>--}}
                                     </div>
                                 </div>
                                 <div class="col-lg-5 col-sm">
                                     <ul class="list-group">
                                         <li class="list-group-item bg-gradient-indigo text-white">
-                                            ID do Animal: <strong> {{$animals->id}} </strong>
+                                            Codigo do Animal: <strong> {{$animals->code}} </strong>
                                             <a href="{{ route('animals.edit', $animals->id) }}"
                                                class="text-white float-right">
                                                 <i class="fa fa-edit"></i> Editar
@@ -124,7 +117,7 @@
                                             @if($animals->status == 'alive')
                                                 <strong class="text-primary">Vivo</strong>
                                             @elseif($animals->status == 'dead')
-                                                <strong class="text-warning">Morto</strong>
+                                                <strong class="text-danger">Morto</strong>
                                             @elseif($animals->status == 'sold')
                                                 <strong class="text-warning">Vendido</strong>
                                             @endif
@@ -143,7 +136,7 @@
                                         </li>
                                         <li class="list-group-item">
                                             Cadastrado em:
-                                            <strong> {{$animals->created_at}} </strong>
+                                            <strong> {{date_format($animals->created_at,'d/m/Y')}} </strong>
                                         </li>
                                         <li class="list-group-item">
                                             Criado pelo usuário ID:

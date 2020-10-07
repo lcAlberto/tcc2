@@ -66,18 +66,36 @@
 
 <!-- Argon JS -->
 <script src="{{ asset('argon') }}/js/argon.js?v=1.0.0"></script>
+<script src="https://kit.fontawesome.com/64ad3789c4.js" crossorigin="anonymous"></script>
+
 {{--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>--}}
 {{--<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>--}}
 
 <script type="text/javascript">
     $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+{{--<script src="https://cdn.jsdelivr.net/npm/vue"></script>--}}
 
 
 <script type="text/javascript">
     $(document).ready(function() {
         $("#medicament_id").select2({
+            theme: "bootstrap"
+        });
+        $.fn.select2.defaults.set( "theme", "bootstrap" );
+        $("#touro_id").select2({
+            theme: "bootstrap"
+        });
+        $.fn.select2.defaults.set( "theme", "bootstrap" );
+        $("#animal_id").select2({
+            theme: "bootstrap"
+        });
+        $.fn.select2.defaults.set( "theme", "bootstrap" );
+        $("#father").select2({
+            theme: "bootstrap"
+        });
+        $.fn.select2.defaults.set( "theme", "bootstrap" );
+        $("#mother").select2({
             theme: "bootstrap"
         });
         $.fn.select2.defaults.set( "theme", "bootstrap" );

@@ -18,7 +18,7 @@
                        class="form-control form-control-alternative
                        {{$errors->has('code') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="Número de Identificação, número do brinco"
-                       value="{{old('code') ?? $animals->code ?? '' }}" required/>
+                       value="{{old('code') ?? $current->code ?? '' }}" required/>
                 <small class="form-text"> Número do Brinco do animal. Não pode ficar em branco!</small>
             </div>
             <div class="form-group mb-3">
@@ -35,12 +35,12 @@
                        id="nome"
                        class="form-control border {{$errors->has('name') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="Nome ou apelido do animal"
-                       value="{{old('name') ?? $animals->name ?? '' }}" required/>
+                       value="{{old('name') ?? $current->name ?? '' }}" required/>
                 <small class="form-text"> Nome do animal, apelido</small>
             </div>
             <div class="form-group mb-3">
                 <!-- Data de Nascimento -->
-                <label class="form-control-label" for="DTNasc">
+                <label class="form-control-label" for="born_date">
                     Data de Nascimento
                     <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                     @if($errors->has('born_date'))
@@ -50,11 +50,11 @@
                     @endif
                 </label>
                 <input name="born_date"
-                       type="datetime"
-                       id="dt_nascimento"
+                       type="text"
+                       id="born_date"
                        class="form-control border {{$errors->has('born_date') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="Data de nascimento do animal"
-                       value="{{old('born_date', $animals->born_date = $dateTime->format('d-m-Y')) }}" required/>
+                       value="{{$current->born_date = date('d/m/Y', strtotime($current->born_date))}}" required/>
                 <small class="form-text"> Dia, mês e ano que o animal nasceu</small>
             </div>
             <div class="form-group mb-3">
@@ -70,8 +70,8 @@
                 <select
                     class="form-control border {{$errors->has('breed') ? 'text-danger border-danger is-invalid' : ''}}"
                     id="raca" name="breed">
-                    <option value="{{old('breed') ?? $animals->breed ?? '' }}" selected>
-                        {{old('breed') ?? $animals->breed ?? '' }}
+                    <option value="{{old('breed') ?? $current->breed ?? '' }}" selected>
+                        {{old('breed') ?? $current->breed ?? '' }}
                     </option>
                     <option value=" - ">Selecione</option>
                     <option value="Jersey">Jersey</option>
@@ -126,8 +126,8 @@
                     type="radio"
                     id="femeale"
                     name="sex"
-                    value="{{$animals->sex == 'femeale' ? $animals->sex : ''}}"
-                    {{$animals->sex == 'femeale' ? 'checked' : '' }}
+                    value="{{$current->sex == 'femeale' ? $current->sex : ''}}"
+                    {{$current->sex == 'femeale' ? 'checked' : '' }}
                     onchange="showFemeale()"
                     class="radio custom-radio
                                     {{$errors->has('sex') ? 'text-danger is-invalid' : ''}}">
@@ -136,8 +136,8 @@
                     type="radio"
                     id="male"
                     name="sex"
-                    value="{{$animals->sex == 'male' ? $animals->sex : ''}}"
-                    {{$animals->sex == 'male' ? 'checked' : '' }}
+                    value="{{$current->sex == 'male' ? $current->sex : ''}}"
+                    {{$current->sex == 'male' ? 'checked' : '' }}
                     onchange="showMale()"
                     class="radio custom-radio
                 {{$errors->has('sex') ? 'text-danger is-invalid' : ''}}">
@@ -161,8 +161,8 @@
                 class="form-control border {{$errors->has('class') ? 'text-danger border-danger is-invalid' : ''}}"
                 id="classificacao" name="class" required>
                 <option value="">Selecione</option>
-                <option value="{{old('class') ?? $animals->class ?? '' }}" selected>
-                    @lang("labels.$animals->class")
+                <option value="{{old('class') ?? $current->class ?? '' }}" selected>
+                    @lang("labels.$current->class")
                 </option>
                 <option value="heifer">
                     Novilha (Fêmea que já atingiu a maturidade sexual mas ainda não criou)
@@ -206,13 +206,13 @@
                        id="profile"
                        class="form-control border {{$errors->has('thumbnail') ? 'text-danger border-danger is-invalid' : ''}}"
                        placeholder="file"
-                       value="{{old('thumbnail') ?? $animals->thumbnail ?? '' }}"/>
+                       value="{{old('thumbnail') ?? $current->thumbnail ?? '' }}"/>
                 <small class="form-text"> Por favor, escolha uma imagem no formato jpg, jpeg, gif ou png</small>
             </div>
         </div>
         <!-- filiação -->
         <div class="form-group mb-3">
-            <label class="form-control-label" for="pai">
+            <label class="form-control-label" for="father">
                 Filiação Paterna, (Pai)
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 @if($errors->has('father'))
@@ -222,18 +222,17 @@
                 @endif
             </label>
             <select
-                name="father" id="pai"
+                name="father" id="father"
                 class="form-control border{{$errors->has('father') ? 'text-danger border-danger is-invalid' : ''}}">
-                <option value="{{old('father') ?? $animals->class ?? '' }}" selected>
-                    @if($animals->father == 'unknow')
-                        @lang("labels.$animals->father")
-                    @else
-                        {{old('father') ?? $animals->father ?? '' }}
-                    @endif
-                </option>
-                <option value="unknow">Touro Desconhecido</option>
-                @if (($animals->sex == 'male') && (($animals->class == 'bull-reproductive')))
-                    <option value="{{ $animals->id }}">[ {{ $animals->id }} ] {{ $animals->name }} </option>
+                <option value="unknow" {{($current->father == 'unknow'  ? 'selected' : '')}}>Touro Desconhecido</option>
+                @if(auth()->user()->farm_id ==  $current->farm_id)
+                    @foreach($animals as $animal)
+                        @if (($animal->sex == 'male') && (($animal->class == 'bull-reproductive')))
+                            <option value="{{ $animal->name }}">
+                                [ {{ $animal->code }} ] {{ $animal->name }}
+                            </option>
+                        @endif
+                    @endforeach
                 @endif
             </select>
             <small class="text-warning">
@@ -243,7 +242,7 @@
         </div>
 
         <div class="form-group mb-3">
-            <label class="form-control-label" for="mae">
+            <label class="form-control-label" for="mother">
                 Filiação Materna, (Mãe)
                 <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>
                 @if($errors->has('mother'))
@@ -253,23 +252,18 @@
                 @endif
             </label>
             <select
-                name="mother" id="mae"
+                name="mother" id="mother"
                 class="form-control border {{$errors->has('mother') ? 'text-danger border-danger is-invalid' : ''}}">
-                <option value="{{old('mother') ?? $animals->mother ?? '' }}" selected>
-                    @if($animals->mother == 'unknow')
-                        @lang("labels.$animals->mother")
-                    @else
-                        {{old('mother') ?? $animals->mother ?? '' }}
-                    @endif
-                </option>
-                <option value="unknow"> Mae Desconhecida</option>
-                @if($animals->id == $animals->farm_id)
-                    @if (($animals->sexo == 'femeale') && (($animals->class == 'cow-lactating'))
-                     || ($animals->class == 'cow-non-lactating') || ($animals->class = 'heifer'))
-                        <option value="{{ $animals->id }}">
-                            [ {{ $animals->id }} ] - {{ $animals->name }}, @lang("labels.$animals->class")
-                        </option>
-                    @endif
+                @if(auth()->user()->farm_id ==  $current->farm_id)
+                    <option value="unknow" {{($current->father == 'unknow'  ? 'selected' : '')}}>Vaca Desconhecida
+                    </option>
+                    @foreach($animals as $animal)
+                        @if (($animal->sex == 'femeale') && (($animal->class != 'she-calves')))
+                            <option value="{{ $animal->name }}">
+                                [ {{ $animal->code }} ] {{ $animal->name }} (@lang("labels.$current->class"))
+                            </option>
+                        @endif
+                    @endforeach
                 @endif
             </select>
             <small class="text-warning">
@@ -292,8 +286,8 @@
             <select
                 name="status" id="status"
                 class="form-control {{$errors->has('status') ? 'text-danger border-danger is-invalid' : ''}}">
-                <option value="{{old('status') ?? $animals->status ?? '' }}" selected>
-                    @lang("labels.$animals->status")
+                <option value="{{old('status') ?? $current->status ?? '' }}" selected>
+                    @lang("labels.$current->status")
                 </option>
                 <option value="alive">Vivo</option>
                 <option value="dead">Morto</option>

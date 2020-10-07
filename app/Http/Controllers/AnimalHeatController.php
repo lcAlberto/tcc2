@@ -21,8 +21,10 @@ class AnimalHeatController extends Controller
     public function index(AnimalHeat $animalHeat)
     {
         $title = 'Reproductive cycle management';
+        $description = '';
         /*retorna todos os animais da fazenda*/
         $animals = Farm::find(auth()->user()->farm_id)->animals;
+//        dd($animals);
 
         /*retorna a fazenda que o cio ta*/
         $farm = Farm::find(auth()->user()->farm_id);
@@ -48,13 +50,17 @@ class AnimalHeatController extends Controller
     {
         $title = 'create-cio';
         $data = $request->validated();
+        $data['animal_id'] = (int) $data['animal_id'];
         $data = $services->dateHandling($data);
         $data = $services->managementFather($request, $data);
         $data = $services->status($request, $data);
         $data = $services->birthPrediction($data);
         $data = $animalRepository->farm_by($data);
+        $data = $animalRepository->created_by_user($data);
+
 
         $animalHeat->create($data);
+//        AnimalHeat::created($data);
 
         $mensagem = $request->mensagem;
         $request->session()->flash('alert-success', 'Novo cio registrado !',

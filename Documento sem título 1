@@ -1,0 +1,11 @@
+public function is_loan($data)
+    {
+        $data['is_loan'] = true;
+        $current_book = Book::find($data['book_id']);
+        $current_book->status = $current_book['status'] = true;
+//        dd($current_book);
+        $current_book->update();
+        return $data;
+    }
+
+dar um edit so em um dado de outra tabela

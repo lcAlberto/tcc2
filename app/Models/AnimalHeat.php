@@ -20,6 +20,7 @@ class AnimalHeat extends Model
         'status',//status
         'farm_id',//usuario q cadastrou
         'animal_id',
+        'user_id',
     ];
 
     protected $dates = ['deleted_at'];
@@ -30,6 +31,11 @@ class AnimalHeat extends Model
     }
 
     public function farm()
+    {
+        return $this->belongsTo(Farm::class);
+    }
+
+    public function user()
     {
         return $this->belongsTo(Farm::class);
     }

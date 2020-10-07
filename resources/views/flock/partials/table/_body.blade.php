@@ -1,5 +1,6 @@
-<td><a href="{{ route('animals.show', $animal->id) }}">
-        <img src="{{asset('animals/' . $animal->thumbnail) }}"
+<td>
+    <a href="{{ route('animals.show', $animal->id) }}">
+        <img src="{{asset('animals/' . $animal->name) }}"
              alt="image"
              width="50"
              height="50"
@@ -20,13 +21,14 @@
 <td>@lang('labels.' .$animal->class)</td>
 @if($animal->status == 'alive')
     <td class="text-success text-uppercase">
-        @lang('labels.'.$animal->status)</td>
+        @lang("labels.$animal->status")</td>
 @elseif($animal->status == 'dead')
     <td class="text-danger text-uppercase">
-        @lang('labels.'.$animal->status)</td>
+        @lang("labels.$animal->status")</td>
 @elseif($animal->status == 'sold')
     <td class="text-warning text-uppercase">
-        @lang('lang.'.$animal->status)</td>
+        @lang("labels.$animal->status")
+    </td>
 @endif
 <td>
     <div class="dropdown">

@@ -14,8 +14,10 @@ class AnimalServices
     public function dateHandling($data)
     {
         $format = new DateTime();
-        $data['date_animal_heat'] = $format->format('Y-m-d H:i:s');
-        $data['date_coverage'] = $format->format('Y-m-d H:i:s');
+        $data['date_animal_heat'] = date('Y-m-d H:i:s', strtotime($data['date_animal_heat']));
+        $data['date_coverage'] = date('Y-m-d H:i:s', strtotime($data['date_coverage']));
+//        $data['date_animal_heat'] = $format->format('Y-m-d H:i:s');
+//        $data['date_coverage'] = $format->format('Y-m-d H:i:s');
 
         return $data;
     }
@@ -30,11 +32,11 @@ class AnimalServices
     {
         if (isset($request->father_id) && (isset($request->father_name))) {
             $data['father'] = $request->father_id . '-' . $request->father_name;
-            $data['father_id'] = null;
-            $data['father_name'] = null;
+            unset($data['father_id']);
+            unset($data['father_name']);
         } elseif (isset($request->father)) {
-            $request->father_id = null;
-            $request->father_name = null;
+            unset($data['father_id']);
+            unset($data['father_name']);
             $data['father'] = $request->father;
         }
         return $data;
@@ -51,6 +53,7 @@ class AnimalServices
     {
         $partoPrevisto = date('Y-m-d H:m:s', strtotime('+280 days', strtotime($data['date_coverage'])));
         $data['date_childbirth_foreseen'] = $partoPrevisto;
+        $data['date_childbirth'] = null;
         return $data;
     }
 
@@ -66,7 +69,7 @@ class AnimalServices
     public function statusVerification($data, $current)
     {
         if ($data['date_childbirth_foreseen'] == today()->format('Y-m-d H:m:s')
-        && $data['status'] == 'success')
+            && $data['status'] == 'success')
             $data['date_childbirth'] = today()->format('Y-m-d H:m:s');
         else {
             $data['status'] = $current->status;
@@ -83,8 +86,7 @@ class AnimalServices
     }
     */
 
-    public
-    function create_by($data)
+    public function create_by($data)
     {
         $data = AnimalRepository::created_by($data);
         return $data;

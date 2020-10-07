@@ -16,9 +16,10 @@ class MedicamentController extends Controller
 
     public function index()
     {
-        $title = 'index';
+        $title = 'Medicaments';
+        $description = 'Here you can keep your entire veterinary pharmacy';
         $medicaments = Medicament::where('farm_id', '=', auth()->user()->farm_id)->paginate($this->paginate);
-        return view('medicaments.index', compact('title', 'medicaments'));
+        return view('medicaments.index', compact('title', 'description', 'medicaments'));
     }
 
     public function create()
@@ -51,10 +52,11 @@ class MedicamentController extends Controller
         Request $request, MedicamentRepository $repository,
         Medicament $medicament, PDF $PDF, $id)
     {
-        $data->
-        $data = $repository->editFlyer($request, $PDF, $id);
-        $data = $repository->createThumbnail($data);
-        $medicament->update($data);
+        $current = Medicament::find($id);
+        $data = $repository->editFlyer($current, $request);
+        $data = $repository->editThumbnail($current, $data);
+//        $medicament->update($data);
+        Medicament::updating($data);
         $request->session()->flash("'alert-success', 'Medicamento atualizado !',
             'alert-danger', 'Oops! não foi possível atualizar!'");
 
@@ -64,8 +66,9 @@ class MedicamentController extends Controller
 
     public function show($id)
     {
+        $title = 'Medicaments details';
         $medicament = Medicament::find($id);
-        return view('medicaments.show', compact('medicament'));
+        return view('medicaments.show', compact('medicament', 'title'));
     }
 
     public function destroy(MedicamentRequest $request, $id)
@@ -81,15 +84,5 @@ class MedicamentController extends Controller
     public function search()
     {
         //
-    }
-
-    public function loadFlyer(PDF $pdf, Options $options, $id)
-    {
-        $flyer = Medicament::find($id);
-        $path = file_exists(public_path() . '/flyer/' . $flyer->flyer);
-        if (($flyer != null) && ($path != null))
-            return response()->file(public_path() . '/flyer/' . $flyer->flyer);
-        else
-            return redirect()->back();
     }
 }

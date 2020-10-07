@@ -1,208 +1,142 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="93eac26f-aba4-4022-a7b4-e8a4ed7e9de1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Enums/Healths/TreatmenTypeEnum.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Enums/MedicamentsAdmission.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/HealthController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/MedicamentController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/HealthRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/MedicamentRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Health.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/Medicament.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Repositories/MedicamentRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_06_182657_create_medicaments_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_05_28_231007_create_healths_table.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/HealthTableSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/seeds/MedicamentsTableSeeder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Dectomax-flyer.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/Valée Calcio-flyer" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ampoule-default.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/Baixinha" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/Bandido" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/Bolinhasss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/Nero" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/The Look" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/Tuia#" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/animals/awsdfg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/6062625947_a5e7e55be3_o.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/Bovinos.JPG" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/SEMA.Tangren.farmer.grain_.corn_.harvest.ag_.Minn-02.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/agricultura-animal-area-4222118.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/agriculture-1850904.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/ampoule-default.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/animals-beef-cattle-blur-735974.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/animals-blond-hair-cattle-1881334.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/close-up-photo-of-brown-cattle-2747287.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/cows-1532909_1920.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/cows-73371_1920.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/cows-954002_1920.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/cows-954002_19220.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/little-calf-4592691_1920.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/little-calf-5047986_1920.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/longhorn-2386537_1920.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/love-3899318_1920.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/argon/cards/medicaments.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/select2-bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/select2-bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/select2.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/flyer/Dectomax-flyer" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/flyer/Dectomax-flyer.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/flyer/Mastiplus-flyer" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/flyer/MonovinK-flyer" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/flyer/Terramicina-flyer.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/flyer/Valée Calcio-flyer" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/select2.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/medicaments/Dectomax" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/medicaments/Dectomax-thumbnail" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/medicaments/Mastiplus-thumbnail" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/medicaments/MonovinK-thumbnail" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/medicaments/Ripercol-thumbnail" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/profile/20160519_132113.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/profile/Captura de tela de 2020-01-16 23-04-28.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/profile/IMG-20181211-WA0044.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/profileBolinhasss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/profileBolinhazinha" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/profileNero" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/profileTerneiro" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/createBabyCalves.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/Cios/partials/table/heat-by-animal.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/health/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/health/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/health/header.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/health/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/health/partials/forms/create-form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/health/partials/forms/edit-form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/health/partials/modals/db-options.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/health/partials/modals/insert-medicament-modal.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/health/partials/table/body.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/health/partials/table/buttons.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/health/partials/table/head.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/health/show.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/headers/cios/header.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/headers/cios/index-card.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/headers/flock/header.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/headers/flock/index-card.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/headers/health-card.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/headers/health/header.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/headers/health/index-card.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/headers/medicament-card.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/headers/medicament/header.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/medicaments/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/medicaments/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/medicaments/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/medicaments/partials/forms/_create-form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/medicaments/partials/forms/_edit-form.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/medicaments/partials/header.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/medicaments/partials/table/_body.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/medicaments/partials/table/_head.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/medicaments/show.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Documento sem título 1" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/Bola2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/Buchuda" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/Cinza" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/Creito" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/Lucka" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/Outra vacA" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/Sinfrosia" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/Terneiro" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/Tuia#.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/Vacaa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/animal-teste-mae" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/boi-teste-pai" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/pouswdefgvjkn" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/vaca preta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/weftrhg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/werdtfrseasrgfdtq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/animals/werty" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/argon/cards/20200820_173542.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/flyer/Aborvac-flyerpdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/flyer/Alatox-flyerpdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/flyer/Fluocortan-flyer.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/flyer/Fluocortan-flyerpdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/flyer/Terramicina.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/medicaments/Aborvac-thumbnailpdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/medicaments/Alatox-thumbnailpdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/medicaments/Fluocortan-thumbnailpdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/medicaments/Vacina da afetosa-thumbnail" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/profile/75680.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/profile/eo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/profileBuchuda" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/UserController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnimalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnimalController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AnimalHeatController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AnimalHeatController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MedicamentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MedicamentController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/CioRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/CioRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Requests/FlockRequest.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Requests/FlockRequest.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/Animal.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Animal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Farm.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Farm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/AuxCio.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/HealthRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Repositories/CioRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/CioRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/AnimalHeat.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/AnimalHeat.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/AnimalRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/AnimalRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Repositories/MedicamentRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Repositories/MedicamentRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Services/AnimalServices.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/AnimalServices.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_10_27_183652_create_animal_heats_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_10_27_183652_create_animal_heats_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/AnimalHeatsTableSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/AnimalHeatsTableSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/1234" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/1234" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/1234" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/animals/Agulha" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Agulha" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Animal-1-001" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Animal-1-001" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Animal-1-002" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Animal-1-002" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Animal-1-003" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Animal-1-003" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Animal-1-004" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Animal-1-004" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Animal-1-005" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Animal-1-005" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Animal-1-001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Animal-1-002" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Animal-1-003" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Animal-1-004" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Animal-1-005" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Baixinha" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Bandido" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/animals/Berenice" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Berenice" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Bolaa" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Bolaa" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Bolaa" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/animals/Bolinha" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Bolinha" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Boris" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Boris" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Cento e Dezenove" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Cento e Dezenove" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Bolinhasss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Boris" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Cento e Dezenove" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/animals/Chifruda" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Chifruda" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Ferdinando" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Ferdinando" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Filo" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Filo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Filozinha" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Filozinha" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Fiona" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Fiona" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Guapo" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Guapo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Mimosa" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Mimosa" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Mimosaa" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Mimosaa" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Mimosinha" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Mimosinha" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Quarenta" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Quarenta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Ferdinando" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Filo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Filozinha" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Fiona" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Guapo" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Mimosa" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Mimosaa" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Mimosinha" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Nero" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Quarenta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/animals/Sinfra" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Sinfra" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/Vaca01" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Vaca01" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/awsdfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/mimosa" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/mimosa" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/nenenen" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/nenenen" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/animals/ythrgfedw" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/ythrgfedw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/argon/6062625947_a5e7e55be3_o.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/argon/SEMA.Tangren.farmer.grain_.corn_.harvest.ag_.Minn-02.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/argon/agricultura-animal-area-4222118.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/argon/animals-beef-cattle-blur-735974.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/argon/animals-blond-hair-cattle-1881334.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/The Look" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Tuia#" beforeDir="false" afterPath="$PROJECT_DIR$/public/animals/Tuia#" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/Vaca01" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/awsdfg.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/mimosa" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/nenenen" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/animals/ythrgfedw" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/public/argon/css/argon.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/argon/css/argon.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/argon/img/default-thumbnail1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/argon/img/default-thumbnail1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/argon/img/default-thumbnail1.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/argon/img/default-thumbnail1.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/default.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/default.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/flyer/Terramicina-flyer.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/jquery.mask.min.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/jquery.mask.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/masks.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/masks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/profile/1a87c9baf08fb9cb7c0df8451ef4ad49.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/profile/1a87c9baf08fb9cb7c0df8451ef4ad49.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/profile/277301.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/profile/277301.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/profile/84614.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/profile/84614.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/profile/87367.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/profile/87367.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/profile/LGN_LatAmPress_0678.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/profile/LGN_LatAmPress_0678.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/profile/LOT115_02.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/profile/LOT115_02.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/profile/default.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/profile/default.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/profile/g5042.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/profile/g5042.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/profile/peap.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/profile/peap.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/profile/s_t_a_r__labs_wallpaper_by_celethas_dbj509r-fullview.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/profile/s_t_a_r__labs_wallpaper_by_celethas_dbj509r-fullview.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/profileAnimal-1-001" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/profileBolinha" beforeDir="false" afterPath="$PROJECT_DIR$/public/profileBolinha" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/profileMimosa" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/profiletOURO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/public/users/avatar/8by3nLxAHWOe1xnVAhIm6LX70LZiw8HxV2CZgRih.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/public/users/avatar/8by3nLxAHWOe1xnVAhIm6LX70LZiw8HxV2CZgRih.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/public/users/avatar/L88lV0ODdfatCpQ5dhdPy4KyebPaUViMcocHuY0B.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/public/public/users/avatar/L88lV0ODdfatCpQ5dhdPy4KyebPaUViMcocHuY0B.jpeg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/public/users/avatar/crgi9w6JLpPZq2fsGEn8t0XO8mbbtzzDPwieCpzs.png" beforeDir="false" afterPath="$PROJECT_DIR$/public/public/users/avatar/crgi9w6JLpPZq2fsGEn8t0XO8mbbtzzDPwieCpzs.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/public/users/avatar/iAw55n01BN0gPsNYAY0JhMiQNoa2GXWMup8cGQGF.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/public/public/users/avatar/iAw55n01BN0gPsNYAY0JhMiQNoa2GXWMup8cGQGF.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/public/users/avatar/8by3nLxAHWOe1xnVAhIm6LX70LZiw8HxV2CZgRih.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/public/users/avatar/L88lV0ODdfatCpQ5dhdPy4KyebPaUViMcocHuY0B.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/public/users/avatar/crgi9w6JLpPZq2fsGEn8t0XO8mbbtzzDPwieCpzs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/public/users/avatar/iAw55n01BN0gPsNYAY0JhMiQNoa2GXWMup8cGQGF.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ExampleComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/lang/pt-br/labels.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/pt-br/labels.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/lang/pt-br/validation.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/pt-br/validation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Cios/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Cios/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/flash-message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Cios/flash-message.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Cios/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/partials/_actionButton.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Cios/partials/table/_actionButton.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/partials/_body.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Cios/partials/table/_body.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/partials/_create-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Cios/partials/forms/_create-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/partials/_edit-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Cios/partials/forms/_edit-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/partials/_head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Cios/partials/table/_head.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/partials/flash-message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Cios/partials/flash-message.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/partials/table/heat-by-animal.blade.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/partials/table/main-body.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Cios/partials/table/main-body.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/partials/unlisted-bull.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Cios/partials/unlisted-bull.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/cios/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/Cios/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/partials/_actionButton.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/partials/table/_actionButton.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/partials/_body.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/partials/table/_body.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/partials/_create-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/partials/forms/_create-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/partials/_edit-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/partials/forms/_edit-form.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/partials/_head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/partials/table/_head.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/partials/filiacao" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/partials/filiacao" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/partials/modals/confirmation.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/partials/modals/confirmation.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/animals/flock/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Cios/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cios/create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Cios/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cios/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Cios/flash-message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cios/flash-message.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Cios/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cios/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Cios/partials/flash-message.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cios/partials/flash-message.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Cios/partials/forms/_create-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cios/partials/forms/_create-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Cios/partials/forms/_edit-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cios/partials/forms/_edit-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Cios/partials/table/_actionButton.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cios/partials/table/_actionButton.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Cios/partials/table/_body.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cios/partials/table/_body.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Cios/partials/table/_head.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cios/partials/table/_head.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Cios/partials/table/heat-by-animal.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cios/partials/table/heat-by-animal.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Cios/partials/table/main-body.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cios/partials/table/main-body.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Cios/partials/unlisted-bull.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cios/partials/unlisted-bull.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/Cios/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/cios/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/event/cio-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/event/cio-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/flock/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/edit.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/flock/partials/forms/_create-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/partials/forms/_create-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/flock/partials/forms/_edit-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/partials/forms/_edit-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/flock/partials/table/_actionButton.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/partials/table/_actionButton.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/flock/partials/table/_body.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/partials/table/_body.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/flock/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/flock/show.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/health/partials/forms/create-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/health/partials/forms/create-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/health/partials/forms/edit-form.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/health/partials/forms/edit-form.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/headers/flock-card.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/headers/cards.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/headers/cards.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/headers/medicament/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/headers/medicament/header.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbars/navs/auth.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbars/navs/auth.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/navbars/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/medicaments/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/medicaments/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/medicaments/partials/table/_body.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/medicaments/partials/table/_body.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/medicaments/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/medicaments/show.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/users/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/create.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/users/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/edit.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/users/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/users/partials/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/users/partials/header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web/authenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web/authenticated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/users/partials/header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/headers/users/header.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -213,24 +147,11 @@
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
-  <component name="DatabaseView">
-    <option name="SHOW_INTERMEDIATE" value="true" />
-    <option name="GROUP_DATA_SOURCES" value="true" />
-    <option name="GROUP_SCHEMA" value="true" />
-    <option name="GROUP_CONTENTS" value="false" />
-    <option name="SORT_POSITIONED" value="false" />
-    <option name="SHOW_EMPTY_GROUPS" value="false" />
-    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
-    <option name="HIDDEN_KINDS">
-      <set />
-    </option>
-    <expand />
-    <select />
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="Vue Single File Component" />
       </list>
     </option>
   </component>
@@ -361,27 +282,30 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="SearchEverywhereHistoryKey" value="authe&#9;FILE&#9;file:///home/lucka/Documentos/TADS/5/5 - Praticas de Projetos II/tcc2/routes/web/authenticated.php&#10;registerCon&#9;FILE&#9;file:///home/lucka/Documentos/TADS/5/5 - Praticas de Projetos II/tcc2/app/Http/Controllers/Auth/RegisterController.php&#10;register&#9;FILE&#9;file:///home/lucka/Documentos/TADS/5/5 - Praticas de Projetos II/tcc2/resources/views/auth/register.blade.php&#10;rolesta&#9;FILE&#9;file:///home/lucka/Documentos/TADS/5/5 - Praticas de Projetos II/tcc2/database/seeds/RolesTableSeeder.php&#10;route ser&#9;null&#9;null" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../developer/laravel/relations/vacas" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/resources/views/layouts/headers/Flock" />
-      <recent name="$PROJECT_DIR$/resources/views/flock/partials/table" />
-      <recent name="$PROJECT_DIR$/resources/views/cios/partials/forms" />
-      <recent name="$PROJECT_DIR$/resources/views/cios/partials/table" />
-      <recent name="$PROJECT_DIR$/resources/views" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/app" />
       <recent name="$PROJECT_DIR$/resources/views" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/views/layouts/headers/users" />
+      <recent name="$PROJECT_DIR$/resources/views/layouts/headers/Flock" />
+      <recent name="$PROJECT_DIR$/resources/views/flock/partials/table" />
+      <recent name="$PROJECT_DIR$/resources/views/cios/partials/forms" />
+      <recent name="$PROJECT_DIR$/resources/views/cios/partials/table" />
+    </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
-    <configuration>$PROJECT_DIR$/../.subversion</configuration>
+    <configuration>$USER_HOME$/.subversion</configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -560,11 +484,29 @@
       <workItem from="1594847334973" duration="2637000" />
       <workItem from="1594915480701" duration="8102000" />
       <workItem from="1595021451897" duration="6887000" />
+      <workItem from="1595199018932" duration="858000" />
+      <workItem from="1596490457790" duration="4991000" />
+      <workItem from="1596667863431" duration="846000" />
+      <workItem from="1596752149052" duration="2229000" />
+      <workItem from="1596838459827" duration="656000" />
+      <workItem from="1597182713168" duration="932000" />
+      <workItem from="1597440991190" duration="2080000" />
+      <workItem from="1597527762322" duration="6538000" />
+      <workItem from="1597761180858" duration="7448000" />
+      <workItem from="1597844825118" duration="7224000" />
+      <workItem from="1597876319613" duration="3653000" />
+      <workItem from="1597926948716" duration="23377000" />
+      <workItem from="1598205262693" duration="694000" />
+      <workItem from="1600005308583" duration="52000" />
+      <workItem from="1601770801485" duration="5148000" />
+      <workItem from="1601899660985" duration="975000" />
+      <workItem from="1601937557393" duration="1107000" />
+      <workItem from="1601984499554" duration="50000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -586,43 +528,31 @@
       <screen x="0" y="24" width="1366" height="715" />
     </state>
     <state x="141" y="38" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.24.1366.715@0.24.1366.715" timestamp="1594678598160" />
-    <state x="410" y="185" width="536" height="385" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589322500289">
+    <state x="416" y="138" width="524" height="479" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1597883672193">
       <screen x="0" y="24" width="1366" height="715" />
     </state>
-    <state x="410" y="185" width="536" height="385" key="#com.intellij.fileTypes.FileTypeChooser/0.24.1366.715@0.24.1366.715" timestamp="1589322500289" />
-    <state x="416" y="138" width="524" height="479" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1594661524393">
+    <state x="416" y="138" width="524" height="479" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.24.1366.715@0.24.1366.715" timestamp="1597883672193" />
+    <state x="447" y="143" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/45.24.1321.744@45.24.1321.744" timestamp="1596493542717" />
+    <state x="466" y="138" width="424" height="479" key="FileChooserDialogImpl" timestamp="1601772451907">
       <screen x="0" y="24" width="1366" height="715" />
     </state>
-    <state x="416" y="138" width="524" height="479" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.24.1366.715@0.24.1366.715" timestamp="1594661524393" />
-    <state x="466" y="138" width="424" height="479" key="FileChooserDialogImpl" timestamp="1587075953178">
-      <screen x="0" y="24" width="1366" height="715" />
-    </state>
-    <state x="466" y="138" width="424" height="479" key="FileChooserDialogImpl/0.24.1366.715@0.24.1366.715" timestamp="1587075953178" />
-    <state x="477" y="109" width="401" height="537" key="NewPhpClassDialog" timestamp="1588644205924">
-      <screen x="0" y="24" width="1366" height="715" />
-    </state>
-    <state x="477" y="109" width="401" height="537" key="NewPhpClassDialog/0.24.1366.715@0.24.1366.715" timestamp="1588644205924" />
+    <state x="466" y="138" width="424" height="479" key="FileChooserDialogImpl/0.24.1366.715@0.24.1366.715" timestamp="1601772451907" />
     <state x="547" y="450" width="354" height="142" key="NewPhpFileDialog" timestamp="1595031509688">
       <screen x="0" y="24" width="1366" height="715" />
     </state>
-    <state x="501" y="317" key="NewPhpFileDialog/0.22.1366.746@0.22.1366.746" timestamp="1589379510137" />
     <state x="547" y="450" width="354" height="142" key="NewPhpFileDialog/0.24.1366.715@0.24.1366.715" timestamp="1595031509688" />
-    <state x="481" y="297" width="393" height="161" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589332372587">
+    <state x="347" y="168" key="run.anything.popup" timestamp="1597946447950">
       <screen x="0" y="24" width="1366" height="715" />
     </state>
-    <state x="481" y="297" width="393" height="161" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.24.1366.715@0.24.1366.715" timestamp="1589332372587" />
-    <state x="389" y="129" width="587" height="502" key="find.popup" timestamp="1591808968843">
+    <state x="347" y="168" key="run.anything.popup/0.24.1366.715@0.24.1366.715" timestamp="1597946447950" />
+    <state x="346" y="60" width="672" height="678" key="search.everywhere.popup" timestamp="1601776438930">
       <screen x="0" y="24" width="1366" height="715" />
     </state>
-    <state x="389" y="129" width="587" height="502" key="find.popup/0.24.1366.715@0.24.1366.715" timestamp="1591808968843" />
-    <state x="347" y="168" key="run.anything.popup" timestamp="1589323331556">
+    <state x="346" y="60" width="672" height="678" key="search.everywhere.popup/0.24.1366.715@0.24.1366.715" timestamp="1601776438930" />
+    <state x="380" y="61" width="672" height="706" key="search.everywhere.popup/45.24.1321.744@45.24.1321.744" timestamp="1596494167046" />
+    <state x="408" y="297" width="542" height="169" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1597183042465">
       <screen x="0" y="24" width="1366" height="715" />
     </state>
-    <state x="347" y="168" key="run.anything.popup/0.24.1366.715@0.24.1366.715" timestamp="1589323331556" />
-    <state x="346" y="60" width="672" height="678" key="search.everywhere.popup" timestamp="1592349229954">
-      <screen x="0" y="24" width="1366" height="715" />
-    </state>
-    <state x="346" y="58" width="672" height="708" key="search.everywhere.popup/0.22.1366.746@0.22.1366.746" timestamp="1589380638257" />
-    <state x="346" y="60" width="672" height="678" key="search.everywhere.popup/0.24.1366.715@0.24.1366.715" timestamp="1592349229954" />
+    <state x="408" y="297" width="542" height="169" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.24.1366.715@0.24.1366.715" timestamp="1597183042465" />
   </component>
 </project>

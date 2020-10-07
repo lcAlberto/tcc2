@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\UserRolesEnum;
 use App\Models\AnimalHeat;
 use App\Models\Animal;
 use App\Models\Farm;
+use App\Models\Health;
+use App\Models\Medicament;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,7 +28,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(AnimalHeat $animalHeat, Animal $animal)
+    public function teste(AnimalHeat $animalHeat, Animal $animal)
     {
         $cios = $animalHeat->all();
         $animals = $animal->all();
@@ -34,5 +38,21 @@ class HomeController extends Controller
         foreach ($animals as $item_animal)
             $item_animal->farm_id;
         return view('home', compact('cios', 'item_animal', 'farm_item'));
+    }
+
+    public function index(Farm $farm,
+                          User $user,
+                          Animal $animal,
+                          AnimalHeat $heat,
+                          Health $health,
+                          Medicament $medicament)
+    {
+        if (UserRolesEnum::ADMIN)
+            $farm_users = $farm->users()->count();
+        $farm_animals = $farm->animals()->count();
+        $farm_heats = $farm->animals()->whereHas('AnimalHeat')->count();
+//        $farm_heats = $health->farm()->count();
+//        dd($farm_users);
+        return view('home', compact('farm_users', 'farm_animals', 'farm_heats'));
     }
 }

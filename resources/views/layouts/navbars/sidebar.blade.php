@@ -126,10 +126,10 @@
                 </li>
 
                 <!-- Relatorios -->
-                <li class="nav-item">
-                    <a href="{{route('animals.report')}}" class="nav-link">
-                        <i class="fa fa-calendar mr-2"></i>Gerar Relatório</a>
-                </li>
+{{--                <li class="nav-item">--}}
+{{--                    <a href="{{route('animals.report')}}" class="nav-link">--}}
+{{--                        <i class="fa fa-calendar mr-2"></i>Gerar Relatório</a>--}}
+{{--                </li>--}}
             </ul>
 
         </div>

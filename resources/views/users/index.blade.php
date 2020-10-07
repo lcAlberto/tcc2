@@ -1,7 +1,7 @@
 @extends('layouts.app', ['title' => __('User Management')])
 
 @section('content')
-    @include('layouts.headers.cards')
+    @include('layouts.headers.users.header')
     <div class="container-fluid mt--7">
         <div class="row">
             <div class="col">
@@ -30,7 +30,7 @@
                                     <a href="{{ URL::previous() }}" class="btn btn-danger btn-block">
                                         <i class="fa fa-arrow-left"></i>@lang('labels.Back')</a>
                                 @endif
-                                @if($title == 'User')
+                                @if($title == 'User Management')
                                     <a href="{{ route('admin.user.create') }}" class="btn btn-primary btn-block">
                                         <i class="fa fa-plus mr-2"></i>@lang('labels.Add User')</a>
                                 @endif
@@ -59,9 +59,9 @@
                     </div>
                     <div class="card-footer py-4">
                         <nav class="d-flex justify-content-end" aria-label="...">
-                            @if($title == 'Users')
-                                {{$users->links()}}
-                            @endif
+{{--                            @if($title == 'User Management')--}}
+{{--                                {{$users->links()}}--}}
+{{--                            @endif--}}
                             @if($title == 'search')
                                 <a href="{{ URL::previous() }}" class="btn btn-sm btn-danger">
                                     <i class="fa fa-arrow-left"></i>@lang('labels.Back')

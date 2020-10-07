@@ -1,52 +1,91 @@
-<div class="table-responsive">
-    <table class="table table-responsive text-center">
-        <tr>
-            <th>Cod. cio</th>
-            <th>Animal</th>
-            <th>Data do Cio</th>
-            <th>Parto Previsto</th>
-            <th>Status</th>
-            <th>Operações</th>
-        </tr>
-        @foreach($cios as $cio)
-            @if( $item_animal->farm_id == auth()->user()->farm_id)
-                <tr>
-                    <td>{{$cio->id}}</td>
-                    <td>{{$item_animal->name}}</td>
-                    <td>
-                        {{$cio->date_animal_heat = date('d/m/Y', strtotime($cio->date_animal_heat))}}
-                    </td>
-                    <td class="text-indigo">
-                        {{$cio->date_childbirth_foreseen = date('d/m/Y', strtotime($cio->date_childbirth_foreseen))}}
-                    </td>
-                    <td>
-                        @if($cio->status == 'pending')
-                            <i class="text-warning fa fa-clock mr-2"></i>
-                            Pendente...
-                        @elseif($cio->status == 'success')
-                            <i class="text-success fa fa-check mr-2"></i>
-                            Sucesso!
-                        @elseif($cio->status == "cleaning")
-                            <i class="text-indigo fa fa-times mr-2"></i>
-                            Cio de Limpeza
-                        @elseif($cio->status == 'abortion')
-                            <i class="text-danger fa fa-exclamation-triangle mr-2"></i>
-                            Aborto!
-                        @endif
-                    </td>
-                    <td class="btn-group">
-                        @if($cio->status == 'success')
-                            <a href="{{route('animals.create')}}" class="btn btn-sm btn-success">
-                                <i class="fa fa-plus mr-2"></i>Registrar Bezerro</a>
-                        @else
-                            <a href="{{route('cio.edit', $cio->id)}}" class="btn btn-sm btn-success">
-                                <i class="fa fa-pencil-alt mr-2"></i>Editar</a>
-                        @endif
-                        <a href="{{route('animals.show', $cio->id)}}" class="btn btn-sm btn-primary">
-                            <i class="fa fa-list mr-2"></i>Detalhes</a>
-                    </td>
-                </tr>
-            @endif
-        @endforeach
-    </table>
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Total de Usiários</h5>
+                        <span class="h2 font-weight-bold mb-0">{{$farm_users}}</span>
+                    </div>
+                    <div class="col-auto">
+                        <div class="icon icon-shape bg-gradient-red text-white rounded-circle shadow">
+{{--                            <i class="ni ni-active-40"></i>--}}
+                            <i class="fas fa-hat-cowboy-side"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-3 mb-0 text-sm">
+                    <span class="text-nowrap">Todos usuáios da Fazenda</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
+                        <span class="h2 font-weight-bold mb-0">2,356</span>
+                    </div>
+                    <div class="col-auto">
+                        <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow">
+                            <i class="ni ni-chart-pie-35"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                    <span class="text-nowrap">Since last month</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
+                        <span class="h2 font-weight-bold mb-0">924</span>
+                    </div>
+                    <div class="col-auto">
+                        <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                            <i class="fas fa-tractor"></i>
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                    <span class="text-nowrap">Since last month</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+        <div class="card card-stats">
+            <!-- Card body -->
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
+                        <span class="h2 font-weight-bold mb-0">49,65%</span>
+                    </div>
+                    <div class="col-auto">
+                        <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow">
+                            <i class="ni ni-chart-bar-32"></i>
+                        </div>
+                    </div>
+                </div>
+                <p class="mt-3 mb-0 text-sm">
+                    <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
+                    <span class="text-nowrap">Since last month</span>
+                </p>
+            </div>
+        </div>
+    </div>
 </div>

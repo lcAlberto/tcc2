@@ -20,7 +20,8 @@ class UserController extends Controller
 {
     public function index(Request $request)
     {
-        $title = 'User';
+        $title = 'User Management';
+        $description = 'Here you can manage the people who help you in caring for your herd and who will have access to the system';
 
         /*Retorna a fazenda cujo usuario pertence*/
         $farm = Farm::find(auth()->user()->id);
@@ -29,7 +30,7 @@ class UserController extends Controller
         $users = Farm::find(auth()->user()->id)->users;
 
 
-        return view('users.index', compact('farm', 'users', 'title'))
+        return view('users.index', compact('farm', 'users', 'title', 'description'))
             ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 
@@ -54,11 +55,12 @@ class UserController extends Controller
 
     public function edit($id)
     {
+        $title = 'Edit this user';
         $user = User::find($id);
         $roles = Role::pluck('name', 'name')->all();
         $userRole = $user->roles->pluck('name', 'name')->all();
 
-        return view('users.edit', compact('user', 'roles', 'userRole'));
+        return view('users.edit', compact('title','user', 'roles', 'userRole'));
     }
 
     public function update(UserRequest $userRequest, UserRepository $repository, $id)
@@ -94,17 +96,15 @@ class UserController extends Controller
         return view('users.show', compact('user'));
     }
 
-    public function search(Request $request, UserRepository $userRepository)
+    public function search(User $model, Request $request)
     {
         $title = 'search';
         $farm = Farm::find(auth()->user()->id);
-        $users = DB::table('users')
-            ->where('name', 'ilike', '%' . $request->search . '%')
-            ->orWhere('email', 'ilike', '%' . $request->search . '%')
-            ->orWhere('phone', 'ilike', '%' . $request->search . '%')
-            ->orWhere('farm_id', 'ilike', '%' . $request->search . '%')
-            ->get();
+        $data = $request->all();
+        $users = $model->search($data);
+//        dd($users);
 
-        return view('users.index', compact(['users'], 'title', 'farm'));
+        return view('users.index', compact('users', 'title', 'farm'))
+            ->with('i', ($request->input('page', 1) - 1) * 5);
     }
 }

@@ -24,10 +24,12 @@
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
+    "@livelybone/vue-datepicker": "^4.0.2",
     "cross-env": "^5.2.1",
     "laravel-echo": "^1.6.1",
     "pusher-js": "^5.0.2",
     "select2-bootstrap-theme": "0.1.0-beta.10",
-    "v-page": "^2.0.8"
+    "v-page": "^2.0.8",
+    "vueye-datepicker": "^0.1.7"
   }
 }

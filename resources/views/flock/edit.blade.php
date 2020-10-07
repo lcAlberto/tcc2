@@ -24,7 +24,7 @@
                               method="POST"
                               enctype="multipart/form-data"
                               name="user-form"
-                              action="{{ route('animals.update', $animals) }}">
+                              action="{{ route('animals.update', $current) }}">
                         @method('PUT')
                         @include('flock.partials.forms._edit-form')
                     </div>

@@ -13,34 +13,28 @@ use App\Enums\AnimalStatusEnum;
 use App\Enums\AnimalSexEnum;
 use App\Enums\AnimalClassEnum;
 
-Class AnimalRepository
+class AnimalRepository
 {
 
     public function createAnimalProfile($request)
     {
         $data = $request->all();
         if ($request->thumbnail != null) {
-            $profile = $request->file('thumbnail');
-            request()->thumbnail->move(public_path('animals/'), $request->name);
-            $data = $request->all();
-            $data['thumbnail'] = $request->name;
-            return $data;
-        } else
-            return UserRepository::profileDefault($data);
+            request()->thumbnail->move(public_path('animals/'),
+                $request->name);
+            $data['thumbnail'] = $request->name . '.' .
+                $request->file('thumbnail')->getClientOriginalExtension();
+        }
+        return $data;
     }
 
     public function updateAnimalProfile($current, $request)
     {
         $data = $request->all();
         if (isset($data['thumbnail'])) {
-            $profileName = $current->name;
-            request()->thumbnail->move(public_path('animals/'), $profileName);
-            $data['thumbnail'] = $profileName;
-            return $data;
-        }else if (isset($current->thumbnail))
+            $this->createAnimalProfile($request);
+        } else if (isset($current->thumbnail))
             $data['thumbnail'] = $current->thumbnail;
-        else
-            UserRepository::profileDefault($data);
         return $data;
     }
 
@@ -67,6 +61,13 @@ Class AnimalRepository
     }
 
     public static function created_by($data)
+    {
+        $data['user_id'] = auth()->user()->id;
+
+        return $data;
+    }
+
+    public function created_by_user($data)
     {
         $data['user_id'] = auth()->user()->id;
 

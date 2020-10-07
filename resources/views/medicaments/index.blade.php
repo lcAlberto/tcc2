@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    @include('layouts.headers.medicament.')
+    @include('layouts.headers.medicament.header')
 
     <div class="container-fluid mt--7">
         <div class="row">
@@ -23,7 +23,6 @@
                                             <span class="fa fa-search"></span>
                                         </button>
                                         <span class="input-group-btn">
-
                                     </span>
                                     </div>
                                 </form>
@@ -34,7 +33,7 @@
                                         <i class="fa fa-arrow-left"></i> Voltar
                                     </a>
                                 @endif
-                                @if($title == 'index')
+                                @if($title == 'Medicaments')
                                     <a href="{{ route('medicament.create') }}" class="btn btn-block btn-primary">
                                         <i class="fa fa-plus mr-2"></i> Registrar novo Medicamento
                                     </a>
@@ -62,9 +61,9 @@
                         </table>
                         <div class="card-footer py-4">
                             <nav class="d-flex justify-content-end" aria-label="...">
-                                @if($title == 'kjh')
-                                    {{$medicaments->links()}}
-                                @endif
+{{--                                @if($title == 'Medicaments')--}}
+{{--                                    {{$medicaments->links()}}--}}
+{{--                                @endif--}}
                                 @if($title == 'search')
                                     <a href="{{ URL::previous() }}" class="btn btn-sm btn-danger">
                                         <i class="fa fa-arrow-left"></i> Voltar

@@ -1,7 +1,7 @@
 <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center"
      style="background-size: 100%; background-position: center; background-repeat: no-repeat;
-         background-image: url({{asset('/argon/cards/agriculture-1850904.jpg')}});">
-    <span class="mask bg-gradient-purple opacity-5"></span>
+         background-image: url({{asset('/argon/cards/20200820_173542.jpg')}});">
+    <span class="mask bg-gradient-info opacity-5"></span>
     <!-- Mask -->
 
     <!-- Header container -->

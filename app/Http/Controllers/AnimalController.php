@@ -26,7 +26,8 @@ class AnimalController extends Controller
         $animals = Farm::find(auth()->user()->farm_id)->animals;//retorna todos os animais da fazenda
         $title = 'flock Managment';
         $description = 'Manage your animals here. This is your whole herd';
-        $animals = Animal::where('farm_id', '=', auth()->user()->farm_id)->paginate($this->paginate);
+        $animals = Animal::where('farm_id', '=', auth()->user()->farm_id)
+            ->paginate($this->paginate);
 
         return view('flock.index', compact('animals', 'title', 'description'));
     }
@@ -46,36 +47,34 @@ class AnimalController extends Controller
         $data = $auxAnimal->created_by($data);
         $data = $auxAnimal->farm_by($data);
 
-        $animal->create($data);
-        $request->session()->flash("'alert-success', 'Animal cadastrado!',
-            'alert-danger', 'Oops! não foi possível cadastrar!'");
+        $data = $animal->create($data);
 
         return redirect()->route('animals.index');
     }
 
     public function edit($id)
     {
-        $animals = Animal::find($id);
-        if (isset($animals) && ($animals->farm_id == auth()->user()->farm_id)) {
+        $current = Animal::find($id);
+        $animals = Animal::all();
+        if (isset($current) && ($current->farm_id == auth()->user()->farm_id)) {
             $title = 'Edit this animal';
             $description = 'Check all fields providing the necessary data';
             $dateTime = new DateTime();
-            return view('flock.edit', compact('animals', 'title', 'description', 'dateTime'));
+            return view('flock.edit', compact('current', 'animals', 'title', 'description', 'dateTime'));
         } else
             return redirect()->route('animals.index');
     }
 
-    public function update(Request $request, Animal $animal, AnimalRepository $auxAnimal, $id)
+    public function update(FlockRequest $request, Animal $animal, AnimalRepository $auxAnimal, $id)
     {
-        $current = Animal::find($id);
-        $data = $auxAnimal->updateAnimalProfile($current, $request);
+        $data = $request->validated();
+        $animal = Animal::find($id);
+        $data = $auxAnimal->createAnimalProfile($request);
+        $data = $auxAnimal->validationOfBorn_date($data);
         $data = $auxAnimal->created_by($data);
         $data = $auxAnimal->farm_by($data);
 
         $animal->update($data);
-
-        $request->session()->flash("'alert-success', 'Animal atualizado com sucesso!',
-            'alert-danger', 'Oops! não foi possível cadastrar!'");
 
         return redirect()->route('animals.index');
     }
@@ -105,13 +104,15 @@ class AnimalController extends Controller
 
     public function animalsReports(PDF $pdf)
     {
+        return redirect()->route('animals.index');
+        /*
         $farm = Farm::find(auth()->user()->id);
 
         return $pdf->loadView('reports.flock-registers',
             compact('animal', 'animals', 'farm', "Total-Animais"))
             ->setPaper('A4', 'landscape')->stream();
 
-//        return $report->download('flock-all.pdf');
+//        return $report->download('flock-all.pdf');*/
     }
 
     public function search(Animal $model, Request $request)

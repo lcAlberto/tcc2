@@ -170,8 +170,7 @@
                    id="date_symptom"
                    class="form-control border {{$errors->has('date_symptom') ? 'text-danger border-danger is-invalid' : ''}}"
                    placeholder="Data no formato dd/mm/aaaa"
-                   value="{{ $health->date_symptom ? $health->date_symptom = date('d/m/Y', strtotime($health->date_symptom)) : '' }}"
-                   required/>
+                   value="{{ $health->date_symptom ? $health->date_symptom = date('d/m/Y', strtotime($health->date_symptom)) : '' }}"/>
             <small class="form-text"> Dia, mês e ano que o animal apresentou sintomas</small>
         </div>
         <div class="form-group mb-3">
@@ -190,7 +189,7 @@
                    id="causer_agent"
                    class="form-control border {{$errors->has('causer_agent') ? 'text-danger border-danger is-invalid' : ''}}"
                    placeholder="Exemplo: Protozoários do gênero Babesia e rickettsias do gênero Anaplasma"
-                   value="{{$health->causer_agent ? $health->causer_agent : '' }}" required/>
+                   value="{{$health->causer_agent ? $health->causer_agent : '' }}"/>
             <small class="form-text"> O que causa essa doença? </small>
         </div>
         <div class="form-group mb-3">

@@ -17,6 +17,7 @@
 <script>
     export default {
         mounted() {
+            alert('poha');
             console.log('Component mounted.')
         }
     }

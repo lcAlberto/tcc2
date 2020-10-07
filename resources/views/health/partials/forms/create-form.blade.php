@@ -184,7 +184,7 @@
 
         <div class="form-group mb-3">
             <!-- Medicamento -->
-            <label class="form-control-label" for="confirm_password">
+            <label class="form-control-label" for="medicament_id">
                 Medicamento Utilizado
             </label>
             <sup> <i class="fa fa-asterisk" style="color:red; font-size: 7px;"></i> </sup>

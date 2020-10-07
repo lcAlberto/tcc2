@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use http\Env\Request;
 use Illuminate\Foundation\Http\FormRequest;
 use DateTime;
+use phpDocumentor\Reflection\DocBlock\Tags\Method;
 
 class FlockRequest extends FormRequest
 {
@@ -20,11 +21,12 @@ class FlockRequest extends FormRequest
 
     public function rules()
     {
+//        dd();
         return [
-            'code' => 'required|unique:animals|numeric',
-            'name' => 'required|unique:animals|string|min:4|max:255',
+            'code' => 'sometimes|required|'. $this->getMethod() == 'POST' ? 'unique:animals,code' : '' . '|numeric',
+            'name' => 'sometimes|required|' . $this->getMethod() == 'POST' ? 'unique:animals,name' : ''. '|string|min:4|max:255',
             //before_or_equal:'.$hoje.'after_or_equal:01/01/2010'
-            'born_date' => 'required|before_or_equal:'.today()->format('d/m/Y').'after_or_equal:01/01/2005',
+            'born_date' => 'required|after_or_equal:'.today()->format('d/m/Y').'before_or_equal:01/01/2005',
             'sex' => 'required',
             'class' => 'required',
             'status' => 'nullable',

@@ -11,10 +11,17 @@ class MedicamentRepository
 
     public function createThumbnail($data)
     {
-        if ($data['thumbnail'] != null) {
-            if ($data['thumbnail']->getMimeType() == 'image/jpeg') {
-                request()->thumbnail->move(public_path() . '/medicaments', $data['name'] . '-thumbnail');
-                $data['thumbnail'] = $data['name'] . '-thumbnail';
+        if (isset($data['thumbnail'])) {
+            if ($data['thumbnail'] != null) {
+                if ($data['thumbnail']->getMimeType() == 'image/jpeg') {
+                    request()->thumbnail->move(public_path() .
+                        '/medicaments', $data['name'] .
+                        '-thumbnail' .
+                        $data['flyer']->getClientOriginalExtension());
+                    $data['thumbnail'] = $data['name'] .
+                        '-thumbnail' .
+                        $data['flyer']->getClientOriginalExtension();
+                }
             }
         } else {
             $data['thumbnail'] = 'ampoule-default.png';
@@ -22,14 +29,16 @@ class MedicamentRepository
         return $data;
     }
 
-    public function createFlyer($data, $PDF)
+    public function createFlyer($data)
     {
-        if ($data['flyer'] != null) {
-            if ($data['flyer']->getMimeType() == 'application/pdf') {
-                $PDF->loadHtml($data['flyer'])->save('/flyer' . $data['name'] . $data['flyer']->getClientOriginalExtension());
-//                request()->flyer->move(public_path() . '/flyer', $data['name'] . '-flyer');
-                $data['flyer'] = $data['name'] . $data['flyer']->getClientOriginalExtension();
-            }
+        if ($data['flyer']->getMimeType() == 'application/pdf') {
+            request()->flyer->move(public_path() .
+                '/flyer', $data['name'] .
+                '-flyer' .
+                $data['flyer']->getClientOriginalExtension());
+            $data['flyer'] = $data['name'] .
+                '-flyer' .
+                $data['flyer']->getClientOriginalExtension();
         } elseif ($data['flyer'] == null)
             $data['flyer'] = 'Not Found';
         else {
@@ -38,41 +47,47 @@ class MedicamentRepository
         return $data;
     }
 
-    public function editFlyer($request, $PDF, $id)
+    public function editFlyer($current, $request)
     {
-        $data = Medicament::find($id);
-        if (($request->flyer != null) && ($request->flyer->getMimeType() == 'application/pdf')) {
-            $PDF->loadHtml($request->flyer)->save('/flyer' . $data['name'] . $data['flyer']->getClientOriginalExtension());
-                $data['flyer'] = $data['name'] . '-flyer';
-        } elseif ($data['flyer'] == null)
-            $data['flyer'] = 'Not Found';
-        else {
+        $data = $request->all();
+        if (isset($current['flyer'])) {
+            $data['flyer'] = $current['flyer'];
             return $data;
-        }
-        return $data;
+        } else
+            return $this->createFlyer($data);
+    }
+
+    public function editThumbnail($current, $data)
+    {
+        if (isset($current['thumbnail'])) {
+            $data['thumbnail'] = $current['thumbnail'];
+            return $data;
+        } else
+            return $this->createThumbnail($data);
     }
 
     public function farmAssociate($data)
     {
         $data['farm_id'] = auth()->user()->farm_id;
+        $data['user_id'] = auth()->user()->user_id;
         return $data;
     }
 
 
-    public function editThumbnail($request)
-    {
-        if ($request->thumbnail != null) {
-            $thumbnail = $request->file('thumbnail');
-            if ($thumbnail->getMimeType() == 'image/jpeg') {
-                request()->thumbnail->move(public_path() . '/medicaments', $request->name . '-thumbnail');
-//                $data = $request->all();
-                $data['thumbnail'] = $request->name . '-thumbnail';
-            }
-        } else {
-//            $data = $request->all();
-            $data['thumbnail'] = 'ampoule-default.png';
-        }
-        $data = $request->all();
-        return $data;
-    }
+//    public function editThumbnail($request)
+//    {
+//        if ($request->thumbnail != null) {
+//            $thumbnail = $request->file('thumbnail');
+//            if ($thumbnail->getMimeType() == 'image/jpeg') {
+//                request()->thumbnail->move(public_path() . '/medicaments', $request->name . '-thumbnail');
+////                $data = $request->all();
+//                $data['thumbnail'] = $request->name . '-thumbnail';
+//            }
+//        } else {
+////            $data = $request->all();
+//            $data['thumbnail'] = 'ampoule-default.png';
+//        }
+//        $data = $request->all();
+//        return $data;
+//    }
 }
